@@ -209,51 +209,6 @@
       <Column Name="ZZToDate" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="Front.TrackBookingTimeDetailIdViewFront" Member="dbmlTrackBookingTimeDetails">
-    <Type Name="dbmlTrackBookingTimeDetail">
-      <Column Name="TrackBookingTimeDetailId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CreateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="UpdateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="AuditId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="BookingId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="BookingDetailId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="BPId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ServiceId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="VehicleNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="BookingDay" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SrNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SlotPropId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TotalHours" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="TotalMinutes" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="RoundOffHrs" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="RoundOffMin" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="BillingHrs" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="GroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="UOMId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Rate" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="Discount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="TaxableAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="CGSTRate" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="SGSTRate" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="IGSTRate" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="CGSTAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="SGSTAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="IGSTAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="TaxAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="TotalAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="VehicleId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ZZSlot" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="ZZUOM" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="ZZServiceSpecification" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
-      <Column Name="ZZDate" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="ZZCategoryId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ZZTrackGroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="Front.BookingSearchViewFront" Member="dbmlBookingSearchViews">
     <Type Name="dbmlBookingSearchView">
       <Column Name="CompanyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -320,6 +275,53 @@
       <Column Name="ZZStatusPropertyId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ZZCreatedBy" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="ZZUpdatedBy" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="Front.TrackBookingTimeDetailIdViewFront" Member="dbmlTrackBookingTimeDetails">
+    <Type Name="dbmlTrackBookingTimeDetail">
+      <Column Name="TrackBookingTimeDetailId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AuditId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BookingId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BookingDetailId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BPId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ServiceId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VehicleNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BookingDay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SrNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SlotPropId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TotalHours" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TotalMinutes" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="RoundOffHrs" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RoundOffMin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BillingHrs" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="GroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UOMId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Rate" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Discount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TaxableAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="CGSTRate" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="SGSTRate" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="IGSTRate" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="CGSTAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="SGSTAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="IGSTAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TaxAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TotalAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="VehicleId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZZSlot" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ZZUOM" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ZZServiceSpecification" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ZZDate" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ZZCategoryId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZZTrackGroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZZCategory" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ZZTrackGroup" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
