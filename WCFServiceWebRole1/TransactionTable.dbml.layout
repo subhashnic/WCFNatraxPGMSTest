@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="TransactionTable">
+  <DataContextMoniker Name="/TransactionTableDataContext" />
+  <nestedChildShapes>
+    <classShape Id="2a513a2f-6e69-4454-a03a-4172d1973973" isExpanded="false" absoluteBounds="0.625, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/TransactionTableDataContext/dbmlStatus" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d7201057-9ef2-4bd9-aaea-d8a07f02ac7a" absoluteBounds="0.64000000000000057, 0.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7aeb7481-248a-4210-af85-096495b0dc2b" isExpanded="false" absoluteBounds="3.25, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/TransactionTableDataContext/dbmlUserView" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ad1e866d-77b4-4c7c-b7cc-01ee1f57e9d9" absoluteBounds="3.2649999999999997, 0.96, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="904a23ef-6406-440c-83be-3fb62ed6f85a" isExpanded="false" absoluteBounds="8.375, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/TransactionTableDataContext/dbmlProperty" />
+      <nestedChildShapes>
+        <elementListCompartment Id="83ed7725-31e6-44aa-82ce-603e8ab6ad82" absoluteBounds="8.39, 0.96, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="578d52e8-9ddd-47ae-bd04-e02e8f2a2b05" isExpanded="false" absoluteBounds="0.625, 1.125, 2, 0.45">
+      <DataClassMoniker Name="/TransactionTableDataContext/dbmlListOfVehicleComponent" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1c8c3855-444a-46bb-b3b3-b8714e90f599" absoluteBounds="0.63999999999999968, 1.585, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c6f58fb1-a489-46bd-9c88-ccd95582667d" isExpanded="false" absoluteBounds="3.25, 1.125, 2, 0.45">
+      <DataClassMoniker Name="/TransactionTableDataContext/dbmlServicesView" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8a7811e0-991c-431e-aa6c-31b3bf3201f9" absoluteBounds="3.2650000000000006, 1.585, 1.9700000000000002, 4.672322591145833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="df5b41c8-c1ca-4550-8f45-621d2fc170e9" isExpanded="false" absoluteBounds="8.375, 1.75, 2, 0.45">
+      <DataClassMoniker Name="/TransactionTableDataContext/dbmlTrackBookingTimeSummary" />
+      <nestedChildShapes>
+        <elementListCompartment Id="30db7dca-2c72-4d32-af57-cfdaf8f93512" absoluteBounds="8.39, 2.21, 1.9700000000000002, 6.2107340494791661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ad39c6fd-7fa8-4ed4-abab-678085d22b64" isExpanded="false" absoluteBounds="5.75, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/TransactionTableDataContext/dbmlCompanyDepartment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3fe044cb-528e-4b84-99c0-2e1f85b82962" absoluteBounds="5.7650000000000006, 0.96, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="12316eae-7605-49f3-80e0-2352d06e37e7" isExpanded="false" absoluteBounds="8.375, 1.125, 2, 0.45">
+      <DataClassMoniker Name="/TransactionTableDataContext/dbmlBookingStatusTimeSlotView" />
+      <nestedChildShapes>
+        <elementListCompartment Id="29f03f35-46b3-4e2f-93bb-de8ea857fbbb" absoluteBounds="8.39, 1.585, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e55cc812-5fe1-40e5-8867-742cddfa5f9f" isExpanded="false" absoluteBounds="3.25, 1.75, 2, 0.45">
+      <DataClassMoniker Name="/TransactionTableDataContext/dbmlTrackBookingDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="44120e92-34ec-4527-a596-f7b18a76052c" absoluteBounds="3.265, 2.21, 1.9700000000000002, 9.6721598307291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8cf7135a-2cb4-4251-a979-2e47bb4eeb22" isExpanded="false" absoluteBounds="5.75, 1.75, 2, 0.45">
+      <DataClassMoniker Name="/TransactionTableDataContext/dbmlTrackBookingTimeDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c8d043fe-6751-4e15-bafc-11b9205197ba" absoluteBounds="5.765, 2.21, 1.9700000000000002, 8.1337483723958321" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dedcb711-efd3-45cf-aa88-10acc1d5bc36" isExpanded="false" absoluteBounds="5.75, 1.125, 2, 0.45">
+      <DataClassMoniker Name="/TransactionTableDataContext/dbmlBookingSearchView" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5729eb23-e26a-4c02-95a4-6cf367885d39" absoluteBounds="5.765, 1.585, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="104373bc-5a1a-4efb-9223-b49226b35114" isExpanded="false" absoluteBounds="0.625, 1.75, 2, 0.45">
+      <DataClassMoniker Name="/TransactionTableDataContext/dbmlBookingView" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9a51790a-2dda-4071-b13b-09f7d08325e8" absoluteBounds="0.63999999999999968, 2.21, 1.9700000000000002, 8.3260498046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
