@@ -33,9 +33,6 @@ namespace WCFServiceTemplate
     partial void InsertdbmlProperty(dbmlProperty instance);
     partial void UpdatedbmlProperty(dbmlProperty instance);
     partial void DeletedbmlProperty(dbmlProperty instance);
-    partial void InsertdbmlTrackBookingTimeSummary(dbmlTrackBookingTimeSummary instance);
-    partial void UpdatedbmlTrackBookingTimeSummary(dbmlTrackBookingTimeSummary instance);
-    partial void DeletedbmlTrackBookingTimeSummary(dbmlTrackBookingTimeSummary instance);
     partial void InsertdbmlCompanyDepartment(dbmlCompanyDepartment instance);
     partial void UpdatedbmlCompanyDepartment(dbmlCompanyDepartment instance);
     partial void DeletedbmlCompanyDepartment(dbmlCompanyDepartment instance);
@@ -111,14 +108,6 @@ namespace WCFServiceTemplate
 			}
 		}
 		
-		public System.Data.Linq.Table<dbmlTrackBookingTimeSummary> dbmlTrackBookingTimeSummaries
-		{
-			get
-			{
-				return this.GetTable<dbmlTrackBookingTimeSummary>();
-			}
-		}
-		
 		public System.Data.Linq.Table<dbmlCompanyDepartment> dbmlCompanyDepartments
 		{
 			get
@@ -143,14 +132,6 @@ namespace WCFServiceTemplate
 			}
 		}
 		
-		public System.Data.Linq.Table<dbmlBookingSearchView> dbmlBookingSearchViews
-		{
-			get
-			{
-				return this.GetTable<dbmlBookingSearchView>();
-			}
-		}
-		
 		public System.Data.Linq.Table<dbmlBookingView> dbmlBookingViews
 		{
 			get
@@ -164,6 +145,22 @@ namespace WCFServiceTemplate
 			get
 			{
 				return this.GetTable<dbmlTrackBookingTimeDetail>();
+			}
+		}
+		
+		public System.Data.Linq.Table<dbmlBookingSearchView> dbmlBookingSearchViews
+		{
+			get
+			{
+				return this.GetTable<dbmlBookingSearchView>();
+			}
+		}
+		
+		public System.Data.Linq.Table<dbmlTrackBookingTimeSummary> dbmlTrackBookingTimeSummaries
+		{
+			get
+			{
+				return this.GetTable<dbmlTrackBookingTimeSummary>();
 			}
 		}
 	}
@@ -1528,788 +1525,6 @@ namespace WCFServiceTemplate
 				{
 					this._ZZTrackGroupName = value;
 				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="[Transaction].TrackBookingTimeSummary")]
-	public partial class dbmlTrackBookingTimeSummary : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _TrackBookingTimeSummaryId;
-		
-		private System.Nullable<int> _CreateId;
-		
-		private System.Nullable<System.DateTime> _CreateDate;
-		
-		private System.Nullable<int> _UpdateId;
-		
-		private System.Nullable<System.DateTime> _UpdateDate;
-		
-		private System.Nullable<int> _BookingId;
-		
-		private System.Nullable<int> _AuditId;
-		
-		private System.Nullable<int> _GroupId;
-		
-		private string _Specification;
-		
-		private string _VehicleNo;
-		
-		private System.Nullable<System.DateTime> _UsageDate;
-		
-		private System.Nullable<decimal> _TotalHours;
-		
-		private System.Nullable<decimal> _TotalMinutes;
-		
-		private System.Nullable<int> _RoundOffHrs;
-		
-		private System.Nullable<int> _RoundOffMin;
-		
-		private System.Nullable<decimal> _BillingHrs;
-		
-		private System.Nullable<int> _UOMId;
-		
-		private System.Nullable<decimal> _Rate;
-		
-		private System.Nullable<decimal> _Amount;
-		
-		private System.Nullable<decimal> _Discount;
-		
-		private System.Nullable<decimal> _TaxableAmount;
-		
-		private System.Nullable<decimal> _CGSTRate;
-		
-		private System.Nullable<decimal> _SGSTRate;
-		
-		private System.Nullable<decimal> _IGSTRate;
-		
-		private System.Nullable<decimal> _CGSTAmount;
-		
-		private System.Nullable<decimal> _SGSTAmount;
-		
-		private System.Nullable<decimal> _IGSTAmount;
-		
-		private System.Nullable<decimal> _TaxAmount;
-		
-		private System.Nullable<decimal> _TotalAmount;
-		
-		private string _BillingItem;
-		
-		private System.Nullable<int> _VehicleId;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnTrackBookingTimeSummaryIdChanging(int value);
-    partial void OnTrackBookingTimeSummaryIdChanged();
-    partial void OnCreateIdChanging(System.Nullable<int> value);
-    partial void OnCreateIdChanged();
-    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreateDateChanged();
-    partial void OnUpdateIdChanging(System.Nullable<int> value);
-    partial void OnUpdateIdChanged();
-    partial void OnUpdateDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnUpdateDateChanged();
-    partial void OnBookingIdChanging(System.Nullable<int> value);
-    partial void OnBookingIdChanged();
-    partial void OnAuditIdChanging(System.Nullable<int> value);
-    partial void OnAuditIdChanged();
-    partial void OnGroupIdChanging(System.Nullable<int> value);
-    partial void OnGroupIdChanged();
-    partial void OnSpecificationChanging(string value);
-    partial void OnSpecificationChanged();
-    partial void OnVehicleNoChanging(string value);
-    partial void OnVehicleNoChanged();
-    partial void OnUsageDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnUsageDateChanged();
-    partial void OnTotalHoursChanging(System.Nullable<decimal> value);
-    partial void OnTotalHoursChanged();
-    partial void OnTotalMinutesChanging(System.Nullable<decimal> value);
-    partial void OnTotalMinutesChanged();
-    partial void OnRoundOffHrsChanging(System.Nullable<int> value);
-    partial void OnRoundOffHrsChanged();
-    partial void OnRoundOffMinChanging(System.Nullable<int> value);
-    partial void OnRoundOffMinChanged();
-    partial void OnBillingHrsChanging(System.Nullable<decimal> value);
-    partial void OnBillingHrsChanged();
-    partial void OnUOMIdChanging(System.Nullable<int> value);
-    partial void OnUOMIdChanged();
-    partial void OnRateChanging(System.Nullable<decimal> value);
-    partial void OnRateChanged();
-    partial void OnAmountChanging(System.Nullable<decimal> value);
-    partial void OnAmountChanged();
-    partial void OnDiscountChanging(System.Nullable<decimal> value);
-    partial void OnDiscountChanged();
-    partial void OnTaxableAmountChanging(System.Nullable<decimal> value);
-    partial void OnTaxableAmountChanged();
-    partial void OnCGSTRateChanging(System.Nullable<decimal> value);
-    partial void OnCGSTRateChanged();
-    partial void OnSGSTRateChanging(System.Nullable<decimal> value);
-    partial void OnSGSTRateChanged();
-    partial void OnIGSTRateChanging(System.Nullable<decimal> value);
-    partial void OnIGSTRateChanged();
-    partial void OnCGSTAmountChanging(System.Nullable<decimal> value);
-    partial void OnCGSTAmountChanged();
-    partial void OnSGSTAmountChanging(System.Nullable<decimal> value);
-    partial void OnSGSTAmountChanged();
-    partial void OnIGSTAmountChanging(System.Nullable<decimal> value);
-    partial void OnIGSTAmountChanged();
-    partial void OnTaxAmountChanging(System.Nullable<decimal> value);
-    partial void OnTaxAmountChanged();
-    partial void OnTotalAmountChanging(System.Nullable<decimal> value);
-    partial void OnTotalAmountChanged();
-    partial void OnBillingItemChanging(string value);
-    partial void OnBillingItemChanged();
-    partial void OnVehicleIdChanging(System.Nullable<int> value);
-    partial void OnVehicleIdChanged();
-    #endregion
-		
-		public dbmlTrackBookingTimeSummary()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrackBookingTimeSummaryId", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int TrackBookingTimeSummaryId
-		{
-			get
-			{
-				return this._TrackBookingTimeSummaryId;
-			}
-			set
-			{
-				if ((this._TrackBookingTimeSummaryId != value))
-				{
-					this.OnTrackBookingTimeSummaryIdChanging(value);
-					this.SendPropertyChanging();
-					this._TrackBookingTimeSummaryId = value;
-					this.SendPropertyChanged("TrackBookingTimeSummaryId");
-					this.OnTrackBookingTimeSummaryIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateId", DbType="Int")]
-		public System.Nullable<int> CreateId
-		{
-			get
-			{
-				return this._CreateId;
-			}
-			set
-			{
-				if ((this._CreateId != value))
-				{
-					this.OnCreateIdChanging(value);
-					this.SendPropertyChanging();
-					this._CreateId = value;
-					this.SendPropertyChanged("CreateId");
-					this.OnCreateIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreateDate
-		{
-			get
-			{
-				return this._CreateDate;
-			}
-			set
-			{
-				if ((this._CreateDate != value))
-				{
-					this.OnCreateDateChanging(value);
-					this.SendPropertyChanging();
-					this._CreateDate = value;
-					this.SendPropertyChanged("CreateDate");
-					this.OnCreateDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateId", DbType="Int")]
-		public System.Nullable<int> UpdateId
-		{
-			get
-			{
-				return this._UpdateId;
-			}
-			set
-			{
-				if ((this._UpdateId != value))
-				{
-					this.OnUpdateIdChanging(value);
-					this.SendPropertyChanging();
-					this._UpdateId = value;
-					this.SendPropertyChanged("UpdateId");
-					this.OnUpdateIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> UpdateDate
-		{
-			get
-			{
-				return this._UpdateDate;
-			}
-			set
-			{
-				if ((this._UpdateDate != value))
-				{
-					this.OnUpdateDateChanging(value);
-					this.SendPropertyChanging();
-					this._UpdateDate = value;
-					this.SendPropertyChanged("UpdateDate");
-					this.OnUpdateDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookingId", DbType="Int")]
-		public System.Nullable<int> BookingId
-		{
-			get
-			{
-				return this._BookingId;
-			}
-			set
-			{
-				if ((this._BookingId != value))
-				{
-					this.OnBookingIdChanging(value);
-					this.SendPropertyChanging();
-					this._BookingId = value;
-					this.SendPropertyChanged("BookingId");
-					this.OnBookingIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AuditId", DbType="Int")]
-		public System.Nullable<int> AuditId
-		{
-			get
-			{
-				return this._AuditId;
-			}
-			set
-			{
-				if ((this._AuditId != value))
-				{
-					this.OnAuditIdChanging(value);
-					this.SendPropertyChanging();
-					this._AuditId = value;
-					this.SendPropertyChanged("AuditId");
-					this.OnAuditIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupId", DbType="Int")]
-		public System.Nullable<int> GroupId
-		{
-			get
-			{
-				return this._GroupId;
-			}
-			set
-			{
-				if ((this._GroupId != value))
-				{
-					this.OnGroupIdChanging(value);
-					this.SendPropertyChanging();
-					this._GroupId = value;
-					this.SendPropertyChanged("GroupId");
-					this.OnGroupIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Specification", DbType="NVarChar(500)")]
-		public string Specification
-		{
-			get
-			{
-				return this._Specification;
-			}
-			set
-			{
-				if ((this._Specification != value))
-				{
-					this.OnSpecificationChanging(value);
-					this.SendPropertyChanging();
-					this._Specification = value;
-					this.SendPropertyChanged("Specification");
-					this.OnSpecificationChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VehicleNo", DbType="NVarChar(50)")]
-		public string VehicleNo
-		{
-			get
-			{
-				return this._VehicleNo;
-			}
-			set
-			{
-				if ((this._VehicleNo != value))
-				{
-					this.OnVehicleNoChanging(value);
-					this.SendPropertyChanging();
-					this._VehicleNo = value;
-					this.SendPropertyChanged("VehicleNo");
-					this.OnVehicleNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsageDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> UsageDate
-		{
-			get
-			{
-				return this._UsageDate;
-			}
-			set
-			{
-				if ((this._UsageDate != value))
-				{
-					this.OnUsageDateChanging(value);
-					this.SendPropertyChanging();
-					this._UsageDate = value;
-					this.SendPropertyChanged("UsageDate");
-					this.OnUsageDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalHours", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> TotalHours
-		{
-			get
-			{
-				return this._TotalHours;
-			}
-			set
-			{
-				if ((this._TotalHours != value))
-				{
-					this.OnTotalHoursChanging(value);
-					this.SendPropertyChanging();
-					this._TotalHours = value;
-					this.SendPropertyChanged("TotalHours");
-					this.OnTotalHoursChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalMinutes", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> TotalMinutes
-		{
-			get
-			{
-				return this._TotalMinutes;
-			}
-			set
-			{
-				if ((this._TotalMinutes != value))
-				{
-					this.OnTotalMinutesChanging(value);
-					this.SendPropertyChanging();
-					this._TotalMinutes = value;
-					this.SendPropertyChanged("TotalMinutes");
-					this.OnTotalMinutesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoundOffHrs", DbType="Int")]
-		public System.Nullable<int> RoundOffHrs
-		{
-			get
-			{
-				return this._RoundOffHrs;
-			}
-			set
-			{
-				if ((this._RoundOffHrs != value))
-				{
-					this.OnRoundOffHrsChanging(value);
-					this.SendPropertyChanging();
-					this._RoundOffHrs = value;
-					this.SendPropertyChanged("RoundOffHrs");
-					this.OnRoundOffHrsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoundOffMin", DbType="Int")]
-		public System.Nullable<int> RoundOffMin
-		{
-			get
-			{
-				return this._RoundOffMin;
-			}
-			set
-			{
-				if ((this._RoundOffMin != value))
-				{
-					this.OnRoundOffMinChanging(value);
-					this.SendPropertyChanging();
-					this._RoundOffMin = value;
-					this.SendPropertyChanged("RoundOffMin");
-					this.OnRoundOffMinChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillingHrs", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> BillingHrs
-		{
-			get
-			{
-				return this._BillingHrs;
-			}
-			set
-			{
-				if ((this._BillingHrs != value))
-				{
-					this.OnBillingHrsChanging(value);
-					this.SendPropertyChanging();
-					this._BillingHrs = value;
-					this.SendPropertyChanged("BillingHrs");
-					this.OnBillingHrsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UOMId", DbType="Int")]
-		public System.Nullable<int> UOMId
-		{
-			get
-			{
-				return this._UOMId;
-			}
-			set
-			{
-				if ((this._UOMId != value))
-				{
-					this.OnUOMIdChanging(value);
-					this.SendPropertyChanging();
-					this._UOMId = value;
-					this.SendPropertyChanged("UOMId");
-					this.OnUOMIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rate", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> Rate
-		{
-			get
-			{
-				return this._Rate;
-			}
-			set
-			{
-				if ((this._Rate != value))
-				{
-					this.OnRateChanging(value);
-					this.SendPropertyChanging();
-					this._Rate = value;
-					this.SendPropertyChanged("Rate");
-					this.OnRateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> Amount
-		{
-			get
-			{
-				return this._Amount;
-			}
-			set
-			{
-				if ((this._Amount != value))
-				{
-					this.OnAmountChanging(value);
-					this.SendPropertyChanging();
-					this._Amount = value;
-					this.SendPropertyChanged("Amount");
-					this.OnAmountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Discount", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> Discount
-		{
-			get
-			{
-				return this._Discount;
-			}
-			set
-			{
-				if ((this._Discount != value))
-				{
-					this.OnDiscountChanging(value);
-					this.SendPropertyChanging();
-					this._Discount = value;
-					this.SendPropertyChanged("Discount");
-					this.OnDiscountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaxableAmount", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> TaxableAmount
-		{
-			get
-			{
-				return this._TaxableAmount;
-			}
-			set
-			{
-				if ((this._TaxableAmount != value))
-				{
-					this.OnTaxableAmountChanging(value);
-					this.SendPropertyChanging();
-					this._TaxableAmount = value;
-					this.SendPropertyChanged("TaxableAmount");
-					this.OnTaxableAmountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CGSTRate", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> CGSTRate
-		{
-			get
-			{
-				return this._CGSTRate;
-			}
-			set
-			{
-				if ((this._CGSTRate != value))
-				{
-					this.OnCGSTRateChanging(value);
-					this.SendPropertyChanging();
-					this._CGSTRate = value;
-					this.SendPropertyChanged("CGSTRate");
-					this.OnCGSTRateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SGSTRate", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> SGSTRate
-		{
-			get
-			{
-				return this._SGSTRate;
-			}
-			set
-			{
-				if ((this._SGSTRate != value))
-				{
-					this.OnSGSTRateChanging(value);
-					this.SendPropertyChanging();
-					this._SGSTRate = value;
-					this.SendPropertyChanged("SGSTRate");
-					this.OnSGSTRateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IGSTRate", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> IGSTRate
-		{
-			get
-			{
-				return this._IGSTRate;
-			}
-			set
-			{
-				if ((this._IGSTRate != value))
-				{
-					this.OnIGSTRateChanging(value);
-					this.SendPropertyChanging();
-					this._IGSTRate = value;
-					this.SendPropertyChanged("IGSTRate");
-					this.OnIGSTRateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CGSTAmount", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> CGSTAmount
-		{
-			get
-			{
-				return this._CGSTAmount;
-			}
-			set
-			{
-				if ((this._CGSTAmount != value))
-				{
-					this.OnCGSTAmountChanging(value);
-					this.SendPropertyChanging();
-					this._CGSTAmount = value;
-					this.SendPropertyChanged("CGSTAmount");
-					this.OnCGSTAmountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SGSTAmount", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> SGSTAmount
-		{
-			get
-			{
-				return this._SGSTAmount;
-			}
-			set
-			{
-				if ((this._SGSTAmount != value))
-				{
-					this.OnSGSTAmountChanging(value);
-					this.SendPropertyChanging();
-					this._SGSTAmount = value;
-					this.SendPropertyChanged("SGSTAmount");
-					this.OnSGSTAmountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IGSTAmount", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> IGSTAmount
-		{
-			get
-			{
-				return this._IGSTAmount;
-			}
-			set
-			{
-				if ((this._IGSTAmount != value))
-				{
-					this.OnIGSTAmountChanging(value);
-					this.SendPropertyChanging();
-					this._IGSTAmount = value;
-					this.SendPropertyChanged("IGSTAmount");
-					this.OnIGSTAmountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaxAmount", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> TaxAmount
-		{
-			get
-			{
-				return this._TaxAmount;
-			}
-			set
-			{
-				if ((this._TaxAmount != value))
-				{
-					this.OnTaxAmountChanging(value);
-					this.SendPropertyChanging();
-					this._TaxAmount = value;
-					this.SendPropertyChanged("TaxAmount");
-					this.OnTaxAmountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalAmount", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> TotalAmount
-		{
-			get
-			{
-				return this._TotalAmount;
-			}
-			set
-			{
-				if ((this._TotalAmount != value))
-				{
-					this.OnTotalAmountChanging(value);
-					this.SendPropertyChanging();
-					this._TotalAmount = value;
-					this.SendPropertyChanged("TotalAmount");
-					this.OnTotalAmountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillingItem", DbType="NVarChar(50)")]
-		public string BillingItem
-		{
-			get
-			{
-				return this._BillingItem;
-			}
-			set
-			{
-				if ((this._BillingItem != value))
-				{
-					this.OnBillingItemChanging(value);
-					this.SendPropertyChanging();
-					this._BillingItem = value;
-					this.SendPropertyChanged("BillingItem");
-					this.OnBillingItemChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VehicleId", DbType="Int")]
-		public System.Nullable<int> VehicleId
-		{
-			get
-			{
-				return this._VehicleId;
-			}
-			set
-			{
-				if ((this._VehicleId != value))
-				{
-					this.OnVehicleIdChanging(value);
-					this.SendPropertyChanging();
-					this._VehicleId = value;
-					this.SendPropertyChanged("VehicleId");
-					this.OnVehicleIdChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -3751,339 +2966,6 @@ namespace WCFServiceTemplate
 				if ((this._ZZToDate != value))
 				{
 					this._ZZToDate = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="Front.BookingSearchViewFront")]
-	public partial class dbmlBookingSearchView
-	{
-		
-		private int _CompanyId;
-		
-		private int _BookingId;
-		
-		private System.DateTime _BookingDate;
-		
-		private string _BookingNo;
-		
-		private int _BPId;
-		
-		private System.Nullable<int> _DocNo;
-		
-		private string _Project;
-		
-		private string _ProjectManager;
-		
-		private string _CompanyName;
-		
-		private string _Department;
-		
-		private System.Nullable<int> _StatusPropId;
-		
-		private string _ZZWorkFlowName;
-		
-		private string _ZZActivity;
-		
-		private string _ZZStatus;
-		
-		private string _ZZWorkFlowColor;
-		
-		private string _ZZBookingDate;
-		
-		private int _DepartmentId;
-		
-		private System.Nullable<int> _WorkFlowId;
-		
-		public dbmlBookingSearchView()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyId", DbType="Int NOT NULL")]
-		public int CompanyId
-		{
-			get
-			{
-				return this._CompanyId;
-			}
-			set
-			{
-				if ((this._CompanyId != value))
-				{
-					this._CompanyId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookingId", DbType="Int NOT NULL")]
-		public int BookingId
-		{
-			get
-			{
-				return this._BookingId;
-			}
-			set
-			{
-				if ((this._BookingId != value))
-				{
-					this._BookingId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookingDate", DbType="DateTime NOT NULL")]
-		public System.DateTime BookingDate
-		{
-			get
-			{
-				return this._BookingDate;
-			}
-			set
-			{
-				if ((this._BookingDate != value))
-				{
-					this._BookingDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookingNo", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string BookingNo
-		{
-			get
-			{
-				return this._BookingNo;
-			}
-			set
-			{
-				if ((this._BookingNo != value))
-				{
-					this._BookingNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BPId", DbType="Int NOT NULL")]
-		public int BPId
-		{
-			get
-			{
-				return this._BPId;
-			}
-			set
-			{
-				if ((this._BPId != value))
-				{
-					this._BPId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocNo", DbType="Int")]
-		public System.Nullable<int> DocNo
-		{
-			get
-			{
-				return this._DocNo;
-			}
-			set
-			{
-				if ((this._DocNo != value))
-				{
-					this._DocNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Project", DbType="NVarChar(50)")]
-		public string Project
-		{
-			get
-			{
-				return this._Project;
-			}
-			set
-			{
-				if ((this._Project != value))
-				{
-					this._Project = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectManager", DbType="NVarChar(50)")]
-		public string ProjectManager
-		{
-			get
-			{
-				return this._ProjectManager;
-			}
-			set
-			{
-				if ((this._ProjectManager != value))
-				{
-					this._ProjectManager = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyName", DbType="NVarChar(50)")]
-		public string CompanyName
-		{
-			get
-			{
-				return this._CompanyName;
-			}
-			set
-			{
-				if ((this._CompanyName != value))
-				{
-					this._CompanyName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Department", DbType="NVarChar(50)")]
-		public string Department
-		{
-			get
-			{
-				return this._Department;
-			}
-			set
-			{
-				if ((this._Department != value))
-				{
-					this._Department = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusPropId", DbType="Int")]
-		public System.Nullable<int> StatusPropId
-		{
-			get
-			{
-				return this._StatusPropId;
-			}
-			set
-			{
-				if ((this._StatusPropId != value))
-				{
-					this._StatusPropId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZWorkFlowName", DbType="NVarChar(50)")]
-		public string ZZWorkFlowName
-		{
-			get
-			{
-				return this._ZZWorkFlowName;
-			}
-			set
-			{
-				if ((this._ZZWorkFlowName != value))
-				{
-					this._ZZWorkFlowName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZActivity", DbType="NVarChar(100)")]
-		public string ZZActivity
-		{
-			get
-			{
-				return this._ZZActivity;
-			}
-			set
-			{
-				if ((this._ZZActivity != value))
-				{
-					this._ZZActivity = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZStatus", DbType="NVarChar(101) NOT NULL", CanBeNull=false)]
-		public string ZZStatus
-		{
-			get
-			{
-				return this._ZZStatus;
-			}
-			set
-			{
-				if ((this._ZZStatus != value))
-				{
-					this._ZZStatus = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZWorkFlowColor", DbType="NVarChar(50)")]
-		public string ZZWorkFlowColor
-		{
-			get
-			{
-				return this._ZZWorkFlowColor;
-			}
-			set
-			{
-				if ((this._ZZWorkFlowColor != value))
-				{
-					this._ZZWorkFlowColor = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZBookingDate", DbType="VarChar(10)")]
-		public string ZZBookingDate
-		{
-			get
-			{
-				return this._ZZBookingDate;
-			}
-			set
-			{
-				if ((this._ZZBookingDate != value))
-				{
-					this._ZZBookingDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DepartmentId", DbType="Int NOT NULL")]
-		public int DepartmentId
-		{
-			get
-			{
-				return this._DepartmentId;
-			}
-			set
-			{
-				if ((this._DepartmentId != value))
-				{
-					this._DepartmentId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WorkFlowId", DbType="Int")]
-		public System.Nullable<int> WorkFlowId
-		{
-			get
-			{
-				return this._WorkFlowId;
-			}
-			set
-			{
-				if ((this._WorkFlowId != value))
-				{
-					this._WorkFlowId = value;
 				}
 			}
 		}
@@ -5632,6 +4514,906 @@ namespace WCFServiceTemplate
 				if ((this._ZZTrackGroup != value))
 				{
 					this._ZZTrackGroup = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="[Transaction].BookingSearchView")]
+	public partial class dbmlBookingSearchView
+	{
+		
+		private int _CompanyId;
+		
+		private int _BookingId;
+		
+		private System.DateTime _BookingDate;
+		
+		private string _BookingNo;
+		
+		private int _BPId;
+		
+		private System.Nullable<int> _DocNo;
+		
+		private string _Project;
+		
+		private string _ProjectManager;
+		
+		private string _CompanyName;
+		
+		private string _Department;
+		
+		private System.Nullable<int> _StatusPropId;
+		
+		private string _ZZWorkFlowName;
+		
+		private string _ZZActivity;
+		
+		private string _ZZStatus;
+		
+		private string _ZZWorkFlowColor;
+		
+		private string _ZZUpdatedBy;
+		
+		public dbmlBookingSearchView()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyId", DbType="Int NOT NULL")]
+		public int CompanyId
+		{
+			get
+			{
+				return this._CompanyId;
+			}
+			set
+			{
+				if ((this._CompanyId != value))
+				{
+					this._CompanyId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookingId", DbType="Int NOT NULL")]
+		public int BookingId
+		{
+			get
+			{
+				return this._BookingId;
+			}
+			set
+			{
+				if ((this._BookingId != value))
+				{
+					this._BookingId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookingDate", DbType="DateTime NOT NULL")]
+		public System.DateTime BookingDate
+		{
+			get
+			{
+				return this._BookingDate;
+			}
+			set
+			{
+				if ((this._BookingDate != value))
+				{
+					this._BookingDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookingNo", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string BookingNo
+		{
+			get
+			{
+				return this._BookingNo;
+			}
+			set
+			{
+				if ((this._BookingNo != value))
+				{
+					this._BookingNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BPId", DbType="Int NOT NULL")]
+		public int BPId
+		{
+			get
+			{
+				return this._BPId;
+			}
+			set
+			{
+				if ((this._BPId != value))
+				{
+					this._BPId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocNo", DbType="Int")]
+		public System.Nullable<int> DocNo
+		{
+			get
+			{
+				return this._DocNo;
+			}
+			set
+			{
+				if ((this._DocNo != value))
+				{
+					this._DocNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Project", DbType="NVarChar(50)")]
+		public string Project
+		{
+			get
+			{
+				return this._Project;
+			}
+			set
+			{
+				if ((this._Project != value))
+				{
+					this._Project = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectManager", DbType="NVarChar(50)")]
+		public string ProjectManager
+		{
+			get
+			{
+				return this._ProjectManager;
+			}
+			set
+			{
+				if ((this._ProjectManager != value))
+				{
+					this._ProjectManager = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyName", DbType="NVarChar(50)")]
+		public string CompanyName
+		{
+			get
+			{
+				return this._CompanyName;
+			}
+			set
+			{
+				if ((this._CompanyName != value))
+				{
+					this._CompanyName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Department", DbType="NVarChar(50)")]
+		public string Department
+		{
+			get
+			{
+				return this._Department;
+			}
+			set
+			{
+				if ((this._Department != value))
+				{
+					this._Department = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusPropId", DbType="Int")]
+		public System.Nullable<int> StatusPropId
+		{
+			get
+			{
+				return this._StatusPropId;
+			}
+			set
+			{
+				if ((this._StatusPropId != value))
+				{
+					this._StatusPropId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZWorkFlowName", DbType="NVarChar(50)")]
+		public string ZZWorkFlowName
+		{
+			get
+			{
+				return this._ZZWorkFlowName;
+			}
+			set
+			{
+				if ((this._ZZWorkFlowName != value))
+				{
+					this._ZZWorkFlowName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZActivity", DbType="NVarChar(100)")]
+		public string ZZActivity
+		{
+			get
+			{
+				return this._ZZActivity;
+			}
+			set
+			{
+				if ((this._ZZActivity != value))
+				{
+					this._ZZActivity = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZStatus", DbType="NVarChar(101) NOT NULL", CanBeNull=false)]
+		public string ZZStatus
+		{
+			get
+			{
+				return this._ZZStatus;
+			}
+			set
+			{
+				if ((this._ZZStatus != value))
+				{
+					this._ZZStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZWorkFlowColor", DbType="NVarChar(50)")]
+		public string ZZWorkFlowColor
+		{
+			get
+			{
+				return this._ZZWorkFlowColor;
+			}
+			set
+			{
+				if ((this._ZZWorkFlowColor != value))
+				{
+					this._ZZWorkFlowColor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZUpdatedBy", DbType="NVarChar(200)")]
+		public string ZZUpdatedBy
+		{
+			get
+			{
+				return this._ZZUpdatedBy;
+			}
+			set
+			{
+				if ((this._ZZUpdatedBy != value))
+				{
+					this._ZZUpdatedBy = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="Front.TrackBookingTimeSummaryViewFront")]
+	public partial class dbmlTrackBookingTimeSummary
+	{
+		
+		private int _TrackBookingTimeSummaryId;
+		
+		private System.Nullable<int> _CreateId;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<int> _UpdateId;
+		
+		private System.Nullable<System.DateTime> _UpdateDate;
+		
+		private System.Nullable<int> _BookingId;
+		
+		private System.Nullable<int> _AuditId;
+		
+		private System.Nullable<int> _GroupId;
+		
+		private string _Specification;
+		
+		private string _VehicleNo;
+		
+		private System.Nullable<System.DateTime> _UsageDate;
+		
+		private System.Nullable<decimal> _TotalHours;
+		
+		private System.Nullable<decimal> _TotalMinutes;
+		
+		private System.Nullable<int> _RoundOffHrs;
+		
+		private System.Nullable<int> _RoundOffMin;
+		
+		private System.Nullable<decimal> _BillingHrs;
+		
+		private System.Nullable<int> _UOMId;
+		
+		private System.Nullable<decimal> _Rate;
+		
+		private System.Nullable<decimal> _Amount;
+		
+		private System.Nullable<decimal> _Discount;
+		
+		private System.Nullable<decimal> _TaxableAmount;
+		
+		private System.Nullable<decimal> _CGSTRate;
+		
+		private System.Nullable<decimal> _SGSTRate;
+		
+		private System.Nullable<decimal> _IGSTRate;
+		
+		private System.Nullable<decimal> _CGSTAmount;
+		
+		private System.Nullable<decimal> _SGSTAmount;
+		
+		private System.Nullable<decimal> _IGSTAmount;
+		
+		private System.Nullable<decimal> _TaxAmount;
+		
+		private System.Nullable<decimal> _TotalAmount;
+		
+		private string _BillingItem;
+		
+		private System.Nullable<int> _VehicleId;
+		
+		private string _ZZUOM;
+		
+		private string _ZZUsageDate;
+		
+		public dbmlTrackBookingTimeSummary()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrackBookingTimeSummaryId", DbType="Int NOT NULL")]
+		public int TrackBookingTimeSummaryId
+		{
+			get
+			{
+				return this._TrackBookingTimeSummaryId;
+			}
+			set
+			{
+				if ((this._TrackBookingTimeSummaryId != value))
+				{
+					this._TrackBookingTimeSummaryId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateId", DbType="Int")]
+		public System.Nullable<int> CreateId
+		{
+			get
+			{
+				return this._CreateId;
+			}
+			set
+			{
+				if ((this._CreateId != value))
+				{
+					this._CreateId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this._CreateDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateId", DbType="Int")]
+		public System.Nullable<int> UpdateId
+		{
+			get
+			{
+				return this._UpdateId;
+			}
+			set
+			{
+				if ((this._UpdateId != value))
+				{
+					this._UpdateId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> UpdateDate
+		{
+			get
+			{
+				return this._UpdateDate;
+			}
+			set
+			{
+				if ((this._UpdateDate != value))
+				{
+					this._UpdateDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookingId", DbType="Int")]
+		public System.Nullable<int> BookingId
+		{
+			get
+			{
+				return this._BookingId;
+			}
+			set
+			{
+				if ((this._BookingId != value))
+				{
+					this._BookingId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AuditId", DbType="Int")]
+		public System.Nullable<int> AuditId
+		{
+			get
+			{
+				return this._AuditId;
+			}
+			set
+			{
+				if ((this._AuditId != value))
+				{
+					this._AuditId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupId", DbType="Int")]
+		public System.Nullable<int> GroupId
+		{
+			get
+			{
+				return this._GroupId;
+			}
+			set
+			{
+				if ((this._GroupId != value))
+				{
+					this._GroupId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Specification", DbType="NVarChar(500)")]
+		public string Specification
+		{
+			get
+			{
+				return this._Specification;
+			}
+			set
+			{
+				if ((this._Specification != value))
+				{
+					this._Specification = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VehicleNo", DbType="NVarChar(50)")]
+		public string VehicleNo
+		{
+			get
+			{
+				return this._VehicleNo;
+			}
+			set
+			{
+				if ((this._VehicleNo != value))
+				{
+					this._VehicleNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsageDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> UsageDate
+		{
+			get
+			{
+				return this._UsageDate;
+			}
+			set
+			{
+				if ((this._UsageDate != value))
+				{
+					this._UsageDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalHours", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> TotalHours
+		{
+			get
+			{
+				return this._TotalHours;
+			}
+			set
+			{
+				if ((this._TotalHours != value))
+				{
+					this._TotalHours = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalMinutes", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> TotalMinutes
+		{
+			get
+			{
+				return this._TotalMinutes;
+			}
+			set
+			{
+				if ((this._TotalMinutes != value))
+				{
+					this._TotalMinutes = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoundOffHrs", DbType="Int")]
+		public System.Nullable<int> RoundOffHrs
+		{
+			get
+			{
+				return this._RoundOffHrs;
+			}
+			set
+			{
+				if ((this._RoundOffHrs != value))
+				{
+					this._RoundOffHrs = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoundOffMin", DbType="Int")]
+		public System.Nullable<int> RoundOffMin
+		{
+			get
+			{
+				return this._RoundOffMin;
+			}
+			set
+			{
+				if ((this._RoundOffMin != value))
+				{
+					this._RoundOffMin = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillingHrs", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> BillingHrs
+		{
+			get
+			{
+				return this._BillingHrs;
+			}
+			set
+			{
+				if ((this._BillingHrs != value))
+				{
+					this._BillingHrs = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UOMId", DbType="Int")]
+		public System.Nullable<int> UOMId
+		{
+			get
+			{
+				return this._UOMId;
+			}
+			set
+			{
+				if ((this._UOMId != value))
+				{
+					this._UOMId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rate", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> Rate
+		{
+			get
+			{
+				return this._Rate;
+			}
+			set
+			{
+				if ((this._Rate != value))
+				{
+					this._Rate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this._Amount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Discount", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> Discount
+		{
+			get
+			{
+				return this._Discount;
+			}
+			set
+			{
+				if ((this._Discount != value))
+				{
+					this._Discount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaxableAmount", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> TaxableAmount
+		{
+			get
+			{
+				return this._TaxableAmount;
+			}
+			set
+			{
+				if ((this._TaxableAmount != value))
+				{
+					this._TaxableAmount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CGSTRate", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> CGSTRate
+		{
+			get
+			{
+				return this._CGSTRate;
+			}
+			set
+			{
+				if ((this._CGSTRate != value))
+				{
+					this._CGSTRate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SGSTRate", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> SGSTRate
+		{
+			get
+			{
+				return this._SGSTRate;
+			}
+			set
+			{
+				if ((this._SGSTRate != value))
+				{
+					this._SGSTRate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IGSTRate", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> IGSTRate
+		{
+			get
+			{
+				return this._IGSTRate;
+			}
+			set
+			{
+				if ((this._IGSTRate != value))
+				{
+					this._IGSTRate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CGSTAmount", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> CGSTAmount
+		{
+			get
+			{
+				return this._CGSTAmount;
+			}
+			set
+			{
+				if ((this._CGSTAmount != value))
+				{
+					this._CGSTAmount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SGSTAmount", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> SGSTAmount
+		{
+			get
+			{
+				return this._SGSTAmount;
+			}
+			set
+			{
+				if ((this._SGSTAmount != value))
+				{
+					this._SGSTAmount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IGSTAmount", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> IGSTAmount
+		{
+			get
+			{
+				return this._IGSTAmount;
+			}
+			set
+			{
+				if ((this._IGSTAmount != value))
+				{
+					this._IGSTAmount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaxAmount", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> TaxAmount
+		{
+			get
+			{
+				return this._TaxAmount;
+			}
+			set
+			{
+				if ((this._TaxAmount != value))
+				{
+					this._TaxAmount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalAmount", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> TotalAmount
+		{
+			get
+			{
+				return this._TotalAmount;
+			}
+			set
+			{
+				if ((this._TotalAmount != value))
+				{
+					this._TotalAmount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillingItem", DbType="NVarChar(50)")]
+		public string BillingItem
+		{
+			get
+			{
+				return this._BillingItem;
+			}
+			set
+			{
+				if ((this._BillingItem != value))
+				{
+					this._BillingItem = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VehicleId", DbType="Int")]
+		public System.Nullable<int> VehicleId
+		{
+			get
+			{
+				return this._VehicleId;
+			}
+			set
+			{
+				if ((this._VehicleId != value))
+				{
+					this._VehicleId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZUOM", DbType="NVarChar(100)")]
+		public string ZZUOM
+		{
+			get
+			{
+				return this._ZZUOM;
+			}
+			set
+			{
+				if ((this._ZZUOM != value))
+				{
+					this._ZZUOM = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZUsageDate", DbType="VarChar(10)")]
+		public string ZZUsageDate
+		{
+			get
+			{
+				return this._ZZUsageDate;
+			}
+			set
+			{
+				if ((this._ZZUsageDate != value))
+				{
+					this._ZZUsageDate = value;
 				}
 			}
 		}

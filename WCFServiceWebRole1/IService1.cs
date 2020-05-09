@@ -78,6 +78,11 @@ namespace WCFPGMSFront
         returndbmlTrackBookingDetail TrackBookingTimeDetailDeleteFrontByServiceId(int intBookingId, int intTrackGroupId, int intVehicleId, DateTime dtDate, int intServiceId, int intTimeSlotId);
         #endregion
 
+        #region WorkFlow Activity
+        [OperationContract]
+        returndbmlBooking WorkFlowActivityInsert(int DocId, int WorkPlowId, int StatusId, string Remark);
+        #endregion
+
         #endregion
 
         #endregion

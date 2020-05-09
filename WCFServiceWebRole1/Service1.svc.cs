@@ -983,6 +983,14 @@ namespace WCFPGMSFront
                                                                     (from dRow in ds.Tables["TrackBookingTimeDetail"].AsEnumerable() select (ConvertTableToListNew<dbmlTrackBookingTimeDetail>(dRow)));
                 }
 
+                cmdGet = db.GetStoredProcCommand("[Front].[TrackBookingTimeSummaryViewFrontGetByBookingId]", intBookingId);
+                db.LoadDataSet(cmdGet, ds, new string[] { "TrackBookingTimeSummary" });
+                if (ds.Tables["TrackBookingTimeSummary"] != null && ds.Tables["TrackBookingTimeSummary"].Rows.Count > 0)
+                {
+                    objreturndbmlTrackBookingDetail.objdbmlTrackBookingTimeSummary = new ObservableCollection<dbmlTrackBookingTimeSummary>
+                                                                    (from dRow in ds.Tables["TrackBookingTimeSummary"].AsEnumerable() select (ConvertTableToListNew<dbmlTrackBookingTimeSummary>(dRow)));
+                }
+
                 objreturndbmlTrackBookingDetail.objdbmlStatus.StatusId = 1;
                 objreturndbmlTrackBookingDetail.objdbmlStatus.Status = "Successful";
             }
@@ -1135,6 +1143,41 @@ namespace WCFPGMSFront
 
         #endregion
 
+        #region WorkFlow Activity
+        public returndbmlBooking WorkFlowActivityInsert(int DocId,int WorkPlowId,int StatusId,string Remark)
+        {
+            returndbmlBooking objreturndbmlBooking = new returndbmlBooking();
+            DbTransaction trans; DbConnection con;
+            Database db = new SqlDatabase(GF.StrSetConnection());
+            con = db.CreateConnection();
+            con.Open();
+            trans = con.BeginTransaction();
+            System.Data.Common.DbCommand cmd = null;
+            try
+            {                
+                cmd = db.GetStoredProcCommand("[Front].WorkFlowActivityInsert", DocId, WorkPlowId, StatusId, Remark);
+                db.ExecuteNonQuery(cmd, trans);
+
+                trans.Commit();
+
+                objreturndbmlBooking =BookingViewGetByBookingId(DocId);
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlBooking.objdbmlStatus.StatusId = 99;
+                objreturndbmlBooking.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+                trans.Rollback();
+            }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return objreturndbmlBooking;
+        }
+        #endregion
 
         #endregion
 
