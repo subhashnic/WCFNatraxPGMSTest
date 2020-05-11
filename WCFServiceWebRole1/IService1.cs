@@ -15,6 +15,9 @@ namespace WCFPGMSFront
         [OperationContract]
         returndbmlUser UserGetByLoginId(string strLoginId, string strPassword);
 
+        [OperationContract]
+        returndbmlCompanyView CompanyViewGetByCompanyId(int intCompanyId);
+
         #endregion
 
         #region Properties
@@ -80,7 +83,10 @@ namespace WCFPGMSFront
 
         #region WorkFlow Activity
         [OperationContract]
-        returndbmlBooking WorkFlowActivityInsert(int DocId, int WorkPlowId, int StatusId, string Remark);
+        returndbmlWorkFlowView WorkFlowViewGetByBPId(int intBPId);
+
+        [OperationContract]
+        returndbmlBooking WorkFlowActivityInsert(int intDocId, int intBPId, int intWorkPlowId, int intStatusId, string strRemark, int intCreateId);
         #endregion
 
         #endregion

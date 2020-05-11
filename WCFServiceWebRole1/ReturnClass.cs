@@ -66,6 +66,20 @@ namespace WCFPGMSFront
 
         public dbmlStatus objdbmlStatus = new dbmlStatus();
     }
+
+    public class returndbmlWorkFlowView
+    {
+        public ObservableCollection<dbmlWorkFlowView> objdbmlWorkFlowView = new ObservableCollection<dbmlWorkFlowView>();
+     
+        public dbmlStatus objdbmlStatus = new dbmlStatus();
+    }
+
+    public class returndbmlCompanyView
+    {
+        public ObservableCollection<dbmlCompanyView> objdbmlCompanyView = new ObservableCollection<dbmlCompanyView>();
+
+        public dbmlStatus objdbmlStatus = new dbmlStatus();
+    }
     #endregion
 
 

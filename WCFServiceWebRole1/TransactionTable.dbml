@@ -43,25 +43,6 @@
       <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="[Transaction].ListOfVehicleComponentView" Member="dbmlListOfVehicleComponents">
-    <Type Name="dbmlListOfVehicleComponent">
-      <Column Name="VehCompId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CreateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="UpdateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="BPId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DocId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="GroupName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="VorC" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Sno" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Description1" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="Description2" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="ZZType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="Master.ServicesView" Member="dbmlServicesViews">
     <Type Name="dbmlServicesView">
       <Column Name="ServiceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -322,6 +303,66 @@
       <Column Name="VehicleId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ZZUOM" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="ZZUsageDate" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="Front.WorkFlowView" Member="dbmlWorkFlowViews">
+    <Type Name="dbmlWorkFlowView">
+      <Column Name="WorkFlowId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BPId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WorkFlowName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WorkFlowTypePropId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="WorkFlowColor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CreateId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ZZWorkFlowType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="Front.CompanyView" Member="dbmlCompanyViews">
+    <Type Name="dbmlCompanyView">
+      <Column Name="CompanyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Company" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ShortName" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="CityId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Pincode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="StateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CompanyPhone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CompanyPan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CompanyFax" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CompanyEmail" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CompanyWeb" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CompanyImage" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="BankName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BranchName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BankAccountNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IFSCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="[Transaction].ListOfVehicleComponentView" Member="dbmlListOfVehicleComponents">
+    <Type Name="dbmlListOfVehicleComponent">
+      <Column Name="VehCompId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BPId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DocId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GroupName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="VorC" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Sno" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description1" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Description2" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ZZType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

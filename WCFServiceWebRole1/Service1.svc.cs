@@ -459,6 +459,34 @@ namespace WCFPGMSFront
             return objreturndbmlUser;
         }
 
+        public returndbmlCompanyView CompanyViewGetByCompanyId(int intCompanyId)
+        {
+            returndbmlCompanyView objreturndbmlCompanyView = new returndbmlCompanyView();
+            try
+            {
+                DataSet ds = new DataSet();
+                Database db = new SqlDatabase(GF.StrSetConnection());
+                System.Data.Common.DbCommand cmdGet = null;
+
+                cmdGet = db.GetStoredProcCommand("Front.[CompanyViewGetByCompanyId]", intCompanyId);
+                db.LoadDataSet(cmdGet, ds, new string[] { "CompanyView" });
+                if (ds.Tables["CompanyView"] != null && ds.Tables["CompanyView"].Rows.Count > 0)
+                {
+                    objreturndbmlCompanyView.objdbmlCompanyView = new ObservableCollection<dbmlCompanyView>
+                                                                    (from dRow in ds.Tables["CompanyView"].AsEnumerable() select (ConvertTableToListNew<dbmlCompanyView>(dRow)));
+                }
+
+                objreturndbmlCompanyView.objdbmlStatus.StatusId = 1;
+                objreturndbmlCompanyView.objdbmlStatus.Status = "Successful";
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlCompanyView.objdbmlStatus.StatusId = 99;
+                objreturndbmlCompanyView.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+            }
+            return objreturndbmlCompanyView;
+        }
+
         #endregion
 
         #region Properties
@@ -1144,7 +1172,35 @@ namespace WCFPGMSFront
         #endregion
 
         #region WorkFlow Activity
-        public returndbmlBooking WorkFlowActivityInsert(int DocId,int WorkPlowId,int StatusId,string Remark)
+        public returndbmlWorkFlowView WorkFlowViewGetByBPId(int intBPId)
+        {
+            returndbmlWorkFlowView objreturndbmlWorkFlowView = new returndbmlWorkFlowView();
+            try
+            {
+                DataSet ds = new DataSet();
+                Database db = new SqlDatabase(GF.StrSetConnection());
+                System.Data.Common.DbCommand cmdGet = null;
+
+                cmdGet = db.GetStoredProcCommand("[Front].[WorkFlowViewGetByBPId]", intBPId);
+                db.LoadDataSet(cmdGet, ds, new string[] { "WorkFlowView" });
+                if (ds.Tables["WorkFlowView"] != null && ds.Tables["WorkFlowView"].Rows.Count > 0)
+                {
+                    objreturndbmlWorkFlowView.objdbmlWorkFlowView = new ObservableCollection<dbmlWorkFlowView>
+                                                                    (from dRow in ds.Tables["WorkFlowView"].AsEnumerable() select (ConvertTableToListNew<dbmlWorkFlowView>(dRow)));
+                }
+
+                objreturndbmlWorkFlowView.objdbmlStatus.StatusId = 1;
+                objreturndbmlWorkFlowView.objdbmlStatus.Status = "Successful";
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlWorkFlowView.objdbmlStatus.StatusId = 99;
+                objreturndbmlWorkFlowView.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+            }
+            return objreturndbmlWorkFlowView;
+        }
+
+        public returndbmlBooking WorkFlowActivityInsert(int intDocId,int intBPId,int intWorkPlowId,int intStatusId,string strRemark,int intCreateId)
         {
             returndbmlBooking objreturndbmlBooking = new returndbmlBooking();
             DbTransaction trans; DbConnection con;
@@ -1155,12 +1211,12 @@ namespace WCFPGMSFront
             System.Data.Common.DbCommand cmd = null;
             try
             {                
-                cmd = db.GetStoredProcCommand("[Front].WorkFlowActivityInsert", DocId, WorkPlowId, StatusId, Remark);
+                cmd = db.GetStoredProcCommand("[Front].WorkFlowActivityInsert", intDocId, intBPId, intWorkPlowId, intStatusId, strRemark, intCreateId);
                 db.ExecuteNonQuery(cmd, trans);
 
                 trans.Commit();
 
-                objreturndbmlBooking =BookingViewGetByBookingId(DocId);
+                objreturndbmlBooking =BookingViewGetByBookingId(intDocId);
             }
             catch (Exception ex)
             {
