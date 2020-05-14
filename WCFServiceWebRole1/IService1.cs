@@ -83,7 +83,7 @@ namespace WCFPGMSFront
 
         #region WorkFlow Activity
         [OperationContract]
-        returndbmlWorkFlowView WorkFlowViewGetByBPId(int intBPId);
+        returndbmlWorkFlowView WorkFlowViewGetByBPId(int intBPId, int intDocId);
 
         [OperationContract]
         returndbmlBooking WorkFlowActivityInsert(int intDocId, int intBPId, int intWorkPlowId, int intStatusId, string strRemark, int intCreateId);

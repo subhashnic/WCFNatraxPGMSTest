@@ -1172,7 +1172,7 @@ namespace WCFPGMSFront
         #endregion
 
         #region WorkFlow Activity
-        public returndbmlWorkFlowView WorkFlowViewGetByBPId(int intBPId)
+        public returndbmlWorkFlowView WorkFlowViewGetByBPId(int intBPId,int intDocId)
         {
             returndbmlWorkFlowView objreturndbmlWorkFlowView = new returndbmlWorkFlowView();
             try
@@ -1181,7 +1181,7 @@ namespace WCFPGMSFront
                 Database db = new SqlDatabase(GF.StrSetConnection());
                 System.Data.Common.DbCommand cmdGet = null;
 
-                cmdGet = db.GetStoredProcCommand("[Front].[WorkFlowViewGetByBPId]", intBPId);
+                cmdGet = db.GetStoredProcCommand("[Security].[WorkFlowViewGetByBPIdDocId]", intBPId, intDocId);
                 db.LoadDataSet(cmdGet, ds, new string[] { "WorkFlowView" });
                 if (ds.Tables["WorkFlowView"] != null && ds.Tables["WorkFlowView"].Rows.Count > 0)
                 {
