@@ -20,9 +20,12 @@ namespace WCFPGMSFront
 
         #endregion
 
-        #region Properties
+        #region Properties / OptionList
         [OperationContract]
         returndbmlProperty PropertiesGetAll();
+
+        [OperationContract]
+        returndbmlOptionList OptionListGetByPropertyId(int intPropertyId);
         #endregion
 
         #region Booking
@@ -120,6 +123,9 @@ namespace WCFPGMSFront
 
         [OperationContract]
         returndbmlLabBookingDetailViewFront LabBookingDetailViewFrontGetByBookingId(int intDocId);
+
+        [OperationContract]
+        returndbmlLablinkVorC LablinkVorCGetAll();
         #endregion
 
         #endregion

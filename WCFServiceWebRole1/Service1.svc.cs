@@ -489,7 +489,7 @@ namespace WCFPGMSFront
 
         #endregion
 
-        #region Properties
+        #region Properties / OptionList
         public returndbmlProperty PropertiesGetAll()
         {
             returndbmlProperty objreturndbmlProperty = new returndbmlProperty();
@@ -516,6 +516,34 @@ namespace WCFPGMSFront
                 objreturndbmlProperty.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
             }
             return objreturndbmlProperty;
+        }
+
+        public returndbmlOptionList OptionListGetByPropertyId(int intPropertyId)
+        {
+            returndbmlOptionList objreturndbmlOptionList = new returndbmlOptionList();
+            try
+            {
+                DataSet ds = new DataSet();
+                Database db = new SqlDatabase(GF.StrSetConnection());
+                System.Data.Common.DbCommand cmdGet = null;
+
+                cmdGet = db.GetStoredProcCommand("[Setting].[OptionListGetByPropertyId]", intPropertyId);
+                db.LoadDataSet(cmdGet, ds, new string[] { "OptionList" });
+                if (ds.Tables["OptionList"].Rows.Count > 0)
+                {
+                    objreturndbmlOptionList.objdbmlOptionList = new ObservableCollection<dbmlOptionList>(from dRow in ds.Tables["OptionList"].AsEnumerable()
+                                                                                                                                                      select (ConvertTableToListNew<dbmlOptionList>(dRow)));
+                }
+
+                objreturndbmlOptionList.objdbmlStatus.StatusId = 1;
+                objreturndbmlOptionList.objdbmlStatus.Status = "Successful";
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlOptionList.objdbmlStatus.StatusId = 99;
+                objreturndbmlOptionList.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+            }
+            return objreturndbmlOptionList;
         }
         #endregion
 
@@ -1598,6 +1626,34 @@ namespace WCFPGMSFront
                 objreturndbmlLabBookingDetailViewFront.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
             }
             return objreturndbmlLabBookingDetailViewFront;
+        }
+
+        public returndbmlLablinkVorC LablinkVorCGetAll()
+        {
+            returndbmlLablinkVorC objreturndbmlLablinkVorC = new returndbmlLablinkVorC();
+            try
+            {
+                DataSet ds = new DataSet();
+                Database db = new SqlDatabase(GF.StrSetConnection());
+                System.Data.Common.DbCommand cmdGet = null;
+
+                cmdGet = db.GetStoredProcCommand("[Master].[LablinkVorCGetAll]");
+                db.LoadDataSet(cmdGet, ds, new string[] { "LablinkVorC" });
+                if (ds.Tables["LablinkVorC"].Rows.Count > 0)
+                {
+                    objreturndbmlLablinkVorC.objdbmlLablinkVorC = new ObservableCollection<dbmlLablinkVorC>(from dRow in ds.Tables["LablinkVorC"].AsEnumerable()
+                                                                                                                                                      select (ConvertTableToListNew<dbmlLablinkVorC>(dRow)));
+                }
+
+                objreturndbmlLablinkVorC.objdbmlStatus.StatusId = 1;
+                objreturndbmlLablinkVorC.objdbmlStatus.Status = "Successful";
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlLablinkVorC.objdbmlStatus.StatusId = 99;
+                objreturndbmlLablinkVorC.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+            }
+            return objreturndbmlLablinkVorC;
         }
         #endregion
 

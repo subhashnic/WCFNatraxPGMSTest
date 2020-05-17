@@ -36,6 +36,12 @@ namespace WCFServiceTemplate
     partial void InsertdbmlCompanyDepartment(dbmlCompanyDepartment instance);
     partial void UpdatedbmlCompanyDepartment(dbmlCompanyDepartment instance);
     partial void DeletedbmlCompanyDepartment(dbmlCompanyDepartment instance);
+    partial void InsertdbmlOptionList(dbmlOptionList instance);
+    partial void UpdatedbmlOptionList(dbmlOptionList instance);
+    partial void DeletedbmlOptionList(dbmlOptionList instance);
+    partial void InsertdbmlLablinkVorC(dbmlLablinkVorC instance);
+    partial void UpdatedbmlLablinkVorC(dbmlLablinkVorC instance);
+    partial void DeletedbmlLablinkVorC(dbmlLablinkVorC instance);
     #endregion
 		
 		public TransactionTableDataContext() : 
@@ -201,6 +207,22 @@ namespace WCFServiceTemplate
 			get
 			{
 				return this.GetTable<dbmlLabBookingDetailViewFront>();
+			}
+		}
+		
+		public System.Data.Linq.Table<dbmlOptionList> dbmlOptionLists
+		{
+			get
+			{
+				return this.GetTable<dbmlOptionList>();
+			}
+		}
+		
+		public System.Data.Linq.Table<dbmlLablinkVorC> dbmlLablinkVorCs
+		{
+			get
+			{
+				return this.GetTable<dbmlLablinkVorC>();
 			}
 		}
 	}
@@ -8146,6 +8168,514 @@ namespace WCFServiceTemplate
 				{
 					this._ZZVehComp = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="Setting.OptionList")]
+	public partial class dbmlOptionList : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _OptionListId;
+		
+		private System.Nullable<int> _CreateId;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<int> _UpdateId;
+		
+		private System.Nullable<System.DateTime> _UpdateDate;
+		
+		private System.Nullable<int> _BPId;
+		
+		private System.Nullable<int> _PropertyId;
+		
+		private string _OptionName;
+		
+		private string _OptionDesc;
+		
+		private System.Nullable<int> _Sequence;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnOptionListIdChanging(int value);
+    partial void OnOptionListIdChanged();
+    partial void OnCreateIdChanging(System.Nullable<int> value);
+    partial void OnCreateIdChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnUpdateIdChanging(System.Nullable<int> value);
+    partial void OnUpdateIdChanged();
+    partial void OnUpdateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnUpdateDateChanged();
+    partial void OnBPIdChanging(System.Nullable<int> value);
+    partial void OnBPIdChanged();
+    partial void OnPropertyIdChanging(System.Nullable<int> value);
+    partial void OnPropertyIdChanged();
+    partial void OnOptionNameChanging(string value);
+    partial void OnOptionNameChanged();
+    partial void OnOptionDescChanging(string value);
+    partial void OnOptionDescChanged();
+    partial void OnSequenceChanging(System.Nullable<int> value);
+    partial void OnSequenceChanged();
+    #endregion
+		
+		public dbmlOptionList()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OptionListId", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int OptionListId
+		{
+			get
+			{
+				return this._OptionListId;
+			}
+			set
+			{
+				if ((this._OptionListId != value))
+				{
+					this.OnOptionListIdChanging(value);
+					this.SendPropertyChanging();
+					this._OptionListId = value;
+					this.SendPropertyChanged("OptionListId");
+					this.OnOptionListIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateId", DbType="Int")]
+		public System.Nullable<int> CreateId
+		{
+			get
+			{
+				return this._CreateId;
+			}
+			set
+			{
+				if ((this._CreateId != value))
+				{
+					this.OnCreateIdChanging(value);
+					this.SendPropertyChanging();
+					this._CreateId = value;
+					this.SendPropertyChanged("CreateId");
+					this.OnCreateIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateId", DbType="Int")]
+		public System.Nullable<int> UpdateId
+		{
+			get
+			{
+				return this._UpdateId;
+			}
+			set
+			{
+				if ((this._UpdateId != value))
+				{
+					this.OnUpdateIdChanging(value);
+					this.SendPropertyChanging();
+					this._UpdateId = value;
+					this.SendPropertyChanged("UpdateId");
+					this.OnUpdateIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> UpdateDate
+		{
+			get
+			{
+				return this._UpdateDate;
+			}
+			set
+			{
+				if ((this._UpdateDate != value))
+				{
+					this.OnUpdateDateChanging(value);
+					this.SendPropertyChanging();
+					this._UpdateDate = value;
+					this.SendPropertyChanged("UpdateDate");
+					this.OnUpdateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BPId", DbType="Int")]
+		public System.Nullable<int> BPId
+		{
+			get
+			{
+				return this._BPId;
+			}
+			set
+			{
+				if ((this._BPId != value))
+				{
+					this.OnBPIdChanging(value);
+					this.SendPropertyChanging();
+					this._BPId = value;
+					this.SendPropertyChanged("BPId");
+					this.OnBPIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PropertyId", DbType="Int")]
+		public System.Nullable<int> PropertyId
+		{
+			get
+			{
+				return this._PropertyId;
+			}
+			set
+			{
+				if ((this._PropertyId != value))
+				{
+					this.OnPropertyIdChanging(value);
+					this.SendPropertyChanging();
+					this._PropertyId = value;
+					this.SendPropertyChanged("PropertyId");
+					this.OnPropertyIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OptionName", DbType="NVarChar(100)")]
+		public string OptionName
+		{
+			get
+			{
+				return this._OptionName;
+			}
+			set
+			{
+				if ((this._OptionName != value))
+				{
+					this.OnOptionNameChanging(value);
+					this.SendPropertyChanging();
+					this._OptionName = value;
+					this.SendPropertyChanged("OptionName");
+					this.OnOptionNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OptionDesc", DbType="NVarChar(250)")]
+		public string OptionDesc
+		{
+			get
+			{
+				return this._OptionDesc;
+			}
+			set
+			{
+				if ((this._OptionDesc != value))
+				{
+					this.OnOptionDescChanging(value);
+					this.SendPropertyChanging();
+					this._OptionDesc = value;
+					this.SendPropertyChanged("OptionDesc");
+					this.OnOptionDescChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sequence", DbType="Int")]
+		public System.Nullable<int> Sequence
+		{
+			get
+			{
+				return this._Sequence;
+			}
+			set
+			{
+				if ((this._Sequence != value))
+				{
+					this.OnSequenceChanging(value);
+					this.SendPropertyChanging();
+					this._Sequence = value;
+					this.SendPropertyChanged("Sequence");
+					this.OnSequenceChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="Master.LablinkVorC")]
+	public partial class dbmlLablinkVorC : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _LablinkVorCId;
+		
+		private int _CreateId;
+		
+		private System.DateTime _CreateDate;
+		
+		private int _UpdateId;
+		
+		private System.DateTime _UpdateDate;
+		
+		private int _GroupPropId;
+		
+		private int _ServiceId;
+		
+		private int _ComOptionListId;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnLablinkVorCIdChanging(int value);
+    partial void OnLablinkVorCIdChanged();
+    partial void OnCreateIdChanging(int value);
+    partial void OnCreateIdChanged();
+    partial void OnCreateDateChanging(System.DateTime value);
+    partial void OnCreateDateChanged();
+    partial void OnUpdateIdChanging(int value);
+    partial void OnUpdateIdChanged();
+    partial void OnUpdateDateChanging(System.DateTime value);
+    partial void OnUpdateDateChanged();
+    partial void OnGroupPropIdChanging(int value);
+    partial void OnGroupPropIdChanged();
+    partial void OnServiceIdChanging(int value);
+    partial void OnServiceIdChanged();
+    partial void OnComOptionListIdChanging(int value);
+    partial void OnComOptionListIdChanged();
+    #endregion
+		
+		public dbmlLablinkVorC()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LablinkVorCId", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int LablinkVorCId
+		{
+			get
+			{
+				return this._LablinkVorCId;
+			}
+			set
+			{
+				if ((this._LablinkVorCId != value))
+				{
+					this.OnLablinkVorCIdChanging(value);
+					this.SendPropertyChanging();
+					this._LablinkVorCId = value;
+					this.SendPropertyChanged("LablinkVorCId");
+					this.OnLablinkVorCIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateId", DbType="Int NOT NULL")]
+		public int CreateId
+		{
+			get
+			{
+				return this._CreateId;
+			}
+			set
+			{
+				if ((this._CreateId != value))
+				{
+					this.OnCreateIdChanging(value);
+					this.SendPropertyChanging();
+					this._CreateId = value;
+					this.SendPropertyChanged("CreateId");
+					this.OnCreateIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime NOT NULL")]
+		public System.DateTime CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateId", DbType="Int NOT NULL")]
+		public int UpdateId
+		{
+			get
+			{
+				return this._UpdateId;
+			}
+			set
+			{
+				if ((this._UpdateId != value))
+				{
+					this.OnUpdateIdChanging(value);
+					this.SendPropertyChanging();
+					this._UpdateId = value;
+					this.SendPropertyChanged("UpdateId");
+					this.OnUpdateIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate", DbType="DateTime NOT NULL")]
+		public System.DateTime UpdateDate
+		{
+			get
+			{
+				return this._UpdateDate;
+			}
+			set
+			{
+				if ((this._UpdateDate != value))
+				{
+					this.OnUpdateDateChanging(value);
+					this.SendPropertyChanging();
+					this._UpdateDate = value;
+					this.SendPropertyChanged("UpdateDate");
+					this.OnUpdateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupPropId", DbType="Int NOT NULL")]
+		public int GroupPropId
+		{
+			get
+			{
+				return this._GroupPropId;
+			}
+			set
+			{
+				if ((this._GroupPropId != value))
+				{
+					this.OnGroupPropIdChanging(value);
+					this.SendPropertyChanging();
+					this._GroupPropId = value;
+					this.SendPropertyChanged("GroupPropId");
+					this.OnGroupPropIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceId", DbType="Int NOT NULL")]
+		public int ServiceId
+		{
+			get
+			{
+				return this._ServiceId;
+			}
+			set
+			{
+				if ((this._ServiceId != value))
+				{
+					this.OnServiceIdChanging(value);
+					this.SendPropertyChanging();
+					this._ServiceId = value;
+					this.SendPropertyChanged("ServiceId");
+					this.OnServiceIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ComOptionListId", DbType="Int NOT NULL")]
+		public int ComOptionListId
+		{
+			get
+			{
+				return this._ComOptionListId;
+			}
+			set
+			{
+				if ((this._ComOptionListId != value))
+				{
+					this.OnComOptionListIdChanging(value);
+					this.SendPropertyChanging();
+					this._ComOptionListId = value;
+					this.SendPropertyChanged("ComOptionListId");
+					this.OnComOptionListIdChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

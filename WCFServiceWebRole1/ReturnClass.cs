@@ -101,6 +101,18 @@ namespace WCFPGMSFront
 
         public dbmlStatus objdbmlStatus = new dbmlStatus();
     }
+
+    public class returndbmlOptionList
+    {
+        public ObservableCollection<dbmlOptionList> objdbmlOptionList = new ObservableCollection<dbmlOptionList>();
+        public dbmlStatus objdbmlStatus = new dbmlStatus();
+    }
+
+    public class returndbmlLablinkVorC
+    {
+        public ObservableCollection<dbmlLablinkVorC> objdbmlLablinkVorC = new ObservableCollection<dbmlLablinkVorC>();
+        public dbmlStatus objdbmlStatus = new dbmlStatus();
+    }
     #endregion
 
 

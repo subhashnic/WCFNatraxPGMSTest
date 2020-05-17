@@ -104,5 +104,17 @@
         <elementListCompartment Id="27dc31d7-ee9e-45d2-9ac3-2d67d4a32c33" absoluteBounds="0.63999999999999968, 3.46, 1.9700000000000002, 8.1337483723958321" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="9d28120f-f6bc-43b0-b85d-91bc30ed324a" isExpanded="false" absoluteBounds="3.25, 3, 2, 0.45">
+      <DataClassMoniker Name="/TransactionTableDataContext/dbmlOptionList" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2ba335b2-01b8-4c1b-9705-c9919cca3bf7" absoluteBounds="3.2649999999999997, 3.46, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2ee23cd1-d59e-4f99-a910-50d9554dc5ac" isExpanded="false" absoluteBounds="5.75, 3, 2, 0.45">
+      <DataClassMoniker Name="/TransactionTableDataContext/dbmlLablinkVorC" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c111af84-70db-4f12-b988-d902fedd13c9" absoluteBounds="5.765, 3.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
