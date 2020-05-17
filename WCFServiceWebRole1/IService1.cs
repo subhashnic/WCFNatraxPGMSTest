@@ -89,6 +89,39 @@ namespace WCFPGMSFront
         returndbmlBooking WorkFlowActivityInsert(int intDocId, int intBPId, int intWorkPlowId, int intStatusId, string strRemark, int intCreateId);
         #endregion
 
+        #region Workshop Booking Detail
+        [OperationContract]
+        returndbmlWorkshopBookingDetailViewFront WorkshopBookingDetailInsertFront(returndbmlWorkshopBookingDetailViewFront objreturndbmlWorkshopBookingDetailViewFront);
+
+        [OperationContract]
+        returndbmlWorkshopBookingDetailViewFront WorkshopBookingDetailDelete(int intDocId, int intWorkshopBookingDetailId);
+
+        [OperationContract]
+        returndbmlWorkshopBookingDetailViewFront WorkshopBookingDetailViewFrontGetByBookingId(int intDocId);
+        #endregion
+
+        #region Booking Detail AddOnServices
+        [OperationContract]
+        returndbmlBookingDetailAddOnServicesViewFront BookingDetailAddOnServicesInsertFront(returndbmlBookingDetailAddOnServicesViewFront objreturndbmlBookingDetailAddOnServicesViewFront);
+
+        [OperationContract]
+        returndbmlBookingDetailAddOnServicesViewFront BookingDetailAddOnServicesDelete(int intDocId, int intBookingDetailAddOnServicesId);
+
+        [OperationContract]
+        returndbmlBookingDetailAddOnServicesViewFront BookingDetailAddOnServicesViewFrontGetByBookingId(int intDocId);
+        #endregion
+
+        #region Lab Booking Detail
+        [OperationContract]
+        returndbmlLabBookingDetailViewFront LabBookingDetailInsertFront(returndbmlLabBookingDetailViewFront objreturndbmlLabBookingDetailViewFront);
+
+        [OperationContract]
+        returndbmlLabBookingDetailViewFront LabBookingDetailDelete(int intDocId, int intLabBookingDetailId);
+
+        [OperationContract]
+        returndbmlLabBookingDetailViewFront LabBookingDetailViewFrontGetByBookingId(int intDocId);
+        #endregion
+
         #endregion
 
         #endregion

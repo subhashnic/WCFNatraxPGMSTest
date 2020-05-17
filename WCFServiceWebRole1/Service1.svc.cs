@@ -1235,6 +1235,372 @@ namespace WCFPGMSFront
         }
         #endregion
 
+        #region Workshop Booking Detail
+        public returndbmlWorkshopBookingDetailViewFront WorkshopBookingDetailInsertFront(returndbmlWorkshopBookingDetailViewFront objreturndbmlWorkshopBookingDetailViewFront)
+        {
+            returndbmlWorkshopBookingDetailViewFront objreturndbmlWorkshopBookingDetailViewFrontReturn = new returndbmlWorkshopBookingDetailViewFront();
+            DbTransaction trans; DbConnection con;
+            Database db = new SqlDatabase(GF.StrSetConnection());
+            con = db.CreateConnection();
+            con.Open();
+            trans = con.BeginTransaction();
+            System.Data.Common.DbCommand cmd = null;
+            try
+            {
+                int intDocId = 0;
+                foreach (var itm in objreturndbmlWorkshopBookingDetailViewFront.objdbmlWorkshopBookingDetailViewFront)
+                {
+                    intDocId = (int)itm.BookingId;
+                    cmd = db.GetStoredProcCommand("[Front].[WorkshopBookingDetailInsertFront]");
+                    foreach (PropertyInfo PropInfoCol in itm.GetType().GetProperties())
+                    {
+                        string str = PropInfoCol.Name;
+                        if (str.Length <= 2)
+                            str = str + "modified";
+                        if (str.Substring(0, 2).ToUpper() != "ZZ" && str != "DUMMY" && str != "ZZDumSeq")
+                        {
+                            DbType dbt = ConvertNullableIntoDatatype(PropInfoCol);
+                            db.AddInParameter(cmd, PropInfoCol.Name.ToString(), dbt, PropInfoCol.GetValue(itm, null));
+                        }
+                    }
+                    
+                    db.ExecuteNonQuery(cmd, trans);                    
+
+                    cmd = db.GetStoredProcCommand("[Front].[UpdateTabStatusToBookingByBookingId]", intDocId, 50);
+                    db.ExecuteNonQuery(cmd, trans);
+                }
+
+                trans.Commit();
+
+
+                objreturndbmlWorkshopBookingDetailViewFrontReturn = WorkshopBookingDetailViewFrontGetByBookingId(intDocId);
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlWorkshopBookingDetailViewFrontReturn.objdbmlStatus.StatusId = 99;
+                objreturndbmlWorkshopBookingDetailViewFrontReturn.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+                trans.Rollback();
+            }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return objreturndbmlWorkshopBookingDetailViewFrontReturn;
+        }
+
+        public returndbmlWorkshopBookingDetailViewFront WorkshopBookingDetailDelete(int intDocId, int intWorkshopBookingDetailId)
+        {
+            returndbmlWorkshopBookingDetailViewFront objreturndbmlWorkshopBookingDetailViewFront = new returndbmlWorkshopBookingDetailViewFront();
+            DbTransaction trans;
+            DbConnection con;
+            Database db = new SqlDatabase(GF.StrSetConnection());
+            con = db.CreateConnection();
+            con.Open();
+            trans = con.BeginTransaction();
+            System.Data.Common.DbCommand cmd = null;
+            try
+            {
+                cmd = db.GetStoredProcCommand("[Transaction].[WorkshopBookingDetailDelete]", intWorkshopBookingDetailId);
+                db.ExecuteNonQuery(cmd, trans);
+
+                trans.Commit();
+                objreturndbmlWorkshopBookingDetailViewFront.objdbmlStatus.StatusId = 1;
+                objreturndbmlWorkshopBookingDetailViewFront.objdbmlStatus.Status = "Successful";
+
+                objreturndbmlWorkshopBookingDetailViewFront = WorkshopBookingDetailViewFrontGetByBookingId(intDocId);
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlWorkshopBookingDetailViewFront.objdbmlStatus.StatusId = 99;
+                objreturndbmlWorkshopBookingDetailViewFront.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+                trans.Rollback();
+            }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return objreturndbmlWorkshopBookingDetailViewFront;
+        }
+
+        public returndbmlWorkshopBookingDetailViewFront WorkshopBookingDetailViewFrontGetByBookingId(int intDocId)
+        {
+            returndbmlWorkshopBookingDetailViewFront objreturndbmlWorkshopBookingDetailViewFront = new returndbmlWorkshopBookingDetailViewFront();
+            try
+            {
+                DataSet ds = new DataSet();
+                Database db = new SqlDatabase(GF.StrSetConnection());
+                System.Data.Common.DbCommand cmdGet = null;
+
+                cmdGet = db.GetStoredProcCommand("[Front].[WorkshopBookingDetailViewFrontGetByBookingId]", intDocId);
+                db.LoadDataSet(cmdGet, ds, new string[] { "WorkshopBooking" });
+                if (ds.Tables["WorkshopBooking"].Rows.Count > 0)
+                {
+                    objreturndbmlWorkshopBookingDetailViewFront.objdbmlWorkshopBookingDetailViewFront = new ObservableCollection<dbmlWorkshopBookingDetailViewFront>(from dRow in ds.Tables["WorkshopBooking"].AsEnumerable()
+                                                                                                                                                                     select (ConvertTableToListNew<dbmlWorkshopBookingDetailViewFront>(dRow)));
+                }
+
+                objreturndbmlWorkshopBookingDetailViewFront.objdbmlStatus.StatusId = 1;
+                objreturndbmlWorkshopBookingDetailViewFront.objdbmlStatus.Status = "Successful";
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlWorkshopBookingDetailViewFront.objdbmlStatus.StatusId = 99;
+                objreturndbmlWorkshopBookingDetailViewFront.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+            }
+            return objreturndbmlWorkshopBookingDetailViewFront;
+        }
+        #endregion
+
+        #region Booking Detail AddOnServices
+        public returndbmlBookingDetailAddOnServicesViewFront BookingDetailAddOnServicesInsertFront(returndbmlBookingDetailAddOnServicesViewFront objreturndbmlBookingDetailAddOnServicesViewFront)
+        {
+            returndbmlBookingDetailAddOnServicesViewFront objreturndbmlBookingDetailAddOnServicesViewFrontReturn = new returndbmlBookingDetailAddOnServicesViewFront();
+            DbTransaction trans; DbConnection con;
+            Database db = new SqlDatabase(GF.StrSetConnection());
+            con = db.CreateConnection();
+            con.Open();
+            trans = con.BeginTransaction();
+            System.Data.Common.DbCommand cmd = null;
+            try
+            {
+                int intDocId = 0;
+                foreach (var itm in objreturndbmlBookingDetailAddOnServicesViewFront.objdbmlBookingDetailAddOnServicesViewFront)
+                {
+                    intDocId = (int)itm.BookingId;
+                    cmd = db.GetStoredProcCommand("[Front].[BookingDetailAddOnServicesInsertFront]");
+                    foreach (PropertyInfo PropInfoCol in itm.GetType().GetProperties())
+                    {
+                        string str = PropInfoCol.Name;
+                        if (str.Length <= 2)
+                            str = str + "modified";
+                        if (str.Substring(0, 2).ToUpper() != "ZZ" && str != "DUMMY" && str != "ZZDumSeq")
+                        {
+                            DbType dbt = ConvertNullableIntoDatatype(PropInfoCol);
+                            db.AddInParameter(cmd, PropInfoCol.Name.ToString(), dbt, PropInfoCol.GetValue(itm, null));
+                        }
+                    }
+
+                    db.ExecuteNonQuery(cmd, trans);
+
+                    cmd = db.GetStoredProcCommand("[Front].[UpdateTabStatusToBookingByBookingId]", intDocId, 60);
+                    db.ExecuteNonQuery(cmd, trans);
+                }
+
+                trans.Commit();
+
+
+                objreturndbmlBookingDetailAddOnServicesViewFrontReturn = BookingDetailAddOnServicesViewFrontGetByBookingId(intDocId);
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlBookingDetailAddOnServicesViewFrontReturn.objdbmlStatus.StatusId = 99;
+                objreturndbmlBookingDetailAddOnServicesViewFrontReturn.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+                trans.Rollback();
+            }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return objreturndbmlBookingDetailAddOnServicesViewFrontReturn;
+        }
+
+        public returndbmlBookingDetailAddOnServicesViewFront BookingDetailAddOnServicesDelete(int intDocId, int intBookingDetailAddOnServicesId)
+        {
+            returndbmlBookingDetailAddOnServicesViewFront objreturndbmlBookingDetailAddOnServicesViewFront = new returndbmlBookingDetailAddOnServicesViewFront();
+            DbTransaction trans;
+            DbConnection con;
+            Database db = new SqlDatabase(GF.StrSetConnection());
+            con = db.CreateConnection();
+            con.Open();
+            trans = con.BeginTransaction();
+            System.Data.Common.DbCommand cmd = null;
+            try
+            {
+                cmd = db.GetStoredProcCommand("[Transaction].[BookingDetailAddOnServicesDelete]", intBookingDetailAddOnServicesId);
+                db.ExecuteNonQuery(cmd, trans);
+
+                trans.Commit();
+                objreturndbmlBookingDetailAddOnServicesViewFront.objdbmlStatus.StatusId = 1;
+                objreturndbmlBookingDetailAddOnServicesViewFront.objdbmlStatus.Status = "Successful";
+
+                objreturndbmlBookingDetailAddOnServicesViewFront = BookingDetailAddOnServicesViewFrontGetByBookingId(intDocId);
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlBookingDetailAddOnServicesViewFront.objdbmlStatus.StatusId = 99;
+                objreturndbmlBookingDetailAddOnServicesViewFront.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+                trans.Rollback();
+            }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return objreturndbmlBookingDetailAddOnServicesViewFront;
+        }
+
+        public returndbmlBookingDetailAddOnServicesViewFront BookingDetailAddOnServicesViewFrontGetByBookingId(int intDocId)
+        {
+            returndbmlBookingDetailAddOnServicesViewFront objreturndbmlBookingDetailAddOnServicesViewFront = new returndbmlBookingDetailAddOnServicesViewFront();
+            try
+            {
+                DataSet ds = new DataSet();
+                Database db = new SqlDatabase(GF.StrSetConnection());
+                System.Data.Common.DbCommand cmdGet = null;
+
+                cmdGet = db.GetStoredProcCommand("[Front].[BookingDetailAddOnServicesViewFrontGetByBookingId]", intDocId);
+                db.LoadDataSet(cmdGet, ds, new string[] { "BookingDetailAddOnServices" });
+                if (ds.Tables["BookingDetailAddOnServices"].Rows.Count > 0)
+                {
+                    objreturndbmlBookingDetailAddOnServicesViewFront.objdbmlBookingDetailAddOnServicesViewFront = new ObservableCollection<dbmlBookingDetailAddOnServicesViewFront>(from dRow in ds.Tables["BookingDetailAddOnServices"].AsEnumerable()
+                                                                                                                                                                     select (ConvertTableToListNew<dbmlBookingDetailAddOnServicesViewFront>(dRow)));
+                }
+
+                objreturndbmlBookingDetailAddOnServicesViewFront.objdbmlStatus.StatusId = 1;
+                objreturndbmlBookingDetailAddOnServicesViewFront.objdbmlStatus.Status = "Successful";
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlBookingDetailAddOnServicesViewFront.objdbmlStatus.StatusId = 99;
+                objreturndbmlBookingDetailAddOnServicesViewFront.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+            }
+            return objreturndbmlBookingDetailAddOnServicesViewFront;
+        }
+        #endregion
+
+        #region Lab Booking Detail
+        public returndbmlLabBookingDetailViewFront LabBookingDetailInsertFront(returndbmlLabBookingDetailViewFront objreturndbmlLabBookingDetailViewFront)
+        {
+            returndbmlLabBookingDetailViewFront objreturndbmlLabBookingDetailViewFrontReturn = new returndbmlLabBookingDetailViewFront();
+            DbTransaction trans; DbConnection con;
+            Database db = new SqlDatabase(GF.StrSetConnection());
+            con = db.CreateConnection();
+            con.Open();
+            trans = con.BeginTransaction();
+            System.Data.Common.DbCommand cmd = null;
+            try
+            {
+                int intDocId = 0;
+                foreach (var itm in objreturndbmlLabBookingDetailViewFront.objdbmlLabBookingDetailViewFront)
+                {
+                    intDocId = (int)itm.BookingId;
+                    cmd = db.GetStoredProcCommand("[Front].[LabBookingDetailInsertFront]");
+                    foreach (PropertyInfo PropInfoCol in itm.GetType().GetProperties())
+                    {
+                        string str = PropInfoCol.Name;
+                        if (str.Length <= 2)
+                            str = str + "modified";
+                        if (str.Substring(0, 2).ToUpper() != "ZZ" && str != "DUMMY" && str != "ZZDumSeq")
+                        {
+                            DbType dbt = ConvertNullableIntoDatatype(PropInfoCol);
+                            db.AddInParameter(cmd, PropInfoCol.Name.ToString(), dbt, PropInfoCol.GetValue(itm, null));
+                        }
+                    }
+
+                    db.ExecuteNonQuery(cmd, trans);
+
+                    //cmd = db.GetStoredProcCommand("[Front].[UpdateTabStatusToBookingByBookingId]", intDocId, 60);
+                    //db.ExecuteNonQuery(cmd, trans);
+                }
+
+                trans.Commit();
+
+
+                objreturndbmlLabBookingDetailViewFrontReturn = LabBookingDetailViewFrontGetByBookingId(intDocId);
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlLabBookingDetailViewFrontReturn.objdbmlStatus.StatusId = 99;
+                objreturndbmlLabBookingDetailViewFrontReturn.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+                trans.Rollback();
+            }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return objreturndbmlLabBookingDetailViewFrontReturn;
+        }
+
+        public returndbmlLabBookingDetailViewFront LabBookingDetailDelete(int intDocId, int intLabBookingDetailId)
+        {
+            returndbmlLabBookingDetailViewFront objreturndbmlLabBookingDetailViewFront = new returndbmlLabBookingDetailViewFront();
+            DbTransaction trans;
+            DbConnection con;
+            Database db = new SqlDatabase(GF.StrSetConnection());
+            con = db.CreateConnection();
+            con.Open();
+            trans = con.BeginTransaction();
+            System.Data.Common.DbCommand cmd = null;
+            try
+            {
+                cmd = db.GetStoredProcCommand("[Transaction].[LabBookingDetailDelete]", intLabBookingDetailId);
+                db.ExecuteNonQuery(cmd, trans);
+
+                trans.Commit();
+                objreturndbmlLabBookingDetailViewFront.objdbmlStatus.StatusId = 1;
+                objreturndbmlLabBookingDetailViewFront.objdbmlStatus.Status = "Successful";
+
+                objreturndbmlLabBookingDetailViewFront = LabBookingDetailViewFrontGetByBookingId(intDocId);
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlLabBookingDetailViewFront.objdbmlStatus.StatusId = 99;
+                objreturndbmlLabBookingDetailViewFront.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+                trans.Rollback();
+            }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return objreturndbmlLabBookingDetailViewFront;
+        }
+
+        public returndbmlLabBookingDetailViewFront LabBookingDetailViewFrontGetByBookingId(int intDocId)
+        {
+            returndbmlLabBookingDetailViewFront objreturndbmlLabBookingDetailViewFront = new returndbmlLabBookingDetailViewFront();
+            try
+            {
+                DataSet ds = new DataSet();
+                Database db = new SqlDatabase(GF.StrSetConnection());
+                System.Data.Common.DbCommand cmdGet = null;
+
+                cmdGet = db.GetStoredProcCommand("[Front].[LabBookingDetailViewFrontGetByBookingId]", intDocId);
+                db.LoadDataSet(cmdGet, ds, new string[] { "LabBookingDetail" });
+                if (ds.Tables["LabBookingDetail"].Rows.Count > 0)
+                {
+                    objreturndbmlLabBookingDetailViewFront.objdbmlLabBookingDetailViewFront = new ObservableCollection<dbmlLabBookingDetailViewFront>(from dRow in ds.Tables["LabBookingDetail"].AsEnumerable()
+                                                                                                                                                                                    select (ConvertTableToListNew<dbmlLabBookingDetailViewFront>(dRow)));
+                }
+
+                objreturndbmlLabBookingDetailViewFront.objdbmlStatus.StatusId = 1;
+                objreturndbmlLabBookingDetailViewFront.objdbmlStatus.Status = "Successful";
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlLabBookingDetailViewFront.objdbmlStatus.StatusId = 99;
+                objreturndbmlLabBookingDetailViewFront.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+            }
+            return objreturndbmlLabBookingDetailViewFront;
+        }
+        #endregion
+
         #endregion
 
 

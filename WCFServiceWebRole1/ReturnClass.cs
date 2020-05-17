@@ -80,6 +80,27 @@ namespace WCFPGMSFront
 
         public dbmlStatus objdbmlStatus = new dbmlStatus();
     }
+
+    public class returndbmlWorkshopBookingDetailViewFront
+    {
+        public ObservableCollection<dbmlWorkshopBookingDetailViewFront> objdbmlWorkshopBookingDetailViewFront = new ObservableCollection<dbmlWorkshopBookingDetailViewFront>();
+
+        public dbmlStatus objdbmlStatus = new dbmlStatus();
+    }
+
+    public class returndbmlBookingDetailAddOnServicesViewFront
+    {
+        public ObservableCollection<dbmlBookingDetailAddOnServicesViewFront> objdbmlBookingDetailAddOnServicesViewFront = new ObservableCollection<dbmlBookingDetailAddOnServicesViewFront>();
+
+        public dbmlStatus objdbmlStatus = new dbmlStatus();
+    }
+
+    public class returndbmlLabBookingDetailViewFront
+    {
+        public ObservableCollection<dbmlLabBookingDetailViewFront> objdbmlLabBookingDetailViewFront = new ObservableCollection<dbmlLabBookingDetailViewFront>();
+
+        public dbmlStatus objdbmlStatus = new dbmlStatus();
+    }
     #endregion
 
 

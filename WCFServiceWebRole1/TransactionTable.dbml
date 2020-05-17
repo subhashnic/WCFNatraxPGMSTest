@@ -365,4 +365,130 @@
       <Column Name="ZZType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="Front.WorkshopBookingDetailViewFront" Member="dbmlWorkshopBookingDetailViewFronts">
+    <Type Name="dbmlWorkshopBookingDetailViewFront">
+      <Column Name="WorkshopBookingDetailId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BookingId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AuditId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RefServiceBPId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ServiceId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UsageDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Rate" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Discount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TaxableAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="CGSTRate" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="SGSTRate" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="IGSTRate" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="CGSTAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="SGSTAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="IGSTAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TaxAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TotalAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="PODate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PONumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="POAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="BookingStatusPropId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UOMPropId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UsageHours" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="UsageMinutes" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Sno" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QuotAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="BookingDay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZZPODate" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="ZZUsageDate" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="ZZUOM" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ZZBookStatus" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ZZServiceName" Type="System.String" DbType="NVarChar(1051)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="Front.BookingDetailAddOnServicesViewFront" Member="dbmlBookingDetailAddOnServicesViewFronts">
+    <Type Name="dbmlBookingDetailAddOnServicesViewFront">
+      <Column Name="BookingAddOnServiceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AuditId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BookingId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ServiceId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BPId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ServiceDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Consumption" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Rate" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Discount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TaxableAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="CGSTRate" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="SGSTRate" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="IGSTRate" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="CGSTAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="SGSTAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="IGSTAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TaxAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TotalAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="PODate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PONumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="POAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="UOMPropId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BookingStatusPropId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QuotAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="BookingDay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZZServiceDate" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="ZZServiceName" Type="System.String" DbType="NVarChar(1051)" CanBeNull="true" />
+      <Column Name="ZZUOM" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ZZBookingStatus" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="Front.LabBookingDetailViewFront" Member="dbmlLabBookingDetailViewFronts">
+    <Type Name="dbmlLabBookingDetailViewFront">
+      <Column Name="LabBookingDetailId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BookingId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AuditId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RefServiceBPId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ServiceId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UsageDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Rate" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Discount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TaxableAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="CGSTRate" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="SGSTRate" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="IGSTRate" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="CGSTAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="SGSTAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="IGSTAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TaxAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TotalAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="PODate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PONumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="POAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="BookingStatusPropId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UOMPropId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UsageHours" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="UsageMinutes" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Sno" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VehCompId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QuotAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="BookingDay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZZPODate" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ZZUsageDate" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ZZUOM" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ZZBookStatus" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ZZServiceName" Type="System.String" DbType="NVarChar(1051)" CanBeNull="true" />
+      <Column Name="ZZService" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ZZVehComp" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>
