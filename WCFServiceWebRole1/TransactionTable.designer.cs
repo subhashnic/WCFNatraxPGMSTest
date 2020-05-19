@@ -146,14 +146,6 @@ namespace WCFServiceTemplate
 			}
 		}
 		
-		public System.Data.Linq.Table<dbmlBookingSearchView> dbmlBookingSearchViews
-		{
-			get
-			{
-				return this.GetTable<dbmlBookingSearchView>();
-			}
-		}
-		
 		public System.Data.Linq.Table<dbmlTrackBookingTimeSummary> dbmlTrackBookingTimeSummaries
 		{
 			get
@@ -223,6 +215,14 @@ namespace WCFServiceTemplate
 			get
 			{
 				return this.GetTable<dbmlLablinkVorC>();
+			}
+		}
+		
+		public System.Data.Linq.Table<dbmlBookingSearchView> dbmlBookingSearchViews
+		{
+			get
+			{
+				return this.GetTable<dbmlBookingSearchView>();
 			}
 		}
 	}
@@ -4297,303 +4297,6 @@ namespace WCFServiceTemplate
 				if ((this._ZZTrackGroup != value))
 				{
 					this._ZZTrackGroup = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="[Transaction].BookingSearchView")]
-	public partial class dbmlBookingSearchView
-	{
-		
-		private int _CompanyId;
-		
-		private int _BookingId;
-		
-		private System.DateTime _BookingDate;
-		
-		private string _BookingNo;
-		
-		private int _BPId;
-		
-		private System.Nullable<int> _DocNo;
-		
-		private string _Project;
-		
-		private string _ProjectManager;
-		
-		private string _CompanyName;
-		
-		private string _Department;
-		
-		private System.Nullable<int> _StatusPropId;
-		
-		private string _ZZWorkFlowName;
-		
-		private string _ZZActivity;
-		
-		private string _ZZStatus;
-		
-		private string _ZZWorkFlowColor;
-		
-		private string _ZZUpdatedBy;
-		
-		public dbmlBookingSearchView()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyId", DbType="Int NOT NULL")]
-		public int CompanyId
-		{
-			get
-			{
-				return this._CompanyId;
-			}
-			set
-			{
-				if ((this._CompanyId != value))
-				{
-					this._CompanyId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookingId", DbType="Int NOT NULL")]
-		public int BookingId
-		{
-			get
-			{
-				return this._BookingId;
-			}
-			set
-			{
-				if ((this._BookingId != value))
-				{
-					this._BookingId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookingDate", DbType="DateTime NOT NULL")]
-		public System.DateTime BookingDate
-		{
-			get
-			{
-				return this._BookingDate;
-			}
-			set
-			{
-				if ((this._BookingDate != value))
-				{
-					this._BookingDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookingNo", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string BookingNo
-		{
-			get
-			{
-				return this._BookingNo;
-			}
-			set
-			{
-				if ((this._BookingNo != value))
-				{
-					this._BookingNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BPId", DbType="Int NOT NULL")]
-		public int BPId
-		{
-			get
-			{
-				return this._BPId;
-			}
-			set
-			{
-				if ((this._BPId != value))
-				{
-					this._BPId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocNo", DbType="Int")]
-		public System.Nullable<int> DocNo
-		{
-			get
-			{
-				return this._DocNo;
-			}
-			set
-			{
-				if ((this._DocNo != value))
-				{
-					this._DocNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Project", DbType="NVarChar(50)")]
-		public string Project
-		{
-			get
-			{
-				return this._Project;
-			}
-			set
-			{
-				if ((this._Project != value))
-				{
-					this._Project = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectManager", DbType="NVarChar(50)")]
-		public string ProjectManager
-		{
-			get
-			{
-				return this._ProjectManager;
-			}
-			set
-			{
-				if ((this._ProjectManager != value))
-				{
-					this._ProjectManager = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyName", DbType="NVarChar(50)")]
-		public string CompanyName
-		{
-			get
-			{
-				return this._CompanyName;
-			}
-			set
-			{
-				if ((this._CompanyName != value))
-				{
-					this._CompanyName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Department", DbType="NVarChar(50)")]
-		public string Department
-		{
-			get
-			{
-				return this._Department;
-			}
-			set
-			{
-				if ((this._Department != value))
-				{
-					this._Department = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusPropId", DbType="Int")]
-		public System.Nullable<int> StatusPropId
-		{
-			get
-			{
-				return this._StatusPropId;
-			}
-			set
-			{
-				if ((this._StatusPropId != value))
-				{
-					this._StatusPropId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZWorkFlowName", DbType="NVarChar(50)")]
-		public string ZZWorkFlowName
-		{
-			get
-			{
-				return this._ZZWorkFlowName;
-			}
-			set
-			{
-				if ((this._ZZWorkFlowName != value))
-				{
-					this._ZZWorkFlowName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZActivity", DbType="NVarChar(100)")]
-		public string ZZActivity
-		{
-			get
-			{
-				return this._ZZActivity;
-			}
-			set
-			{
-				if ((this._ZZActivity != value))
-				{
-					this._ZZActivity = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZStatus", DbType="NVarChar(101) NOT NULL", CanBeNull=false)]
-		public string ZZStatus
-		{
-			get
-			{
-				return this._ZZStatus;
-			}
-			set
-			{
-				if ((this._ZZStatus != value))
-				{
-					this._ZZStatus = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZWorkFlowColor", DbType="NVarChar(50)")]
-		public string ZZWorkFlowColor
-		{
-			get
-			{
-				return this._ZZWorkFlowColor;
-			}
-			set
-			{
-				if ((this._ZZWorkFlowColor != value))
-				{
-					this._ZZWorkFlowColor = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZUpdatedBy", DbType="NVarChar(200)")]
-		public string ZZUpdatedBy
-		{
-			get
-			{
-				return this._ZZUpdatedBy;
-			}
-			set
-			{
-				if ((this._ZZUpdatedBy != value))
-				{
-					this._ZZUpdatedBy = value;
 				}
 			}
 		}
@@ -8676,6 +8379,339 @@ namespace WCFServiceTemplate
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="Front.BookingSearchViewFront")]
+	public partial class dbmlBookingSearchView
+	{
+		
+		private int _CompanyId;
+		
+		private int _BookingId;
+		
+		private System.DateTime _BookingDate;
+		
+		private string _BookingNo;
+		
+		private int _BPId;
+		
+		private System.Nullable<int> _DocNo;
+		
+		private string _Project;
+		
+		private string _ProjectManager;
+		
+		private string _CompanyName;
+		
+		private string _Department;
+		
+		private System.Nullable<int> _StatusPropId;
+		
+		private string _ZZWorkFlowName;
+		
+		private string _ZZActivity;
+		
+		private string _ZZStatus;
+		
+		private string _ZZWorkFlowColor;
+		
+		private string _ZZBookingDate;
+		
+		private int _DepartmentId;
+		
+		private System.Nullable<int> _WorkFlowId;
+		
+		public dbmlBookingSearchView()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyId", DbType="Int NOT NULL")]
+		public int CompanyId
+		{
+			get
+			{
+				return this._CompanyId;
+			}
+			set
+			{
+				if ((this._CompanyId != value))
+				{
+					this._CompanyId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookingId", DbType="Int NOT NULL")]
+		public int BookingId
+		{
+			get
+			{
+				return this._BookingId;
+			}
+			set
+			{
+				if ((this._BookingId != value))
+				{
+					this._BookingId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookingDate", DbType="DateTime NOT NULL")]
+		public System.DateTime BookingDate
+		{
+			get
+			{
+				return this._BookingDate;
+			}
+			set
+			{
+				if ((this._BookingDate != value))
+				{
+					this._BookingDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookingNo", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string BookingNo
+		{
+			get
+			{
+				return this._BookingNo;
+			}
+			set
+			{
+				if ((this._BookingNo != value))
+				{
+					this._BookingNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BPId", DbType="Int NOT NULL")]
+		public int BPId
+		{
+			get
+			{
+				return this._BPId;
+			}
+			set
+			{
+				if ((this._BPId != value))
+				{
+					this._BPId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocNo", DbType="Int")]
+		public System.Nullable<int> DocNo
+		{
+			get
+			{
+				return this._DocNo;
+			}
+			set
+			{
+				if ((this._DocNo != value))
+				{
+					this._DocNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Project", DbType="NVarChar(50)")]
+		public string Project
+		{
+			get
+			{
+				return this._Project;
+			}
+			set
+			{
+				if ((this._Project != value))
+				{
+					this._Project = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectManager", DbType="NVarChar(50)")]
+		public string ProjectManager
+		{
+			get
+			{
+				return this._ProjectManager;
+			}
+			set
+			{
+				if ((this._ProjectManager != value))
+				{
+					this._ProjectManager = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyName", DbType="NVarChar(50)")]
+		public string CompanyName
+		{
+			get
+			{
+				return this._CompanyName;
+			}
+			set
+			{
+				if ((this._CompanyName != value))
+				{
+					this._CompanyName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Department", DbType="NVarChar(50)")]
+		public string Department
+		{
+			get
+			{
+				return this._Department;
+			}
+			set
+			{
+				if ((this._Department != value))
+				{
+					this._Department = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusPropId", DbType="Int")]
+		public System.Nullable<int> StatusPropId
+		{
+			get
+			{
+				return this._StatusPropId;
+			}
+			set
+			{
+				if ((this._StatusPropId != value))
+				{
+					this._StatusPropId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZWorkFlowName", DbType="NVarChar(50)")]
+		public string ZZWorkFlowName
+		{
+			get
+			{
+				return this._ZZWorkFlowName;
+			}
+			set
+			{
+				if ((this._ZZWorkFlowName != value))
+				{
+					this._ZZWorkFlowName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZActivity", DbType="NVarChar(100)")]
+		public string ZZActivity
+		{
+			get
+			{
+				return this._ZZActivity;
+			}
+			set
+			{
+				if ((this._ZZActivity != value))
+				{
+					this._ZZActivity = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZStatus", DbType="NVarChar(101) NOT NULL", CanBeNull=false)]
+		public string ZZStatus
+		{
+			get
+			{
+				return this._ZZStatus;
+			}
+			set
+			{
+				if ((this._ZZStatus != value))
+				{
+					this._ZZStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZWorkFlowColor", DbType="NVarChar(50)")]
+		public string ZZWorkFlowColor
+		{
+			get
+			{
+				return this._ZZWorkFlowColor;
+			}
+			set
+			{
+				if ((this._ZZWorkFlowColor != value))
+				{
+					this._ZZWorkFlowColor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZBookingDate", DbType="VarChar(10)")]
+		public string ZZBookingDate
+		{
+			get
+			{
+				return this._ZZBookingDate;
+			}
+			set
+			{
+				if ((this._ZZBookingDate != value))
+				{
+					this._ZZBookingDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DepartmentId", DbType="Int NOT NULL")]
+		public int DepartmentId
+		{
+			get
+			{
+				return this._DepartmentId;
+			}
+			set
+			{
+				if ((this._DepartmentId != value))
+				{
+					this._DepartmentId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WorkFlowId", DbType="Int")]
+		public System.Nullable<int> WorkFlowId
+		{
+			get
+			{
+				return this._WorkFlowId;
+			}
+			set
+			{
+				if ((this._WorkFlowId != value))
+				{
+					this._WorkFlowId = value;
+				}
 			}
 		}
 	}

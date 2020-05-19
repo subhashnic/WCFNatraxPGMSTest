@@ -23,6 +23,7 @@ namespace WCFPGMSFront
 {
     public class Service1 : IService1
     {
+        
         #region Basic        
         int intCommandTimeOut = 240;
 
