@@ -800,6 +800,39 @@ namespace WCFPGMSFront
             return objreturndbmlBookingSearchView;
         }
 
+        public returndbmlStatus BookingQuotationPIDetailInsertByBookingId(int intDocId)
+        {
+            returndbmlStatus objreturndbmlStatus = new returndbmlStatus();
+            DbTransaction trans; DbConnection con;
+            Database db = new SqlDatabase(GF.StrSetConnection());
+            con = db.CreateConnection();
+            con.Open();
+            trans = con.BeginTransaction();
+            System.Data.Common.DbCommand cmd = null;
+            try
+            {
+                cmd = db.GetStoredProcCommand("[Transaction].[BookingQuotationPIDetailInsertByBookingId]", intDocId);
+                db.ExecuteNonQuery(cmd, trans); 
+                trans.Commit();
+                objreturndbmlStatus.objdbmlStatus.StatusId = 1;
+                objreturndbmlStatus.objdbmlStatus.Status = "Success";
+
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlStatus.objdbmlStatus.StatusId = 99;
+                objreturndbmlStatus.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+                trans.Rollback();
+            }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return objreturndbmlStatus;
+        }
         #endregion
 
         #region Vehicle Componants
@@ -1659,10 +1692,7 @@ namespace WCFPGMSFront
         #endregion
 
         #endregion
-
-
-
-
+                     
 
         #endregion
 

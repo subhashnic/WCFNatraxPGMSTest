@@ -51,6 +51,9 @@ namespace WCFPGMSFront
 
         [OperationContract]
         returndbmlBookingSearchView BookingSearchViewGetByCompanyIdFromDateToDateFront(int intCompanyId, DateTime dtFromDate, DateTime dtToDate, int intBPId, int intStatusPropId);
+
+        [OperationContract]
+        returndbmlStatus BookingQuotationPIDetailInsertByBookingId(int intDocId);
         #endregion
 
         #region Vehicle Componants
