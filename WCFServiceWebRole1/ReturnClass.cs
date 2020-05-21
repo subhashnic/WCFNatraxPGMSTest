@@ -127,6 +127,13 @@ namespace WCFPGMSFront
 
         public dbmlStatus objdbmlStatus = new dbmlStatus();
     }
+
+    public class returndbmlServiceDateViewFront
+    {
+        public ObservableCollection<dbmlServiceDateViewFront> objdbmlServiceDateViewFront = new ObservableCollection<dbmlServiceDateViewFront>();
+        public dbmlStatus objdbmlStatus = new dbmlStatus();
+    }
+
     #endregion
 
 

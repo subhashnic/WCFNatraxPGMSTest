@@ -954,6 +954,7 @@ namespace WCFPGMSFront
                 {
                     Header.BookingId = -1;
                     Header.BookingNo = "Temp";
+                    Header.BookingDate = DateTime.Now;
                     Header.RFQId = intRFQBookingId;
                     Header.BPId = intBPId;
                     Header.CompanyId = intCompanyId;
@@ -1175,323 +1176,84 @@ namespace WCFPGMSFront
             return objreturndbmlBooking;
         }
 
+        public returndbmlServiceDateViewFront ServiceDateViewFrontGetByBookingId(int intBookingId)
+        {
+            returndbmlServiceDateViewFront objreturndbmlServiceDateViewFront = new returndbmlServiceDateViewFront();
+            try
+            {
+                DataSet ds = new DataSet();
+                Database db = new SqlDatabase(GF.StrSetConnection());
+                System.Data.Common.DbCommand cmdGet = null;
 
-        //public returndbmlBooking RFQBookingHeaderDetailGetByBookingId(dbmlGeneral objGeneral)
-        //{
-        //    returndbmlBooking objreturndbmlBooking = new returndbmlBooking();
-        //    try
-        //    {
-        //        DataSet ds = new DataSet();
-        //        Database db = new SqlDatabase(GF.StrSetConnection());
-        //        System.Data.Common.DbCommand cmdGet = null;
-        //        int CompanyId = 0; int StateId = 0; string StrTrackGroup = string.Empty;
+                cmdGet = db.GetStoredProcCommand("[Front].ServiceDateViewFrontGetByBookingId", intBookingId);
+                db.LoadDataSet(cmdGet, ds, new string[] { "ServiceDateView" });
+                if (ds.Tables["ServiceDateView"].Rows.Count > 0)
+                {
+                    objreturndbmlServiceDateViewFront.objdbmlServiceDateViewFront = new ObservableCollection<dbmlServiceDateViewFront>(from dRow in ds.Tables["ServiceDateView"].AsEnumerable()
+                                                                                                                                       select (ConvertTableToListNew<dbmlServiceDateViewFront>(dRow)));
+                }
 
-        //        cmdGet = null;
-        //        cmdGet = db.GetStoredProcCommand("[Transaction].[BookingGetByBookingId]", objGeneral.PKId);
-        //        db.LoadDataSet(cmdGet, ds, new string[] { "Booking" });
-        //        if (ds.Tables["Booking"].Rows.Count > 0)
-        //        {
-        //            objreturndbmlBooking.objdbmlBookingList = new ObservableCollection<dbmlBooking>(from dRow in ds.Tables["Booking"].AsEnumerable() select (GeneralFunction.ConvertTableToList<dbmlBooking>(dRow)));
-        //            foreach (var item in objreturndbmlBooking.objdbmlBookingList)
-        //            {
-        //                item.ZZRefBPId = item.BPId; //After Discuss With Mahesh 28/04/2020
-        //                item.RFQId = item.BookingId;
-        //                item.BookingId = item.BookingId * -1;
-        //                if (item.BPId == 46 || item.BPId == 98)
-        //                {
-        //                    item.BPId = 21;
-        //                }
-        //                else
-        //                {
-        //                    item.BPId = 90;
-        //                }
+                objreturndbmlServiceDateViewFront.objdbmlStatus.StatusId = 1;
+                objreturndbmlServiceDateViewFront.objdbmlStatus.Status = "Successful";
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlServiceDateViewFront.objdbmlStatus.StatusId = 99;
+                objreturndbmlServiceDateViewFront.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+            }
+            return objreturndbmlServiceDateViewFront;
+        }
 
-        //                item.StatusPropId = 0;
+        public returndbmlBooking UpdateServiceDateFrontByBookingIdDayDates(returndbmlServiceDateViewFront objreturndbmlServiceDateViewFront)
+        {
+            returndbmlBooking returndbmlBookingReturn = new returndbmlBooking();
+            DbTransaction trans; DbConnection con;
+            Database db = new SqlDatabase(GF.StrSetConnection());
+            con = db.CreateConnection();
+            con.Open();
+            trans = con.BeginTransaction();
+            System.Data.Common.DbCommand cmd = null;
+            try
+            {
+                int intBookingId = (int) objreturndbmlServiceDateViewFront.objdbmlServiceDateViewFront.FirstOrDefault().BookingId;
+                foreach (var Header in objreturndbmlServiceDateViewFront.objdbmlServiceDateViewFront)
+                {
+                    cmd = db.GetStoredProcCommand("[Front].UpdateServiceDateFrontByBookingIdDayDates");
+                    foreach (PropertyInfo PropInfoCol in Header.GetType().GetProperties())
+                    {
+                        string str = PropInfoCol.Name;
+                        if (str.Length <= 2)
+                            str = str + "modified";
+                        if (str.Substring(0, 2).ToUpper() != "ZZ" && str != "DUMMY" && str != "ZZDumSeq")
+                        {
+                            DbType dbt = ConvertNullableIntoDatatype(PropInfoCol);
+                            db.AddInParameter(cmd, PropInfoCol.Name.ToString(), dbt, PropInfoCol.GetValue(Header, null));
+                        }
+                    }
+                    db.ExecuteNonQuery(cmd, trans);
 
-        //                //Nilesh Pole on 24-04-2020
-        //                CompanyId = item.CompanyId;
-        //            }
-        //        }
+                }
 
-        //        //Nilesh Pole on 24-04-2020
-        //        cmdGet = null;
-        //        cmdGet = db.GetStoredProcCommand("[Master].[CustomerMasterGetByCompanyId]", CompanyId);
-        //        db.LoadDataSet(cmdGet, ds, new string[] { "CustomerMaster" });
-        //        StateId = Convert.ToInt32(ds.Tables["CustomerMaster"].Rows[0]["StateId"]);
-        //        //Nilesh Pole on 24-04-2020
-
-        //        cmdGet = null;
-        //        cmdGet = db.GetStoredProcCommand("[Transaction].[TrackBookingDetailGetByBookingId]", objGeneral.PKId);
-        //        db.LoadDataSet(cmdGet, ds, new string[] { "TrackBookingDetail" });
-        //        if (ds.Tables["TrackBookingDetail"].Rows.Count > 0)
-        //        {
-        //            objreturndbmlBooking.objdbmlTrackBookingDetail = new ObservableCollection<dbmlTrackBookingDetail>(from dRow in ds.Tables["TrackBookingDetail"].AsEnumerable() select (GeneralFunction.ConvertTableToList<dbmlTrackBookingDetail>(dRow)));
-        //            foreach (var item in objreturndbmlBooking.objdbmlTrackBookingDetail)
-        //            {
-        //                item.TrackBookingDetailId = item.TrackBookingDetailId * -1;
-        //                item.VehicleId = item.VehicleId * -1;
-        //                item.BookingId = item.BookingId * -1;
-        //                //----Nilesh Pole on 24-04-2020-------//
-        //                item.QuotAmount = item.QuotAmount;
-        //                item.Rate = (item.QuotAmount / item.BillingHrs);
-        //                item.Amount = ((item.QuotAmount / item.BillingHrs) * item.BillingHrs); //item.Rate*BillHrs
-        //                item.TaxableAmount = ((item.QuotAmount / item.BillingHrs) * item.BillingHrs);//item.Rate*BillHrs
-        //            }
-        //        }
-
-        //        cmdGet = null;
-        //        cmdGet = db.GetStoredProcCommand("[Transaction].[TrackBookingTimeDetailGetByBookingId]", objGeneral.PKId);
-        //        db.LoadDataSet(cmdGet, ds, new string[] { "BookingTimeDetail" });
-        //        if (ds.Tables["BookingTimeDetail"].Rows.Count > 0)
-        //        {
-        //            objreturndbmlBooking.objdbmlBookingTimeDetail = new ObservableCollection<dbmlTrackBookingTimeDetail>(from dRow in ds.Tables["BookingTimeDetail"].AsEnumerable() select (GeneralFunction.ConvertTableToList<dbmlTrackBookingTimeDetail>(dRow)));
-
-        //            foreach (var itemTBD in objreturndbmlBooking.objdbmlBookingTimeDetail)
-        //            {
-        //                itemTBD.TrackBookingTimeDetailId = itemTBD.TrackBookingTimeDetailId * -1;
-        //                itemTBD.BookingDetailId = itemTBD.BookingDetailId * -1;
-        //                itemTBD.BookingId = itemTBD.BookingId * -1;
-        //                //----Nilesh Pole on 24-04-2020-------//
-        //                ObservableCollection<dbmlTrackBookingDetail> objTimedetail = new ObservableCollection<dbmlTrackBookingDetail>
-        //                 (objreturndbmlBooking.objdbmlTrackBookingDetail.Where(i => i.TrackBookingDetailId == (itemTBD.BookingDetailId)));
-        //                itemTBD.Rate = objTimedetail[0].Rate;
-        //                itemTBD.Amount = ((itemTBD.Rate) * itemTBD.BillingHrs); //item.Rate*BillHrs
-
-        //                itemTBD.TaxableAmount = itemTBD.Amount;
-        //                if (StateId == 20)
-        //                {
-        //                    itemTBD.CGSTAmount = (itemTBD.Amount * itemTBD.CGSTRate) / 100;
-        //                    itemTBD.SGSTAmount = (itemTBD.Amount * itemTBD.SGSTRate) / 100;
-        //                    itemTBD.IGSTAmount = 0;
-        //                }
-        //                else
-        //                {
-        //                    itemTBD.CGSTAmount = 0;
-        //                    itemTBD.SGSTAmount = 0;
-        //                    itemTBD.IGSTAmount = (itemTBD.Amount * itemTBD.IGSTRate) / 100; ;
-        //                }
-        //                itemTBD.TaxAmount = itemTBD.CGSTAmount + itemTBD.SGSTAmount + itemTBD.IGSTAmount;
-        //                itemTBD.TotalAmount = itemTBD.Amount + itemTBD.CGSTAmount + itemTBD.SGSTAmount + itemTBD.IGSTAmount;
-        //            }
-        //        }
+                trans.Commit();
 
 
-
-        //        cmdGet = null;
-        //        cmdGet = db.GetStoredProcCommand("[Transaction].[TrackBookingTimeSummaryGetByBookingId]", objGeneral.PKId);
-        //        db.LoadDataSet(cmdGet, ds, new string[] { "BookingTimeSummary" });
-        //        if (ds.Tables["BookingTimeSummary"].Rows.Count > 0)
-        //        {
-        //            objreturndbmlBooking.objdbmlBookingTimeSummary = new ObservableCollection<dbmlTrackBookingTimeSummary>(from dRow in ds.Tables["BookingTimeSummary"].AsEnumerable() select (GeneralFunction.ConvertTableToList<dbmlTrackBookingTimeSummary>(dRow)));
-        //            foreach (var item in objreturndbmlBooking.objdbmlBookingTimeSummary)
-        //            {
-        //                item.TrackBookingTimeSummaryId = item.TrackBookingTimeSummaryId * -1;
-        //                item.BookingId = item.BookingId * -1;
-        //                item.VehicleId = item.VehicleId * -1;//Nilesh On 23/04/2020                        
-        //                //----Nilesh Pole on 24-04-2020-------//
-        //                StrTrackGroup = string.Empty;
-        //                cmdGet = null;
-        //                DataSet dsLocal = new DataSet();
-        //                cmdGet = db.GetStoredProcCommand("[Master].[TrackGroupMasterGetByGroupId]", item.GroupId);
-        //                db.LoadDataSet(cmdGet, dsLocal, new string[] { "TrackGroupMaster" });
-        //                StrTrackGroup = Convert.ToString(dsLocal.Tables["TrackGroupMaster"].Rows[0]["TrackGroup"]);
-
-        //                //Fail When a Single Vehicle Moves on 2 Tracks
-        //                ObservableCollection<dbmlTrackBookingDetail> objTimedetail = new ObservableCollection<dbmlTrackBookingDetail>
-        //                (objreturndbmlBooking.objdbmlTrackBookingDetail.Where(i => i.VehicleId == (item.VehicleId) && i.TrackGroup == StrTrackGroup));
-
-        //                item.Rate = objTimedetail[0].Rate;
-        //                item.Amount = (item.Rate * item.BillingHrs);
-        //                item.TaxableAmount = item.Amount;
-        //                if (StateId == 20)
-        //                {
-        //                    item.CGSTAmount = (item.Amount * item.CGSTRate) / 100;
-        //                    item.SGSTAmount = (item.Amount * item.SGSTRate) / 100;
-        //                    item.IGSTAmount = 0;
-        //                }
-        //                else
-        //                {
-        //                    item.CGSTAmount = 0;
-        //                    item.SGSTAmount = 0;
-        //                    item.IGSTAmount = (item.Amount * item.IGSTRate) / 100;
-        //                }
-        //                item.TaxAmount = item.CGSTAmount + item.SGSTAmount + item.IGSTAmount;
-        //                item.TotalAmount = item.Amount + item.CGSTAmount + item.SGSTAmount + item.IGSTAmount;
-        //            }
-        //            //}
-        //        }
-        //        //Nilesh Pole On 19/03/2020
-
-        //        cmdGet = null;
-        //        cmdGet = db.GetStoredProcCommand("[Transaction].[LabBookingDetailGetByBookingId]", objGeneral.PKId);
-        //        db.LoadDataSet(cmdGet, ds, new string[] { "LabBookingDetail" });
-        //        if (ds.Tables["LabBookingDetail"].Rows.Count > 0)
-        //        {
-        //            objreturndbmlBooking.objdbmlLabBookingDetail = new ObservableCollection<dbmlLabBookingDetail>(from dRow in ds.Tables["LabBookingDetail"].AsEnumerable() select (GeneralFunction.ConvertTableToList<dbmlLabBookingDetail>(dRow)));
-        //            foreach (var item in objreturndbmlBooking.objdbmlLabBookingDetail)
-        //            {
-        //                item.LabBookingDetailId = item.LabBookingDetailId * -1;
-        //                item.VehCompId = item.VehCompId * -1;
-        //                item.BookingId = item.BookingId * -1;
-
-        //                //----Nilesh Pole on 24-04-2020-------//
-        //                item.QuotAmount = item.QuotAmount;
-        //                item.Rate = (item.QuotAmount / item.UsageHours);
-        //                item.Amount = (item.Rate * item.UsageHours); //item.Rate*BillHrs
-        //                item.TaxableAmount = item.Amount;
-        //                if (StateId == 20)
-        //                {
-        //                    item.CGSTAmount = (item.Amount * item.CGSTRate) / 100;
-        //                    item.SGSTAmount = (item.Amount * item.SGSTRate) / 100;
-        //                    item.IGSTAmount = 0;
-        //                }
-        //                else
-        //                {
-        //                    item.CGSTAmount = 0;
-        //                    item.SGSTAmount = 0;
-        //                    item.IGSTAmount = (item.Amount * item.IGSTRate) / 100; ;
-        //                }
-        //                item.TaxAmount = item.CGSTAmount + item.SGSTAmount + item.IGSTAmount;
-        //                item.TotalAmount = item.Amount + item.CGSTAmount + item.SGSTAmount + item.IGSTAmount;
-        //            }
-        //        }
-
-        //        cmdGet = null;
-        //        cmdGet = db.GetStoredProcCommand("[Transaction].[WorkshopBookingDetailGetByBookingId]", objGeneral.PKId);
-        //        db.LoadDataSet(cmdGet, ds, new string[] { "WorkshopBookingDetail" });
-        //        if (ds.Tables["WorkshopBookingDetail"].Rows.Count > 0)
-        //        {
-        //            objreturndbmlBooking.objdbmlWorkshopBookingDetail = new ObservableCollection<dbmlWorkshopBookingDetail>(from dRow in ds.Tables["WorkshopBookingDetail"].AsEnumerable() select (GeneralFunction.ConvertTableToList<dbmlWorkshopBookingDetail>(dRow)));
-        //            foreach (var item in objreturndbmlBooking.objdbmlWorkshopBookingDetail)
-        //            {
-        //                item.WorkshopBookingDetailId = item.WorkshopBookingDetailId * -1;
-        //                item.BookingId = item.BookingId * -1;
-
-        //                //----Nilesh Pole on 24-04-2020-------//
-        //                item.QuotAmount = item.QuotAmount;
-        //                item.Rate = (item.QuotAmount / item.UsageHours);
-        //                item.Amount = (item.Rate * item.UsageHours); //item.Rate*BillHrs
-        //                item.TaxableAmount = item.Amount;
-        //                if (StateId == 20)
-        //                {
-        //                    item.CGSTAmount = (item.Amount * item.CGSTRate) / 100;
-        //                    item.SGSTAmount = (item.Amount * item.SGSTRate) / 100;
-        //                    item.IGSTAmount = 0;
-        //                }
-        //                else
-        //                {
-        //                    item.CGSTAmount = 0;
-        //                    item.SGSTAmount = 0;
-        //                    item.IGSTAmount = (item.Amount * item.IGSTRate) / 100; ;
-        //                }
-        //                item.TaxAmount = item.CGSTAmount + item.SGSTAmount + item.IGSTAmount;
-        //                item.TotalAmount = item.Amount + item.CGSTAmount + item.SGSTAmount + item.IGSTAmount;
-        //            }
-        //        }
-
-        //        cmdGet = null;
-        //        cmdGet = db.GetStoredProcCommand("[Transaction].[BookingDetailAddOnServicesGetByBookingId]", objGeneral.PKId);
-        //        db.LoadDataSet(cmdGet, ds, new string[] { "BookingDetailAddOnServices" });
-        //        if (ds.Tables["BookingDetailAddOnServices"].Rows.Count > 0)
-        //        {
-        //            objreturndbmlBooking.objdbmlBookingDetailAddOnService = new ObservableCollection<dbmlBookingDetailAddOnService>(from dRow in ds.Tables["BookingDetailAddOnServices"].AsEnumerable() select (GeneralFunction.ConvertTableToList<dbmlBookingDetailAddOnService>(dRow)));
-        //            foreach (var item in objreturndbmlBooking.objdbmlBookingDetailAddOnService)
-        //            {
-        //                item.BookingAddOnServiceId = item.BookingAddOnServiceId * -1;
-        //                item.BookingId = item.BookingId * -1;
-        //                //commented after discuss with ajeet and mahesh on 13/05/2020
-        //                //if (item.BPId == 46 || item.BPId == 98)
-        //                //{
-        //                //    item.BPId = 21;
-        //                //}
-        //                //else
-        //                //{
-        //                //    item.BPId = 90;
-        //                //}
-        //                //commented after discuss with ajeet and mahesh on 13/05/2020
-        //                //----Nilesh Pole on 27-04-2020-------//
-        //                item.QuotAmount = item.QuotAmount;
-        //                item.Rate = (item.QuotAmount / item.Consumption);
-        //                item.Amount = (item.Rate * item.Consumption); //item.Rate*BillHrs
-        //                item.TaxableAmount = item.Amount;
-        //                if (StateId == 20)
-        //                {
-        //                    item.CGSTAmount = (item.Amount * item.CGSTRate) / 100;
-        //                    item.SGSTAmount = (item.Amount * item.SGSTRate) / 100;
-        //                    item.IGSTAmount = 0;
-        //                }
-        //                else
-        //                {
-        //                    item.CGSTAmount = 0;
-        //                    item.SGSTAmount = 0;
-        //                    item.IGSTAmount = (item.Amount * item.IGSTRate) / 100; ;
-        //                }
-        //                item.TaxAmount = item.CGSTAmount + item.SGSTAmount + item.IGSTAmount;
-        //                item.TotalAmount = item.Amount + item.CGSTAmount + item.SGSTAmount + item.IGSTAmount;
-        //                //Nilesh Till here...
-
-
-        //            }
-        //        }
-
-
-        //        //Nilesh Pole On 22/03/2020
-        //        cmdGet = null;
-        //        cmdGet = db.GetStoredProcCommand("[Transaction].[BookingQuotationPIDetailGetByBookingId]", objGeneral.PKId);
-        //        db.LoadDataSet(cmdGet, ds, new string[] { "BookingQuotationPIDetail" });
-        //        if (ds.Tables["BookingQuotationPIDetail"].Rows.Count > 0)
-        //        {
-        //            objreturndbmlBooking.objdbmlBookQuotPIDet = new ObservableCollection<dbmlBookingQuotationPIDetail>(from dRow in ds.Tables["BookingQuotationPIDetail"].AsEnumerable() select (GeneralFunction.ConvertTableToList<dbmlBookingQuotationPIDetail>(dRow)));
-        //            foreach (var item in objreturndbmlBooking.objdbmlBookQuotPIDet)
-        //            {
-        //                item.BookingQuotPIDetId = item.BookingQuotPIDetId * -1;
-        //                item.BookingId = item.BookingId * -1;
-        //            }
-        //        }
-        //        //Nilesh Pole On 22/03/2020
-
-        //        //Nilesh Pole On 10/04/2020
-        //        cmdGet = null;
-        //        cmdGet = db.GetStoredProcCommand("[Transaction].[ListOfVehicleComponentGetByDocId]", objGeneral.PKId);
-        //        db.LoadDataSet(cmdGet, ds, new string[] { "ListOfVehicleComponent" });
-        //        if (ds.Tables["ListOfVehicleComponent"].Rows.Count > 0)
-        //        {
-        //            objreturndbmlBooking.objVehOrComp = new ObservableCollection<dbmlListOfVehicleComponent>(from dRow in ds.Tables["ListOfVehicleComponent"].AsEnumerable() select (GeneralFunction.ConvertTableToList<dbmlListOfVehicleComponent>(dRow)));
-        //            foreach (var item in objreturndbmlBooking.objVehOrComp)
-        //            {
-        //                item.VehCompId = item.VehCompId * -1;
-        //                item.DocId = item.DocId * -1;
-        //                if (item.BPId == 46 || item.BPId == 98)
-        //                {
-        //                    item.BPId = 21;
-        //                }
-        //                else
-        //                {
-        //                    item.BPId = 90;
-        //                }
-        //            }
-        //        }
-        //        //Nilesh Pole On 10/04/2020
-
-
-        //        cmdGet = null;
-        //        cmdGet = db.GetStoredProcCommand("[Transaction].[WorkFlowActivityViewGetByBPIdDocIdActive]", objGeneral.IntOne, (int)objGeneral.PKId);
-        //        db.LoadDataSet(cmdGet, ds, new string[] { "WorkflowActivityView" });
-        //        if (ds.Tables["WorkflowActivityView"].Rows.Count > 0)
-        //        {
-        //            objreturndbmlBooking.objdbmlWorkFlowActivityViewList = new ObservableCollection<dbmlWorkFlowActivityView>(from dRow in ds.Tables["WorkflowActivityView"].AsEnumerable()
-        //                                                                                                                      select (GeneralFunction.ConvertTableToList<dbmlWorkFlowActivityView>(dRow)));
-        //        }
-        //        objreturndbmlBooking.objdbmlStatus.StatusId = 1;
-        //        objreturndbmlBooking.objdbmlStatus.Status = "Successful";
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        objreturndbmlBooking.objdbmlStatus.StatusId = 99;
-        //        objreturndbmlBooking.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
-        //    }
-        //    return objreturndbmlBooking;
-        //}
+                returndbmlBookingReturn = BookingViewGetByBookingId(intBookingId);
+            }
+            catch (Exception ex)
+            {
+                returndbmlBookingReturn.objdbmlStatus.StatusId = 99;
+                returndbmlBookingReturn.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+                trans.Rollback();
+            }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return returndbmlBookingReturn;
+        }
         #endregion
 
         #region Vehicle Componants

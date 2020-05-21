@@ -155,52 +155,6 @@
       <Column Name="ZZToDate" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="[Transaction].BookingView" Member="dbmlBookingViews">
-    <Type Name="dbmlBookingView">
-      <Column Name="BookingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AuditId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CreateId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="UpdateId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="BPId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="BookingDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="BookingNo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="DocNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CompanyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="DepartmentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Project" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ProjectManager" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="PMEmailId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="PMMobileNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ContactPerson" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="MobileNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="EmailId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Remark" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="NoOfVehicle" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NoOfDrivers" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NoOfOtherPersons" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="StatusPropId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="Discount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="TaxableAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="TaxAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="TotalAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="IsDelete" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="PODate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="PONumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="PODocPath" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="RFQId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TabStatusId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ZZBookingDate" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="ZZBookingType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="ZZWorkFlowId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ZZStatusWorkflowId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ZZStatusPropertyId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ZZCreatedBy" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="ZZUpdatedBy" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="Front.TrackBookingTimeDetailIdViewFront" Member="dbmlTrackBookingTimeDetails">
     <Type Name="dbmlTrackBookingTimeDetail">
       <Column Name="TrackBookingTimeDetailId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -517,6 +471,61 @@
       <Column Name="ZZBookingDate" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="DepartmentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="WorkFlowId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="Front.ServiceDateViewFront" Member="dbmlServiceDateViewFronts">
+    <Type Name="dbmlServiceDateViewFront">
+      <Column Name="BookingId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BookingDay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ServiceDate" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="NewDate" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="[Transaction].BookingView" Member="dbmlBookingViews">
+    <Type Name="dbmlBookingView">
+      <Column Name="BookingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AuditId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="BPId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BookingDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="BookingNo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DocNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CompanyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DepartmentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Project" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ProjectManager" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PMEmailId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PMMobileNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ContactPerson" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MobileNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EmailId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="NoOfVehicle" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NoOfDrivers" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NoOfOtherPersons" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StatusPropId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Discount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TaxableAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TaxAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TotalAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="IsDelete" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PODate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PONumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PODocPath" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="RFQId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TabStatusId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZZBookingDate" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ZZBookingType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ZZWorkFlowId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZZStatusWorkflowId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZZStatusPropertyId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZZCreatedBy" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ZZUpdatedBy" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ZZRFQBPId" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

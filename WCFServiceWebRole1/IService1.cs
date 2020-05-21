@@ -63,6 +63,12 @@ namespace WCFPGMSFront
 
         [OperationContract]
         returndbmlBooking RFQBookingDetailInsertByBookingIdBPId(int intRFQBookingId, int intRFQBPId, int intBPId, int intUserId, int intCompanyId);
+
+        [OperationContract]
+        returndbmlServiceDateViewFront ServiceDateViewFrontGetByBookingId(int intBookingId);
+
+        [OperationContract]
+        returndbmlBooking UpdateServiceDateFrontByBookingIdDayDates(returndbmlServiceDateViewFront objreturndbmlServiceDateViewFront);
         #endregion
 
         #region Vehicle Componants
