@@ -113,6 +113,20 @@ namespace WCFPGMSFront
         public ObservableCollection<dbmlLablinkVorC> objdbmlLablinkVorC = new ObservableCollection<dbmlLablinkVorC>();
         public dbmlStatus objdbmlStatus = new dbmlStatus();
     }
+
+    public class returndbmlRFQBookingDetail
+    {
+        public ObservableCollection<dbmlBookingView> objdbmlBookingView = new ObservableCollection<dbmlBookingView>();
+        public ObservableCollection<dbmlListOfVehicleComponent> objdbmlListOfVehicleComponent = new ObservableCollection<dbmlListOfVehicleComponent>();
+        public ObservableCollection<dbmlTrackBookingDetail> objdbmlTrackBookingDetail = new ObservableCollection<dbmlTrackBookingDetail>();
+        public ObservableCollection<dbmlTrackBookingTimeDetail> objdbmlTrackBookingTimeDetail = new ObservableCollection<dbmlTrackBookingTimeDetail>();
+        public ObservableCollection<dbmlTrackBookingTimeSummary> objdbmlTrackBookingTimeSummary = new ObservableCollection<dbmlTrackBookingTimeSummary>();
+        public ObservableCollection<dbmlLabBookingDetailViewFront> objdbmlLabBookingDetailViewFront = new ObservableCollection<dbmlLabBookingDetailViewFront>();
+        public ObservableCollection<dbmlWorkshopBookingDetailViewFront> objdbmlWorkshopBookingDetailViewFront = new ObservableCollection<dbmlWorkshopBookingDetailViewFront>();
+        public ObservableCollection<dbmlBookingDetailAddOnServicesViewFront> objdbmlBookingDetailAddOnServicesViewFront = new ObservableCollection<dbmlBookingDetailAddOnServicesViewFront>();
+
+        public dbmlStatus objdbmlStatus = new dbmlStatus();
+    }
     #endregion
 
 
