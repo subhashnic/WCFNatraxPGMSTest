@@ -986,6 +986,7 @@ namespace WCFPGMSFront
                     ///////////////////////////// ListOfVehicleComponentInsert ///////////////////////////////////////
                     foreach (var itm in objreturndbmlRFQBookingDetail.objdbmlListOfVehicleComponent)
                     {
+                        int intVehCompId = itm.VehCompId;
                         itm.VehCompId = -1;
                         itm.DocId = intBookingId;
                         itm.BPId = intBPId;
@@ -1009,6 +1010,29 @@ namespace WCFPGMSFront
                         db.AddOutParameter(cmd, "IdOut", DbType.Int32, 0);
                         db.ExecuteNonQuery(cmd, trans);
                         int intIdOut = (int)db.GetParameterValue(cmd, "@IdOut");
+
+                        if(objreturndbmlRFQBookingDetail.objdbmlTrackBookingDetail!=null && 
+                            objreturndbmlRFQBookingDetail.objdbmlTrackBookingDetail.Where(x => x.VehicleId == intVehCompId)!=null &&
+                            objreturndbmlRFQBookingDetail.objdbmlTrackBookingDetail.Where(x => x.VehicleId == intVehCompId).Count()>0)
+                        {
+                            objreturndbmlRFQBookingDetail.objdbmlTrackBookingDetail.Where(x => x.VehicleId == intVehCompId).ToList().ForEach(s => s.VehicleId = intIdOut);
+                        }
+                        if (objreturndbmlRFQBookingDetail.objdbmlTrackBookingTimeDetail != null &&
+                           objreturndbmlRFQBookingDetail.objdbmlTrackBookingTimeDetail.Where(x => x.VehicleId == intVehCompId) != null &&
+                           objreturndbmlRFQBookingDetail.objdbmlTrackBookingTimeDetail.Where(x => x.VehicleId == intVehCompId).Count() > 0)
+                        {
+                            objreturndbmlRFQBookingDetail.objdbmlTrackBookingTimeDetail.Where(x => x.VehicleId == intVehCompId).ToList().ForEach(s => s.VehicleId = intIdOut);
+                        }
+                        if (objreturndbmlRFQBookingDetail.objdbmlLabBookingDetailViewFront != null &&
+                           objreturndbmlRFQBookingDetail.objdbmlLabBookingDetailViewFront.Where(x => x.VehCompId == intVehCompId) != null &&
+                           objreturndbmlRFQBookingDetail.objdbmlLabBookingDetailViewFront.Where(x => x.VehCompId == intVehCompId).Count() > 0)
+                        {
+                            objreturndbmlRFQBookingDetail.objdbmlLabBookingDetailViewFront.Where(x => x.VehCompId == intVehCompId).ToList().ForEach(s => s.VehCompId = intIdOut);
+                        }
+
+                      
+                        
+
                     }
 
                     ///////////////////////////// TrackBookingTimeDetailInsertFront ///////////////////////////////////////
