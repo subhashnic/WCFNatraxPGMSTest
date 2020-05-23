@@ -526,6 +526,28 @@
       <Column Name="ZZCreatedBy" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="ZZUpdatedBy" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="ZZRFQBPId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZZRFQBookingNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ZZRFQBookingDate" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ZZWorkflowRemark" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="Front.WorkFlowActivityTrackView" Member="dbmlWorkFlowActivityTrackViews">
+    <Type Name="dbmlWorkFlowActivityTrackView">
+      <Column Name="WorkFlowActivityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BPId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DocId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PriorUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PriorUserName" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="DateTime" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="UpdateDateTime" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="WorkFlowName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ActivityName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ActivityDesc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="WorkFlowStatus" Type="System.String" DbType="NVarChar(101)" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

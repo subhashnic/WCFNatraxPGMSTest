@@ -233,6 +233,14 @@ namespace WCFServiceTemplate
 				return this.GetTable<dbmlBookingView>();
 			}
 		}
+		
+		public System.Data.Linq.Table<dbmlWorkFlowActivityTrackView> dbmlWorkFlowActivityTrackViews
+		{
+			get
+			{
+				return this.GetTable<dbmlWorkFlowActivityTrackView>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
@@ -8130,6 +8138,12 @@ namespace WCFServiceTemplate
 		
 		private System.Nullable<int> _ZZRFQBPId;
 		
+		private string _ZZRFQBookingNo;
+		
+		private string _ZZRFQBookingDate;
+		
+		private string _ZZWorkflowRemark;
+		
 		public dbmlBookingView()
 		{
 		}
@@ -8818,6 +8832,333 @@ namespace WCFServiceTemplate
 				if ((this._ZZRFQBPId != value))
 				{
 					this._ZZRFQBPId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZRFQBookingNo", DbType="NVarChar(50)")]
+		public string ZZRFQBookingNo
+		{
+			get
+			{
+				return this._ZZRFQBookingNo;
+			}
+			set
+			{
+				if ((this._ZZRFQBookingNo != value))
+				{
+					this._ZZRFQBookingNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZRFQBookingDate", DbType="VarChar(10)")]
+		public string ZZRFQBookingDate
+		{
+			get
+			{
+				return this._ZZRFQBookingDate;
+			}
+			set
+			{
+				if ((this._ZZRFQBookingDate != value))
+				{
+					this._ZZRFQBookingDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZWorkflowRemark", DbType="NVarChar(1000)")]
+		public string ZZWorkflowRemark
+		{
+			get
+			{
+				return this._ZZWorkflowRemark;
+			}
+			set
+			{
+				if ((this._ZZWorkflowRemark != value))
+				{
+					this._ZZWorkflowRemark = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="Front.WorkFlowActivityTrackView")]
+	public partial class dbmlWorkFlowActivityTrackView
+	{
+		
+		private int _WorkFlowActivityId;
+		
+		private int _BPId;
+		
+		private int _DocId;
+		
+		private int _UserId;
+		
+		private int _PriorUserId;
+		
+		private string _UserName;
+		
+		private string _PriorUserName;
+		
+		private string _DateTime;
+		
+		private string _UpdateDateTime;
+		
+		private string _WorkFlowName;
+		
+		private string _Status;
+		
+		private string _ActivityName;
+		
+		private string _ActivityDesc;
+		
+		private string _WorkFlowStatus;
+		
+		private string _Remark;
+		
+		public dbmlWorkFlowActivityTrackView()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WorkFlowActivityId", DbType="Int NOT NULL")]
+		public int WorkFlowActivityId
+		{
+			get
+			{
+				return this._WorkFlowActivityId;
+			}
+			set
+			{
+				if ((this._WorkFlowActivityId != value))
+				{
+					this._WorkFlowActivityId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BPId", DbType="Int NOT NULL")]
+		public int BPId
+		{
+			get
+			{
+				return this._BPId;
+			}
+			set
+			{
+				if ((this._BPId != value))
+				{
+					this._BPId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocId", DbType="Int NOT NULL")]
+		public int DocId
+		{
+			get
+			{
+				return this._DocId;
+			}
+			set
+			{
+				if ((this._DocId != value))
+				{
+					this._DocId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
+		public int UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this._UserId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PriorUserId", DbType="Int NOT NULL")]
+		public int PriorUserId
+		{
+			get
+			{
+				return this._PriorUserId;
+			}
+			set
+			{
+				if ((this._PriorUserId != value))
+				{
+					this._PriorUserId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(200)")]
+		public string UserName
+		{
+			get
+			{
+				return this._UserName;
+			}
+			set
+			{
+				if ((this._UserName != value))
+				{
+					this._UserName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PriorUserName", DbType="NVarChar(200)")]
+		public string PriorUserName
+		{
+			get
+			{
+				return this._PriorUserName;
+			}
+			set
+			{
+				if ((this._PriorUserName != value))
+				{
+					this._PriorUserName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateTime", DbType="NVarChar(4000)")]
+		public string DateTime
+		{
+			get
+			{
+				return this._DateTime;
+			}
+			set
+			{
+				if ((this._DateTime != value))
+				{
+					this._DateTime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDateTime", DbType="NVarChar(4000)")]
+		public string UpdateDateTime
+		{
+			get
+			{
+				return this._UpdateDateTime;
+			}
+			set
+			{
+				if ((this._UpdateDateTime != value))
+				{
+					this._UpdateDateTime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WorkFlowName", DbType="NVarChar(50)")]
+		public string WorkFlowName
+		{
+			get
+			{
+				return this._WorkFlowName;
+			}
+			set
+			{
+				if ((this._WorkFlowName != value))
+				{
+					this._WorkFlowName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActivityName", DbType="NVarChar(100)")]
+		public string ActivityName
+		{
+			get
+			{
+				return this._ActivityName;
+			}
+			set
+			{
+				if ((this._ActivityName != value))
+				{
+					this._ActivityName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActivityDesc", DbType="NVarChar(50)")]
+		public string ActivityDesc
+		{
+			get
+			{
+				return this._ActivityDesc;
+			}
+			set
+			{
+				if ((this._ActivityDesc != value))
+				{
+					this._ActivityDesc = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WorkFlowStatus", DbType="NVarChar(101)")]
+		public string WorkFlowStatus
+		{
+			get
+			{
+				return this._WorkFlowStatus;
+			}
+			set
+			{
+				if ((this._WorkFlowStatus != value))
+				{
+					this._WorkFlowStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remark", DbType="NVarChar(1000)")]
+		public string Remark
+		{
+			get
+			{
+				return this._Remark;
+			}
+			set
+			{
+				if ((this._Remark != value))
+				{
+					this._Remark = value;
 				}
 			}
 		}

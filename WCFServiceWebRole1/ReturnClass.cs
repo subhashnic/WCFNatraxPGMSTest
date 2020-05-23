@@ -134,6 +134,12 @@ namespace WCFPGMSFront
         public dbmlStatus objdbmlStatus = new dbmlStatus();
     }
 
+    public class returndbmlWorkFlowActivityTrackView
+    {
+        public ObservableCollection<dbmlWorkFlowActivityTrackView> objdbmlWorkFlowActivityTrackView = new ObservableCollection<dbmlWorkFlowActivityTrackView>();
+        public dbmlStatus objdbmlStatus = new dbmlStatus();
+    }
+
     #endregion
 
 

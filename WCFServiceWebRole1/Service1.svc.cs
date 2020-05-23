@@ -1049,7 +1049,7 @@ namespace WCFPGMSFront
                             db.ExecuteNonQuery(cmd, trans);
                         }
 
-                        cmd = db.GetStoredProcCommand("[Front].[TrackBookingDetailInsertFront]", intBookingId, intTrackGroupId, intVehicleId);
+                        cmd = db.GetStoredProcCommand("[Front].[TrackBookingDetailInsertFront]", intBookingId, intTrackGroupId, intVehicleId, intCategoryId);
                         db.ExecuteNonQuery(cmd, trans);
                     }
 
@@ -1233,6 +1233,9 @@ namespace WCFPGMSFront
                     db.ExecuteNonQuery(cmd, trans);
 
                 }
+
+                cmd = db.GetStoredProcCommand("[Front].[GenerateTrackBookingDetailByBookingIdforRFQFront]", intBookingId);
+                db.ExecuteNonQuery(cmd, trans);
 
                 trans.Commit();
 
@@ -1589,7 +1592,7 @@ namespace WCFPGMSFront
 
                 }
 
-                cmd = db.GetStoredProcCommand("[Front].[TrackBookingDetailInsertFront]", intBookingId, intTrackGroupId, intVehicleId);
+                cmd = db.GetStoredProcCommand("[Front].[TrackBookingDetailInsertFront]", intBookingId, intTrackGroupId, intVehicleId, intCategoryId);
                 db.ExecuteNonQuery(cmd, trans);
 
                 cmd = db.GetStoredProcCommand("[Front].[UpdateTabStatusToBookingByBookingId]", intBookingId, 40);
@@ -1715,6 +1718,34 @@ namespace WCFPGMSFront
                 }
             }
             return objreturndbmlBooking;
+        }
+
+        public returndbmlWorkFlowActivityTrackView WorkFlowActivityTrackGetByBPIdDocId(int intBPId, int intDocId)
+        {
+            returndbmlWorkFlowActivityTrackView objreturndbmlWorkFlowActivityTrackView = new returndbmlWorkFlowActivityTrackView();
+            try
+            {
+                DataSet ds = new DataSet();
+                Database db = new SqlDatabase(GF.StrSetConnection());
+                System.Data.Common.DbCommand cmdGet = null;
+
+                cmdGet = db.GetStoredProcCommand("[Front].[WorkFlowActivityTrackGetByBPIdDocId]", intBPId, intDocId);
+                db.LoadDataSet(cmdGet, ds, new string[] { "WorkFlowView" });
+                if (ds.Tables["WorkFlowView"] != null && ds.Tables["WorkFlowView"].Rows.Count > 0)
+                {
+                    objreturndbmlWorkFlowActivityTrackView.objdbmlWorkFlowActivityTrackView = new ObservableCollection<dbmlWorkFlowActivityTrackView>
+                                                                    (from dRow in ds.Tables["WorkFlowView"].AsEnumerable() select (ConvertTableToListNew<dbmlWorkFlowActivityTrackView>(dRow)));
+                }
+
+                objreturndbmlWorkFlowActivityTrackView.objdbmlStatus.StatusId = 1;
+                objreturndbmlWorkFlowActivityTrackView.objdbmlStatus.Status = "Successful";
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlWorkFlowActivityTrackView.objdbmlStatus.StatusId = 99;
+                objreturndbmlWorkFlowActivityTrackView.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+            }
+            return objreturndbmlWorkFlowActivityTrackView;
         }
         #endregion
 

@@ -108,6 +108,9 @@ namespace WCFPGMSFront
 
         [OperationContract]
         returndbmlBooking WorkFlowActivityInsert(int intDocId, int intBPId, int intWorkPlowId, int intStatusId, string strRemark, int intCreateId);
+
+        [OperationContract]
+        returndbmlWorkFlowActivityTrackView WorkFlowActivityTrackGetByBPIdDocId(int intBPId, int intDocId);
         #endregion
 
         #region Workshop Booking Detail
