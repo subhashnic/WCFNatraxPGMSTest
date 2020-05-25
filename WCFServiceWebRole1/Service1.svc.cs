@@ -1067,12 +1067,14 @@ namespace WCFPGMSFront
 
                     foreach (var itmBD in objreturndbmlRFQBookingDetail.objdbmlTrackBookingDetail)
                     {
+                        ObservableCollection<dbmlTrackBookingTimeDetail> TrackDetailTimeList = new ObservableCollection<dbmlTrackBookingTimeDetail>(objreturndbmlRFQBookingDetail.objdbmlTrackBookingTimeDetail.Where(x => x.BookingDetailId == itmBD.TrackBookingDetailId));
+
                         int intTrackGroupId = (int)itmBD.TrackGroupId;
                         int intVehicleId = (int)itmBD.VehicleId;
                         int intCategoryId = (int)itmBD.CategoryPropId;
-                        decimal decRate = Math.Round(Convert.ToDecimal(itmBD.QuotAmount / itmBD.BillingHrs), 2);
+                        decimal decRate = Math.Round(Convert.ToDecimal(Convert.ToDecimal(itmBD.QuotAmount) / Convert.ToDecimal(itmBD.BillingHrs)), 2);                      
 
-                        foreach (var itm in objreturndbmlRFQBookingDetail.objdbmlTrackBookingTimeDetail.Where(x => x.BookingDetailId == itmBD.TrackBookingDetailId))
+                        foreach (var itm in TrackDetailTimeList)
                         {
                             itm.TrackBookingTimeDetailId = -1;
                             itm.BookingId = intBookingId;
