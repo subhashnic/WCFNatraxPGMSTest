@@ -128,5 +128,11 @@
         <elementListCompartment Id="1eeeb33e-73e7-4c4f-88ea-2ff788e446c0" absoluteBounds="0.63999999999999968, 4.085, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="d0113d82-5163-4a40-9aaa-317c19785c96" isExpanded="false" absoluteBounds="3.25, 3.625, 2, 0.45">
+      <DataClassMoniker Name="/TransactionTableDataContext/dbmlDashBoardWorkFlowViewFront" />
+      <nestedChildShapes>
+        <elementListCompartment Id="67de5394-409c-4b47-8cda-17475f803e8e" absoluteBounds="3.2649999999999997, 4.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

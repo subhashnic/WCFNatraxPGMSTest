@@ -550,4 +550,14 @@
       <Column Name="Remark" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="Front.DashBoardWorkFlowViewFront" Member="dbmlDashBoardWorkFlowViewFronts">
+    <Type Name="dbmlDashBoardWorkFlowViewFront">
+      <Column Name="DashBoardId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Caption" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="BPId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WorkFlowId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StatusPropId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Counts" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

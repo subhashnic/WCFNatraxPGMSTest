@@ -241,6 +241,14 @@ namespace WCFServiceTemplate
 				return this.GetTable<dbmlWorkFlowActivityTrackView>();
 			}
 		}
+		
+		public System.Data.Linq.Table<dbmlDashBoardWorkFlowViewFront> dbmlDashBoardWorkFlowViewFronts
+		{
+			get
+			{
+				return this.GetTable<dbmlDashBoardWorkFlowViewFront>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
@@ -9159,6 +9167,123 @@ namespace WCFServiceTemplate
 				if ((this._Remark != value))
 				{
 					this._Remark = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="Front.DashBoardWorkFlowViewFront")]
+	public partial class dbmlDashBoardWorkFlowViewFront
+	{
+		
+		private System.Nullable<int> _DashBoardId;
+		
+		private string _Caption;
+		
+		private System.Nullable<int> _BPId;
+		
+		private System.Nullable<int> _WorkFlowId;
+		
+		private System.Nullable<int> _StatusPropId;
+		
+		private System.Nullable<int> _Counts;
+		
+		public dbmlDashBoardWorkFlowViewFront()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DashBoardId", DbType="Int")]
+		public System.Nullable<int> DashBoardId
+		{
+			get
+			{
+				return this._DashBoardId;
+			}
+			set
+			{
+				if ((this._DashBoardId != value))
+				{
+					this._DashBoardId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Caption", DbType="VarChar(100)")]
+		public string Caption
+		{
+			get
+			{
+				return this._Caption;
+			}
+			set
+			{
+				if ((this._Caption != value))
+				{
+					this._Caption = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BPId", DbType="Int")]
+		public System.Nullable<int> BPId
+		{
+			get
+			{
+				return this._BPId;
+			}
+			set
+			{
+				if ((this._BPId != value))
+				{
+					this._BPId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WorkFlowId", DbType="Int")]
+		public System.Nullable<int> WorkFlowId
+		{
+			get
+			{
+				return this._WorkFlowId;
+			}
+			set
+			{
+				if ((this._WorkFlowId != value))
+				{
+					this._WorkFlowId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusPropId", DbType="Int")]
+		public System.Nullable<int> StatusPropId
+		{
+			get
+			{
+				return this._StatusPropId;
+			}
+			set
+			{
+				if ((this._StatusPropId != value))
+				{
+					this._StatusPropId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Counts", DbType="Int")]
+		public System.Nullable<int> Counts
+		{
+			get
+			{
+				return this._Counts;
+			}
+			set
+			{
+				if ((this._Counts != value))
+				{
+					this._Counts = value;
 				}
 			}
 		}

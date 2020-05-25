@@ -488,6 +488,34 @@ namespace WCFPGMSFront
             return objreturndbmlCompanyView;
         }
 
+        public returndbmlDashBoardWorkFlowViewFront DashBoardWorkFlowCount(int intUserId,int intCompanyId)
+        {
+            returndbmlDashBoardWorkFlowViewFront objreturndbmlDashBoardWorkFlowViewFront = new returndbmlDashBoardWorkFlowViewFront();
+            try
+            {
+                DataSet ds = new DataSet();
+                Database db = new SqlDatabase(GF.StrSetConnection());
+                System.Data.Common.DbCommand cmdGet = null;
+
+                cmdGet = db.GetStoredProcCommand("[Setting].[DashBoardWorkFlowCount]", intUserId, intCompanyId);
+                db.LoadDataSet(cmdGet, ds, new string[] { "DashBoard" });
+                if (ds.Tables["DashBoard"].Rows.Count > 0)
+                {
+                    objreturndbmlDashBoardWorkFlowViewFront.objdbmlDashBoardWorkFlowViewFront = new ObservableCollection<dbmlDashBoardWorkFlowViewFront>(from dRow in ds.Tables["DashBoard"].AsEnumerable()
+                                                                                                                                                         select (ConvertTableToListNew<dbmlDashBoardWorkFlowViewFront>(dRow)));
+                }
+
+                objreturndbmlDashBoardWorkFlowViewFront.objdbmlStatus.StatusId = 1;
+                objreturndbmlDashBoardWorkFlowViewFront.objdbmlStatus.Status = "Successful";
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlDashBoardWorkFlowViewFront.objdbmlStatus.StatusId = 99;
+                objreturndbmlDashBoardWorkFlowViewFront.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+            }
+            return objreturndbmlDashBoardWorkFlowViewFront;
+        }
+
         #endregion
 
         #region Properties / OptionList
@@ -1406,14 +1434,35 @@ namespace WCFPGMSFront
             System.Data.Common.DbCommand cmd = null;
             try
             {
-                cmd = db.GetStoredProcCommand("[Transaction].[ListOfVehicleComponentDeleteByDocIdCompId]", intDocId, intVehCompId);
+                cmd = db.GetStoredProcCommand("[Transaction].[ListOfVehicleComponentDeleteByDocIdCompId]");
+                db.AddInParameter(cmd, "@DocId", DbType.Int32, intDocId);
+                db.AddInParameter(cmd, "@VehCompId", DbType.Int32, intVehCompId);
+                db.AddOutParameter(cmd, "@IDOut", DbType.Int32, 0);
+
                 db.ExecuteNonQuery(cmd, trans);
+                int intIdOut = (int)db.GetParameterValue(cmd, "@IDOut");             
+                if(intIdOut>=0)
+                {
+                    trans.Commit();
+                    objreturndbmlListOfVehicleComponent.objdbmlStatus.StatusId = 1;
+                    objreturndbmlListOfVehicleComponent.objdbmlStatus.Status = "Successful";
 
-                trans.Commit();
-                objreturndbmlListOfVehicleComponent.objdbmlStatus.StatusId = 1;
-                objreturndbmlListOfVehicleComponent.objdbmlStatus.Status = "Successful";
+                    objreturndbmlListOfVehicleComponent = ListOfVehicleComponentGetByDocId(intDocId);
+                }
+                else
+                {
+                    trans.Rollback();
+                    objreturndbmlListOfVehicleComponent.objdbmlStatus.StatusId = 10;
+                    if(intIdOut==-1)
+                    {
+                        objreturndbmlListOfVehicleComponent.objdbmlStatus.Status = "Vehicle details can not be deleted, because it is used by 'Track Booking Details'";
+                    }
+                    else if (intIdOut == -2)
+                    {
+                        objreturndbmlListOfVehicleComponent.objdbmlStatus.Status = "Vehicle/Component details can not be deleted, because it is used by 'Lab Booking Details'";
+                    }
 
-                objreturndbmlListOfVehicleComponent = ListOfVehicleComponentGetByDocId(intDocId);
+                }                 
             }
             catch (Exception ex)
             {

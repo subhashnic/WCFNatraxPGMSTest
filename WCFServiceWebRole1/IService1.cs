@@ -18,6 +18,9 @@ namespace WCFPGMSFront
         [OperationContract]
         returndbmlCompanyView CompanyViewGetByCompanyId(int intCompanyId);
 
+        [OperationContract]
+        returndbmlDashBoardWorkFlowViewFront DashBoardWorkFlowCount(int intUserId, int intCompanyId);
+
         #endregion
 
         #region Properties / OptionList
