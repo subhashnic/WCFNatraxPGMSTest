@@ -16,10 +16,13 @@ namespace WCFPGMSFront
         returndbmlUser UserGetByLoginId(string strLoginId, string strPassword);
 
         [OperationContract]
-        returndbmlCompanyView CompanyViewGetByCompanyId(int intCompanyId);
+        returndbmlDashBoardWorkFlowViewFront DashBoardWorkFlowCount(int intUserId, int intCompanyId);
 
         [OperationContract]
-        returndbmlDashBoardWorkFlowViewFront DashBoardWorkFlowCount(int intUserId, int intCompanyId);
+        returndbmlUser UserViewFrontGetByCompanyId(int intCompanyId);
+
+        [OperationContract]
+        returndbmlUser UserViewFrontGetByDepartmentId(int intDepartmentId);
 
         #endregion
 
@@ -29,6 +32,35 @@ namespace WCFPGMSFront
 
         [OperationContract]
         returndbmlOptionList OptionListGetByPropertyId(int intPropertyId);
+        #endregion
+
+        #region Company/Department      
+        [OperationContract]
+        returndbmlCompanyView CustomerMasterInsertFront(returndbmlCompanyView objreturndbmlCompanyView);
+
+        [OperationContract]
+        returndbmlUser UsereMailIdVerification(int intUserId);
+
+        [OperationContract]
+        returndbmlUser UserPaswordReset(int intUserId, string strPassword);
+
+        [OperationContract]
+        returndbmlCompanyDepartment CompanyDepartmentInsert(returndbmlCompanyDepartment objreturndbmlCompanyDepartment);
+
+        [OperationContract]
+        returndbmlCompanyDepartment CompanyDepartmentUpdate(returndbmlCompanyDepartment objreturndbmlCompanyDepartment);
+
+        [OperationContract]
+        returndbmlUser UserInsert(returndbmlUser objreturndbmlUser);
+
+        [OperationContract]
+        returndbmlUser UserUpdate(returndbmlUser objreturndbmlUser);
+
+        [OperationContract]
+        returndbmlCompanyView CompanyViewGetByCompanyId(int intCompanyId);
+
+        [OperationContract]
+        returndbmlCompanyDepartment CompanyDepartmentGetByCustomerMasterId(int intCustomerMasterId);
         #endregion
 
         #region Booking
@@ -49,9 +81,6 @@ namespace WCFPGMSFront
         [OperationContract]
         returndbmlBooking BookingViewGetByCompanyIdStatusPropId(int intCompanyId, int intStatusPropId);
         
-        [OperationContract]
-        returndbmlCompanyDepartment CompanyDepartmentGetByCustomerMasterId(int intCustomerMasterId);
-
         [OperationContract]
         returndbmlBookingSearchView BookingSearchViewGetByCompanyIdFromDateToDateFront(int intCompanyId, DateTime dtFromDate, DateTime dtToDate, int intBPId, int intStatusPropId);
 

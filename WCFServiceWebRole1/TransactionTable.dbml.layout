@@ -8,12 +8,6 @@
         <elementListCompartment Id="d7201057-9ef2-4bd9-aaea-d8a07f02ac7a" absoluteBounds="0.64000000000000057, 0.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="7aeb7481-248a-4210-af85-096495b0dc2b" isExpanded="false" absoluteBounds="3.25, 0.5, 2, 0.45">
-      <DataClassMoniker Name="/TransactionTableDataContext/dbmlUserView" />
-      <nestedChildShapes>
-        <elementListCompartment Id="ad1e866d-77b4-4c7c-b7cc-01ee1f57e9d9" absoluteBounds="3.2649999999999997, 0.96, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="904a23ef-6406-440c-83be-3fb62ed6f85a" isExpanded="false" absoluteBounds="8.375, 0.5, 2, 0.45">
       <DataClassMoniker Name="/TransactionTableDataContext/dbmlProperty" />
       <nestedChildShapes>
@@ -24,12 +18,6 @@
       <DataClassMoniker Name="/TransactionTableDataContext/dbmlServicesView" />
       <nestedChildShapes>
         <elementListCompartment Id="8a7811e0-991c-431e-aa6c-31b3bf3201f9" absoluteBounds="3.2650000000000006, 1.585, 1.9700000000000002, 4.672322591145833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="ad39c6fd-7fa8-4ed4-abab-678085d22b64" isExpanded="false" absoluteBounds="5.75, 0.5, 2, 0.45">
-      <DataClassMoniker Name="/TransactionTableDataContext/dbmlCompanyDepartment" />
-      <nestedChildShapes>
-        <elementListCompartment Id="3fe044cb-528e-4b84-99c0-2e1f85b82962" absoluteBounds="5.7650000000000006, 0.96, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="12316eae-7605-49f3-80e0-2352d06e37e7" isExpanded="false" absoluteBounds="8.375, 1.125, 2, 0.45">
@@ -60,12 +48,6 @@
       <DataClassMoniker Name="/TransactionTableDataContext/dbmlWorkFlowView" />
       <nestedChildShapes>
         <elementListCompartment Id="a154b313-3577-4994-9f53-ee79b74d82ef" absoluteBounds="0.63999999999999968, 2.835, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="614ae9b2-3fc8-4af9-8e7f-207b11ab4a8a" isExpanded="false" absoluteBounds="3.25, 2.375, 2, 0.45">
-      <DataClassMoniker Name="/TransactionTableDataContext/dbmlCompanyView" />
-      <nestedChildShapes>
-        <elementListCompartment Id="a70b3df4-b54e-45bf-8e63-455bb81d2ff6" absoluteBounds="3.2649999999999997, 2.835, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="bc16ec0e-442f-488e-a167-37a194843e52" isExpanded="false" absoluteBounds="0.625, 1.125, 2, 0.45">
@@ -128,10 +110,28 @@
         <elementListCompartment Id="1eeeb33e-73e7-4c4f-88ea-2ff788e446c0" absoluteBounds="0.63999999999999968, 4.085, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="d0113d82-5163-4a40-9aaa-317c19785c96" isExpanded="false" absoluteBounds="3.25, 3.625, 2, 0.45">
+    <classShape Id="7711da84-664b-49ce-81b2-46e7d9b278d1" isExpanded="false" absoluteBounds="3.25, 2.375, 2, 0.45">
+      <DataClassMoniker Name="/TransactionTableDataContext/dbmlCompanyDepartment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d5d54543-1250-4e80-aee9-f712530ead39" absoluteBounds="3.2649999999999997, 2.835, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7afa01d9-5ee2-4dbc-b952-431ac86ce8d4" isExpanded="false" absoluteBounds="5.75, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/TransactionTableDataContext/dbmlCompanyView" />
+      <nestedChildShapes>
+        <elementListCompartment Id="76eaa69a-528b-4ff0-80cc-3f13743008bf" absoluteBounds="5.7650000000000006, 0.96, 1.9700000000000002, 4.672322591145833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f778ae40-11f6-4af2-9f00-5cee5c3d8964" isExpanded="false" absoluteBounds="3.25, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/TransactionTableDataContext/dbmlUserView" />
+      <nestedChildShapes>
+        <elementListCompartment Id="11a9f387-4d65-43c6-b09b-6b0bb584b89b" absoluteBounds="3.2649999999999997, 0.96, 1.9700000000000002, 6.2107340494791661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b5731ff9-8157-4d35-a677-45d72e093abb" isExpanded="false" absoluteBounds="3.25, 3.625, 2, 0.45">
       <DataClassMoniker Name="/TransactionTableDataContext/dbmlDashBoardWorkFlowViewFront" />
       <nestedChildShapes>
-        <elementListCompartment Id="67de5394-409c-4b47-8cda-17475f803e8e" absoluteBounds="3.2649999999999997, 4.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="aaee3374-c567-413b-89b6-9955aaa48d99" absoluteBounds="3.2649999999999997, 4.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

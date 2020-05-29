@@ -12,7 +12,7 @@ namespace WCFPGMSFront
 
     public class returndbmlUser
     {
-        public ObservableCollection<dbmlUserView> objdbmlUserView = new ObservableCollection<dbmlUserView>();
+        public ObservableCollection<dbmlUserView> objdbmlUserView = new ObservableCollection<dbmlUserView>();       
         public dbmlStatus objdbmlStatus = new dbmlStatus();
     }
 
@@ -21,7 +21,15 @@ namespace WCFPGMSFront
         public ObservableCollection<dbmlProperty> objdbmlProperty = new ObservableCollection<dbmlProperty>();
         public dbmlStatus objdbmlStatus = new dbmlStatus();
     }
-    
+
+    public class returndbmlCompanyView
+    {
+        public ObservableCollection<dbmlCompanyView> objdbmlCompanyView = new ObservableCollection<dbmlCompanyView>();
+        public ObservableCollection<dbmlUserView> objdbmlUserView = new ObservableCollection<dbmlUserView>();
+
+        public dbmlStatus objdbmlStatus = new dbmlStatus();
+    }
+
     public class returndbmlCompanyDepartment
     {
         public ObservableCollection<dbmlCompanyDepartment> objdbmlCompanyDepartment = new ObservableCollection<dbmlCompanyDepartment>();
@@ -73,14 +81,7 @@ namespace WCFPGMSFront
      
         public dbmlStatus objdbmlStatus = new dbmlStatus();
     }
-
-    public class returndbmlCompanyView
-    {
-        public ObservableCollection<dbmlCompanyView> objdbmlCompanyView = new ObservableCollection<dbmlCompanyView>();
-
-        public dbmlStatus objdbmlStatus = new dbmlStatus();
-    }
-
+       
     public class returndbmlWorkshopBookingDetailViewFront
     {
         public ObservableCollection<dbmlWorkshopBookingDetailViewFront> objdbmlWorkshopBookingDetailViewFront = new ObservableCollection<dbmlWorkshopBookingDetailViewFront>();

@@ -33,9 +33,6 @@ namespace WCFServiceTemplate
     partial void InsertdbmlProperty(dbmlProperty instance);
     partial void UpdatedbmlProperty(dbmlProperty instance);
     partial void DeletedbmlProperty(dbmlProperty instance);
-    partial void InsertdbmlCompanyDepartment(dbmlCompanyDepartment instance);
-    partial void UpdatedbmlCompanyDepartment(dbmlCompanyDepartment instance);
-    partial void DeletedbmlCompanyDepartment(dbmlCompanyDepartment instance);
     partial void InsertdbmlOptionList(dbmlOptionList instance);
     partial void UpdatedbmlOptionList(dbmlOptionList instance);
     partial void DeletedbmlOptionList(dbmlOptionList instance);
@@ -82,14 +79,6 @@ namespace WCFServiceTemplate
 			}
 		}
 		
-		public System.Data.Linq.Table<dbmlUserView> dbmlUserViews
-		{
-			get
-			{
-				return this.GetTable<dbmlUserView>();
-			}
-		}
-		
 		public System.Data.Linq.Table<dbmlProperty> dbmlProperties
 		{
 			get
@@ -103,14 +92,6 @@ namespace WCFServiceTemplate
 			get
 			{
 				return this.GetTable<dbmlServicesView>();
-			}
-		}
-		
-		public System.Data.Linq.Table<dbmlCompanyDepartment> dbmlCompanyDepartments
-		{
-			get
-			{
-				return this.GetTable<dbmlCompanyDepartment>();
 			}
 		}
 		
@@ -151,14 +132,6 @@ namespace WCFServiceTemplate
 			get
 			{
 				return this.GetTable<dbmlWorkFlowView>();
-			}
-		}
-		
-		public System.Data.Linq.Table<dbmlCompanyView> dbmlCompanyViews
-		{
-			get
-			{
-				return this.GetTable<dbmlCompanyView>();
 			}
 		}
 		
@@ -242,6 +215,30 @@ namespace WCFServiceTemplate
 			}
 		}
 		
+		public System.Data.Linq.Table<dbmlCompanyDepartment> dbmlCompanyDepartments
+		{
+			get
+			{
+				return this.GetTable<dbmlCompanyDepartment>();
+			}
+		}
+		
+		public System.Data.Linq.Table<dbmlCompanyView> dbmlCompanyViews
+		{
+			get
+			{
+				return this.GetTable<dbmlCompanyView>();
+			}
+		}
+		
+		public System.Data.Linq.Table<dbmlUserView> dbmlUserViews
+		{
+			get
+			{
+				return this.GetTable<dbmlUserView>();
+			}
+		}
+		
 		public System.Data.Linq.Table<dbmlDashBoardWorkFlowViewFront> dbmlDashBoardWorkFlowViewFronts
 		{
 			get
@@ -291,393 +288,6 @@ namespace WCFServiceTemplate
 				if ((this._Status != value))
 				{
 					this._Status = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="Security.UserView")]
-	public partial class dbmlUserView
-	{
-		
-		private int _DbId;
-		
-		private int _UserId;
-		
-		private int _UserTypePropId;
-		
-		private string _UserCode;
-		
-		private string _UserName;
-		
-		private string _LoginId;
-		
-		private string _PassWord;
-		
-		private System.Nullable<System.DateTime> _StartDate;
-		
-		private System.Nullable<System.DateTime> _EndDate;
-		
-		private System.Nullable<bool> _Active;
-		
-		private string _Address;
-		
-		private string _MobileNo;
-		
-		private string _EmailId;
-		
-		private int _CreateId;
-		
-		private System.DateTime _CreateDate;
-		
-		private int _UpdateId;
-		
-		private System.DateTime _UpdateDate;
-		
-		private string _ZZStartDate;
-		
-		private string _ZZEndDate;
-		
-		private string _ZZUserType;
-		
-		private System.Nullable<int> _ZZCompanyId;
-		
-		public dbmlUserView()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DbId", DbType="Int NOT NULL")]
-		public int DbId
-		{
-			get
-			{
-				return this._DbId;
-			}
-			set
-			{
-				if ((this._DbId != value))
-				{
-					this._DbId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
-		public int UserId
-		{
-			get
-			{
-				return this._UserId;
-			}
-			set
-			{
-				if ((this._UserId != value))
-				{
-					this._UserId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserTypePropId", DbType="Int NOT NULL")]
-		public int UserTypePropId
-		{
-			get
-			{
-				return this._UserTypePropId;
-			}
-			set
-			{
-				if ((this._UserTypePropId != value))
-				{
-					this._UserTypePropId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserCode", DbType="NVarChar(50)")]
-		public string UserCode
-		{
-			get
-			{
-				return this._UserCode;
-			}
-			set
-			{
-				if ((this._UserCode != value))
-				{
-					this._UserCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
-		public string UserName
-		{
-			get
-			{
-				return this._UserName;
-			}
-			set
-			{
-				if ((this._UserName != value))
-				{
-					this._UserName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LoginId", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string LoginId
-		{
-			get
-			{
-				return this._LoginId;
-			}
-			set
-			{
-				if ((this._LoginId != value))
-				{
-					this._LoginId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PassWord", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
-		public string PassWord
-		{
-			get
-			{
-				return this._PassWord;
-			}
-			set
-			{
-				if ((this._PassWord != value))
-				{
-					this._PassWord = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> StartDate
-		{
-			get
-			{
-				return this._StartDate;
-			}
-			set
-			{
-				if ((this._StartDate != value))
-				{
-					this._StartDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> EndDate
-		{
-			get
-			{
-				return this._EndDate;
-			}
-			set
-			{
-				if ((this._EndDate != value))
-				{
-					this._EndDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Active", DbType="Bit")]
-		public System.Nullable<bool> Active
-		{
-			get
-			{
-				return this._Active;
-			}
-			set
-			{
-				if ((this._Active != value))
-				{
-					this._Active = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(200)")]
-		public string Address
-		{
-			get
-			{
-				return this._Address;
-			}
-			set
-			{
-				if ((this._Address != value))
-				{
-					this._Address = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MobileNo", DbType="NVarChar(12)")]
-		public string MobileNo
-		{
-			get
-			{
-				return this._MobileNo;
-			}
-			set
-			{
-				if ((this._MobileNo != value))
-				{
-					this._MobileNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmailId", DbType="NVarChar(100)")]
-		public string EmailId
-		{
-			get
-			{
-				return this._EmailId;
-			}
-			set
-			{
-				if ((this._EmailId != value))
-				{
-					this._EmailId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateId", DbType="Int NOT NULL")]
-		public int CreateId
-		{
-			get
-			{
-				return this._CreateId;
-			}
-			set
-			{
-				if ((this._CreateId != value))
-				{
-					this._CreateId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime NOT NULL")]
-		public System.DateTime CreateDate
-		{
-			get
-			{
-				return this._CreateDate;
-			}
-			set
-			{
-				if ((this._CreateDate != value))
-				{
-					this._CreateDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateId", DbType="Int NOT NULL")]
-		public int UpdateId
-		{
-			get
-			{
-				return this._UpdateId;
-			}
-			set
-			{
-				if ((this._UpdateId != value))
-				{
-					this._UpdateId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate", DbType="DateTime NOT NULL")]
-		public System.DateTime UpdateDate
-		{
-			get
-			{
-				return this._UpdateDate;
-			}
-			set
-			{
-				if ((this._UpdateDate != value))
-				{
-					this._UpdateDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZStartDate", DbType="NVarChar(30)")]
-		public string ZZStartDate
-		{
-			get
-			{
-				return this._ZZStartDate;
-			}
-			set
-			{
-				if ((this._ZZStartDate != value))
-				{
-					this._ZZStartDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZEndDate", DbType="NVarChar(30)")]
-		public string ZZEndDate
-		{
-			get
-			{
-				return this._ZZEndDate;
-			}
-			set
-			{
-				if ((this._ZZEndDate != value))
-				{
-					this._ZZEndDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZUserType", DbType="NVarChar(100)")]
-		public string ZZUserType
-		{
-			get
-			{
-				return this._ZZUserType;
-			}
-			set
-			{
-				if ((this._ZZUserType != value))
-				{
-					this._ZZUserType = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZCompanyId", DbType="Int")]
-		public System.Nullable<int> ZZCompanyId
-		{
-			get
-			{
-				return this._ZZCompanyId;
-			}
-			set
-			{
-				if ((this._ZZCompanyId != value))
-				{
-					this._ZZCompanyId = value;
 				}
 			}
 		}
@@ -1332,332 +942,6 @@ namespace WCFServiceTemplate
 				{
 					this._ZZTrackGroupName = value;
 				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="Master.CompanyDepartment")]
-	public partial class dbmlCompanyDepartment : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _CompanyDepartmentId;
-		
-		private System.Nullable<int> _CreateId;
-		
-		private System.Nullable<System.DateTime> _CreateDate;
-		
-		private System.Nullable<int> _UpdateId;
-		
-		private System.Nullable<System.DateTime> _UpdateDate;
-		
-		private System.Nullable<int> _CustomerMasterId;
-		
-		private string _Department;
-		
-		private string _ContactPerson;
-		
-		private string _Extention;
-		
-		private string _PhoneNo;
-		
-		private string _Mobile;
-		
-		private string _Email;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnCompanyDepartmentIdChanging(int value);
-    partial void OnCompanyDepartmentIdChanged();
-    partial void OnCreateIdChanging(System.Nullable<int> value);
-    partial void OnCreateIdChanged();
-    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreateDateChanged();
-    partial void OnUpdateIdChanging(System.Nullable<int> value);
-    partial void OnUpdateIdChanged();
-    partial void OnUpdateDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnUpdateDateChanged();
-    partial void OnCustomerMasterIdChanging(System.Nullable<int> value);
-    partial void OnCustomerMasterIdChanged();
-    partial void OnDepartmentChanging(string value);
-    partial void OnDepartmentChanged();
-    partial void OnContactPersonChanging(string value);
-    partial void OnContactPersonChanged();
-    partial void OnExtentionChanging(string value);
-    partial void OnExtentionChanged();
-    partial void OnPhoneNoChanging(string value);
-    partial void OnPhoneNoChanged();
-    partial void OnMobileChanging(string value);
-    partial void OnMobileChanged();
-    partial void OnEmailChanging(string value);
-    partial void OnEmailChanged();
-    #endregion
-		
-		public dbmlCompanyDepartment()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyDepartmentId", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int CompanyDepartmentId
-		{
-			get
-			{
-				return this._CompanyDepartmentId;
-			}
-			set
-			{
-				if ((this._CompanyDepartmentId != value))
-				{
-					this.OnCompanyDepartmentIdChanging(value);
-					this.SendPropertyChanging();
-					this._CompanyDepartmentId = value;
-					this.SendPropertyChanged("CompanyDepartmentId");
-					this.OnCompanyDepartmentIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateId", DbType="Int")]
-		public System.Nullable<int> CreateId
-		{
-			get
-			{
-				return this._CreateId;
-			}
-			set
-			{
-				if ((this._CreateId != value))
-				{
-					this.OnCreateIdChanging(value);
-					this.SendPropertyChanging();
-					this._CreateId = value;
-					this.SendPropertyChanged("CreateId");
-					this.OnCreateIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreateDate
-		{
-			get
-			{
-				return this._CreateDate;
-			}
-			set
-			{
-				if ((this._CreateDate != value))
-				{
-					this.OnCreateDateChanging(value);
-					this.SendPropertyChanging();
-					this._CreateDate = value;
-					this.SendPropertyChanged("CreateDate");
-					this.OnCreateDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateId", DbType="Int")]
-		public System.Nullable<int> UpdateId
-		{
-			get
-			{
-				return this._UpdateId;
-			}
-			set
-			{
-				if ((this._UpdateId != value))
-				{
-					this.OnUpdateIdChanging(value);
-					this.SendPropertyChanging();
-					this._UpdateId = value;
-					this.SendPropertyChanged("UpdateId");
-					this.OnUpdateIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> UpdateDate
-		{
-			get
-			{
-				return this._UpdateDate;
-			}
-			set
-			{
-				if ((this._UpdateDate != value))
-				{
-					this.OnUpdateDateChanging(value);
-					this.SendPropertyChanging();
-					this._UpdateDate = value;
-					this.SendPropertyChanged("UpdateDate");
-					this.OnUpdateDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerMasterId", DbType="Int")]
-		public System.Nullable<int> CustomerMasterId
-		{
-			get
-			{
-				return this._CustomerMasterId;
-			}
-			set
-			{
-				if ((this._CustomerMasterId != value))
-				{
-					this.OnCustomerMasterIdChanging(value);
-					this.SendPropertyChanging();
-					this._CustomerMasterId = value;
-					this.SendPropertyChanged("CustomerMasterId");
-					this.OnCustomerMasterIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Department", DbType="NVarChar(50)")]
-		public string Department
-		{
-			get
-			{
-				return this._Department;
-			}
-			set
-			{
-				if ((this._Department != value))
-				{
-					this.OnDepartmentChanging(value);
-					this.SendPropertyChanging();
-					this._Department = value;
-					this.SendPropertyChanged("Department");
-					this.OnDepartmentChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContactPerson", DbType="NVarChar(50)")]
-		public string ContactPerson
-		{
-			get
-			{
-				return this._ContactPerson;
-			}
-			set
-			{
-				if ((this._ContactPerson != value))
-				{
-					this.OnContactPersonChanging(value);
-					this.SendPropertyChanging();
-					this._ContactPerson = value;
-					this.SendPropertyChanged("ContactPerson");
-					this.OnContactPersonChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Extention", DbType="NVarChar(50)")]
-		public string Extention
-		{
-			get
-			{
-				return this._Extention;
-			}
-			set
-			{
-				if ((this._Extention != value))
-				{
-					this.OnExtentionChanging(value);
-					this.SendPropertyChanging();
-					this._Extention = value;
-					this.SendPropertyChanged("Extention");
-					this.OnExtentionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhoneNo", DbType="NVarChar(50)")]
-		public string PhoneNo
-		{
-			get
-			{
-				return this._PhoneNo;
-			}
-			set
-			{
-				if ((this._PhoneNo != value))
-				{
-					this.OnPhoneNoChanging(value);
-					this.SendPropertyChanging();
-					this._PhoneNo = value;
-					this.SendPropertyChanged("PhoneNo");
-					this.OnPhoneNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mobile", DbType="NVarChar(50)")]
-		public string Mobile
-		{
-			get
-			{
-				return this._Mobile;
-			}
-			set
-			{
-				if ((this._Mobile != value))
-				{
-					this.OnMobileChanging(value);
-					this.SendPropertyChanging();
-					this._Mobile = value;
-					this.SendPropertyChanged("Mobile");
-					this.OnMobileChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(50)")]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this.OnEmailChanging(value);
-					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -4384,393 +3668,6 @@ namespace WCFServiceTemplate
 				if ((this._ZZWorkFlowType != value))
 				{
 					this._ZZWorkFlowType = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="Front.CompanyView")]
-	public partial class dbmlCompanyView
-	{
-		
-		private int _CompanyId;
-		
-		private int _UpdateId;
-		
-		private System.DateTime _UpdateDate;
-		
-		private string _Company;
-		
-		private string _ShortName;
-		
-		private string _Address;
-		
-		private System.Nullable<int> _CityId;
-		
-		private string _City;
-		
-		private string _Pincode;
-		
-		private System.Nullable<int> _StateId;
-		
-		private string _State;
-		
-		private string _CompanyPhone;
-		
-		private string _CompanyPan;
-		
-		private string _CompanyFax;
-		
-		private string _CompanyEmail;
-		
-		private string _CompanyWeb;
-		
-		private System.Data.Linq.Binary _CompanyImage;
-		
-		private string _BankName;
-		
-		private string _BranchName;
-		
-		private string _BankAccountNo;
-		
-		private string _IFSCode;
-		
-		public dbmlCompanyView()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyId", DbType="Int NOT NULL")]
-		public int CompanyId
-		{
-			get
-			{
-				return this._CompanyId;
-			}
-			set
-			{
-				if ((this._CompanyId != value))
-				{
-					this._CompanyId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateId", DbType="Int NOT NULL")]
-		public int UpdateId
-		{
-			get
-			{
-				return this._UpdateId;
-			}
-			set
-			{
-				if ((this._UpdateId != value))
-				{
-					this._UpdateId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate", DbType="DateTime NOT NULL")]
-		public System.DateTime UpdateDate
-		{
-			get
-			{
-				return this._UpdateDate;
-			}
-			set
-			{
-				if ((this._UpdateDate != value))
-				{
-					this._UpdateDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Company", DbType="NVarChar(50)")]
-		public string Company
-		{
-			get
-			{
-				return this._Company;
-			}
-			set
-			{
-				if ((this._Company != value))
-				{
-					this._Company = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShortName", DbType="NVarChar(10)")]
-		public string ShortName
-		{
-			get
-			{
-				return this._ShortName;
-			}
-			set
-			{
-				if ((this._ShortName != value))
-				{
-					this._ShortName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(250)")]
-		public string Address
-		{
-			get
-			{
-				return this._Address;
-			}
-			set
-			{
-				if ((this._Address != value))
-				{
-					this._Address = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CityId", DbType="Int")]
-		public System.Nullable<int> CityId
-		{
-			get
-			{
-				return this._CityId;
-			}
-			set
-			{
-				if ((this._CityId != value))
-				{
-					this._CityId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="NVarChar(200)")]
-		public string City
-		{
-			get
-			{
-				return this._City;
-			}
-			set
-			{
-				if ((this._City != value))
-				{
-					this._City = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Pincode", DbType="NVarChar(50)")]
-		public string Pincode
-		{
-			get
-			{
-				return this._Pincode;
-			}
-			set
-			{
-				if ((this._Pincode != value))
-				{
-					this._Pincode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StateId", DbType="Int")]
-		public System.Nullable<int> StateId
-		{
-			get
-			{
-				return this._StateId;
-			}
-			set
-			{
-				if ((this._StateId != value))
-				{
-					this._StateId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_State", DbType="NVarChar(50)")]
-		public string State
-		{
-			get
-			{
-				return this._State;
-			}
-			set
-			{
-				if ((this._State != value))
-				{
-					this._State = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyPhone", DbType="NVarChar(50)")]
-		public string CompanyPhone
-		{
-			get
-			{
-				return this._CompanyPhone;
-			}
-			set
-			{
-				if ((this._CompanyPhone != value))
-				{
-					this._CompanyPhone = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyPan", DbType="NVarChar(50)")]
-		public string CompanyPan
-		{
-			get
-			{
-				return this._CompanyPan;
-			}
-			set
-			{
-				if ((this._CompanyPan != value))
-				{
-					this._CompanyPan = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyFax", DbType="NVarChar(50)")]
-		public string CompanyFax
-		{
-			get
-			{
-				return this._CompanyFax;
-			}
-			set
-			{
-				if ((this._CompanyFax != value))
-				{
-					this._CompanyFax = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyEmail", DbType="NVarChar(50)")]
-		public string CompanyEmail
-		{
-			get
-			{
-				return this._CompanyEmail;
-			}
-			set
-			{
-				if ((this._CompanyEmail != value))
-				{
-					this._CompanyEmail = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyWeb", DbType="NVarChar(50)")]
-		public string CompanyWeb
-		{
-			get
-			{
-				return this._CompanyWeb;
-			}
-			set
-			{
-				if ((this._CompanyWeb != value))
-				{
-					this._CompanyWeb = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyImage", DbType="Image", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary CompanyImage
-		{
-			get
-			{
-				return this._CompanyImage;
-			}
-			set
-			{
-				if ((this._CompanyImage != value))
-				{
-					this._CompanyImage = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankName", DbType="NVarChar(50)")]
-		public string BankName
-		{
-			get
-			{
-				return this._BankName;
-			}
-			set
-			{
-				if ((this._BankName != value))
-				{
-					this._BankName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BranchName", DbType="NVarChar(50)")]
-		public string BranchName
-		{
-			get
-			{
-				return this._BranchName;
-			}
-			set
-			{
-				if ((this._BranchName != value))
-				{
-					this._BranchName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankAccountNo", DbType="NVarChar(50)")]
-		public string BankAccountNo
-		{
-			get
-			{
-				return this._BankAccountNo;
-			}
-			set
-			{
-				if ((this._BankAccountNo != value))
-				{
-					this._BankAccountNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IFSCode", DbType="NVarChar(50)")]
-		public string IFSCode
-		{
-			get
-			{
-				return this._IFSCode;
-			}
-			set
-			{
-				if ((this._IFSCode != value))
-				{
-					this._IFSCode = value;
 				}
 			}
 		}
@@ -9172,6 +8069,1239 @@ namespace WCFServiceTemplate
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="Front.CompanyDepartmentViewFront")]
+	public partial class dbmlCompanyDepartment
+	{
+		
+		private int _CompanyDepartmentId;
+		
+		private System.Nullable<int> _CreateId;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<int> _UpdateId;
+		
+		private System.Nullable<System.DateTime> _UpdateDate;
+		
+		private System.Nullable<int> _CustomerMasterId;
+		
+		private string _Department;
+		
+		private string _ContactPerson;
+		
+		private string _Extention;
+		
+		private string _PhoneNo;
+		
+		private string _Mobile;
+		
+		private string _Email;
+		
+		private string _ZZCompanyName;
+		
+		public dbmlCompanyDepartment()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyDepartmentId", DbType="Int NOT NULL")]
+		public int CompanyDepartmentId
+		{
+			get
+			{
+				return this._CompanyDepartmentId;
+			}
+			set
+			{
+				if ((this._CompanyDepartmentId != value))
+				{
+					this._CompanyDepartmentId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateId", DbType="Int")]
+		public System.Nullable<int> CreateId
+		{
+			get
+			{
+				return this._CreateId;
+			}
+			set
+			{
+				if ((this._CreateId != value))
+				{
+					this._CreateId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this._CreateDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateId", DbType="Int")]
+		public System.Nullable<int> UpdateId
+		{
+			get
+			{
+				return this._UpdateId;
+			}
+			set
+			{
+				if ((this._UpdateId != value))
+				{
+					this._UpdateId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> UpdateDate
+		{
+			get
+			{
+				return this._UpdateDate;
+			}
+			set
+			{
+				if ((this._UpdateDate != value))
+				{
+					this._UpdateDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerMasterId", DbType="Int")]
+		public System.Nullable<int> CustomerMasterId
+		{
+			get
+			{
+				return this._CustomerMasterId;
+			}
+			set
+			{
+				if ((this._CustomerMasterId != value))
+				{
+					this._CustomerMasterId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Department", DbType="NVarChar(50)")]
+		public string Department
+		{
+			get
+			{
+				return this._Department;
+			}
+			set
+			{
+				if ((this._Department != value))
+				{
+					this._Department = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContactPerson", DbType="NVarChar(50)")]
+		public string ContactPerson
+		{
+			get
+			{
+				return this._ContactPerson;
+			}
+			set
+			{
+				if ((this._ContactPerson != value))
+				{
+					this._ContactPerson = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Extention", DbType="NVarChar(50)")]
+		public string Extention
+		{
+			get
+			{
+				return this._Extention;
+			}
+			set
+			{
+				if ((this._Extention != value))
+				{
+					this._Extention = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhoneNo", DbType="NVarChar(50)")]
+		public string PhoneNo
+		{
+			get
+			{
+				return this._PhoneNo;
+			}
+			set
+			{
+				if ((this._PhoneNo != value))
+				{
+					this._PhoneNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mobile", DbType="NVarChar(50)")]
+		public string Mobile
+		{
+			get
+			{
+				return this._Mobile;
+			}
+			set
+			{
+				if ((this._Mobile != value))
+				{
+					this._Mobile = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(50)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this._Email = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZCompanyName", DbType="NVarChar(50)")]
+		public string ZZCompanyName
+		{
+			get
+			{
+				return this._ZZCompanyName;
+			}
+			set
+			{
+				if ((this._ZZCompanyName != value))
+				{
+					this._ZZCompanyName = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="Front.CustomerMasterViewFront")]
+	public partial class dbmlCompanyView
+	{
+		
+		private int _CustomerMasterId;
+		
+		private System.Nullable<int> _CreateId;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<int> _UpdateId;
+		
+		private System.Nullable<System.DateTime> _UpdateDate;
+		
+		private string _CompanyName;
+		
+		private string _RegistrationCatagory;
+		
+		private string _Address;
+		
+		private System.Nullable<int> _StateId;
+		
+		private System.Nullable<int> _DistrictId;
+		
+		private System.Nullable<int> _PinCode;
+		
+		private string _ContactPerson;
+		
+		private string _Email;
+		
+		private string _PhoneNo;
+		
+		private string _GSTNo;
+		
+		private System.Nullable<int> _ServiceBPId;
+		
+		private string _Reference;
+		
+		private System.Nullable<int> _KnowAboutNatraxOL;
+		
+		private System.Nullable<int> _AccountId;
+		
+		private System.Nullable<int> _ApproveId;
+		
+		private string _PANNo;
+		
+		private string _ZZState;
+		
+		private string _ZZDistrict;
+		
+		public dbmlCompanyView()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerMasterId", DbType="Int NOT NULL")]
+		public int CustomerMasterId
+		{
+			get
+			{
+				return this._CustomerMasterId;
+			}
+			set
+			{
+				if ((this._CustomerMasterId != value))
+				{
+					this._CustomerMasterId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateId", DbType="Int")]
+		public System.Nullable<int> CreateId
+		{
+			get
+			{
+				return this._CreateId;
+			}
+			set
+			{
+				if ((this._CreateId != value))
+				{
+					this._CreateId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this._CreateDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateId", DbType="Int")]
+		public System.Nullable<int> UpdateId
+		{
+			get
+			{
+				return this._UpdateId;
+			}
+			set
+			{
+				if ((this._UpdateId != value))
+				{
+					this._UpdateId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> UpdateDate
+		{
+			get
+			{
+				return this._UpdateDate;
+			}
+			set
+			{
+				if ((this._UpdateDate != value))
+				{
+					this._UpdateDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyName", DbType="NVarChar(50)")]
+		public string CompanyName
+		{
+			get
+			{
+				return this._CompanyName;
+			}
+			set
+			{
+				if ((this._CompanyName != value))
+				{
+					this._CompanyName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RegistrationCatagory", DbType="NVarChar(50)")]
+		public string RegistrationCatagory
+		{
+			get
+			{
+				return this._RegistrationCatagory;
+			}
+			set
+			{
+				if ((this._RegistrationCatagory != value))
+				{
+					this._RegistrationCatagory = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(500)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this._Address = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StateId", DbType="Int")]
+		public System.Nullable<int> StateId
+		{
+			get
+			{
+				return this._StateId;
+			}
+			set
+			{
+				if ((this._StateId != value))
+				{
+					this._StateId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DistrictId", DbType="Int")]
+		public System.Nullable<int> DistrictId
+		{
+			get
+			{
+				return this._DistrictId;
+			}
+			set
+			{
+				if ((this._DistrictId != value))
+				{
+					this._DistrictId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PinCode", DbType="Int")]
+		public System.Nullable<int> PinCode
+		{
+			get
+			{
+				return this._PinCode;
+			}
+			set
+			{
+				if ((this._PinCode != value))
+				{
+					this._PinCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContactPerson", DbType="NVarChar(50)")]
+		public string ContactPerson
+		{
+			get
+			{
+				return this._ContactPerson;
+			}
+			set
+			{
+				if ((this._ContactPerson != value))
+				{
+					this._ContactPerson = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(50)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this._Email = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhoneNo", DbType="NVarChar(50)")]
+		public string PhoneNo
+		{
+			get
+			{
+				return this._PhoneNo;
+			}
+			set
+			{
+				if ((this._PhoneNo != value))
+				{
+					this._PhoneNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GSTNo", DbType="NVarChar(50)")]
+		public string GSTNo
+		{
+			get
+			{
+				return this._GSTNo;
+			}
+			set
+			{
+				if ((this._GSTNo != value))
+				{
+					this._GSTNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceBPId", DbType="Int")]
+		public System.Nullable<int> ServiceBPId
+		{
+			get
+			{
+				return this._ServiceBPId;
+			}
+			set
+			{
+				if ((this._ServiceBPId != value))
+				{
+					this._ServiceBPId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Reference", DbType="NVarChar(50)")]
+		public string Reference
+		{
+			get
+			{
+				return this._Reference;
+			}
+			set
+			{
+				if ((this._Reference != value))
+				{
+					this._Reference = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KnowAboutNatraxOL", DbType="Int")]
+		public System.Nullable<int> KnowAboutNatraxOL
+		{
+			get
+			{
+				return this._KnowAboutNatraxOL;
+			}
+			set
+			{
+				if ((this._KnowAboutNatraxOL != value))
+				{
+					this._KnowAboutNatraxOL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountId", DbType="Int")]
+		public System.Nullable<int> AccountId
+		{
+			get
+			{
+				return this._AccountId;
+			}
+			set
+			{
+				if ((this._AccountId != value))
+				{
+					this._AccountId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApproveId", DbType="Int")]
+		public System.Nullable<int> ApproveId
+		{
+			get
+			{
+				return this._ApproveId;
+			}
+			set
+			{
+				if ((this._ApproveId != value))
+				{
+					this._ApproveId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PANNo", DbType="NVarChar(50)")]
+		public string PANNo
+		{
+			get
+			{
+				return this._PANNo;
+			}
+			set
+			{
+				if ((this._PANNo != value))
+				{
+					this._PANNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZState", DbType="NVarChar(50)")]
+		public string ZZState
+		{
+			get
+			{
+				return this._ZZState;
+			}
+			set
+			{
+				if ((this._ZZState != value))
+				{
+					this._ZZState = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZDistrict", DbType="NVarChar(200)")]
+		public string ZZDistrict
+		{
+			get
+			{
+				return this._ZZDistrict;
+			}
+			set
+			{
+				if ((this._ZZDistrict != value))
+				{
+					this._ZZDistrict = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="Front.UserViewFront")]
+	public partial class dbmlUserView
+	{
+		
+		private int _DbId;
+		
+		private int _UserId;
+		
+		private int _UserTypePropId;
+		
+		private string _UserCode;
+		
+		private string _UserName;
+		
+		private string _LoginId;
+		
+		private string _PassWord;
+		
+		private System.Nullable<System.DateTime> _StartDate;
+		
+		private System.Nullable<System.DateTime> _EndDate;
+		
+		private System.Nullable<bool> _Active;
+		
+		private string _Address;
+		
+		private string _MobileNo;
+		
+		private string _EmailId;
+		
+		private int _CreateId;
+		
+		private System.DateTime _CreateDate;
+		
+		private int _UpdateId;
+		
+		private System.DateTime _UpdateDate;
+		
+		private System.Nullable<int> _CustomerMasterId;
+		
+		private System.Nullable<int> _CustomerDepartmentId;
+		
+		private string _PhoneNo;
+		
+		private string _MobileOTP;
+		
+		private System.Nullable<bool> _EmailVerify;
+		
+		private string _ZZDepartment;
+		
+		private string _ZZCompanyName;
+		
+		private System.Nullable<int> _ZZDistrictId;
+		
+		private System.Nullable<int> _ZZStateId;
+		
+		private System.Nullable<int> _ZZAccountId;
+		
+		private string _ZZGSTNo;
+		
+		private string _ZZPanNo;
+		
+		private System.Nullable<int> _ZZServiceBPId;
+		
+		private string _ZZUserType;
+		
+		public dbmlUserView()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DbId", DbType="Int NOT NULL")]
+		public int DbId
+		{
+			get
+			{
+				return this._DbId;
+			}
+			set
+			{
+				if ((this._DbId != value))
+				{
+					this._DbId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
+		public int UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this._UserId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserTypePropId", DbType="Int NOT NULL")]
+		public int UserTypePropId
+		{
+			get
+			{
+				return this._UserTypePropId;
+			}
+			set
+			{
+				if ((this._UserTypePropId != value))
+				{
+					this._UserTypePropId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserCode", DbType="NVarChar(50)")]
+		public string UserCode
+		{
+			get
+			{
+				return this._UserCode;
+			}
+			set
+			{
+				if ((this._UserCode != value))
+				{
+					this._UserCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
+		public string UserName
+		{
+			get
+			{
+				return this._UserName;
+			}
+			set
+			{
+				if ((this._UserName != value))
+				{
+					this._UserName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LoginId", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LoginId
+		{
+			get
+			{
+				return this._LoginId;
+			}
+			set
+			{
+				if ((this._LoginId != value))
+				{
+					this._LoginId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PassWord", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
+		public string PassWord
+		{
+			get
+			{
+				return this._PassWord;
+			}
+			set
+			{
+				if ((this._PassWord != value))
+				{
+					this._PassWord = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> StartDate
+		{
+			get
+			{
+				return this._StartDate;
+			}
+			set
+			{
+				if ((this._StartDate != value))
+				{
+					this._StartDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> EndDate
+		{
+			get
+			{
+				return this._EndDate;
+			}
+			set
+			{
+				if ((this._EndDate != value))
+				{
+					this._EndDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Active", DbType="Bit")]
+		public System.Nullable<bool> Active
+		{
+			get
+			{
+				return this._Active;
+			}
+			set
+			{
+				if ((this._Active != value))
+				{
+					this._Active = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(200)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this._Address = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MobileNo", DbType="NVarChar(12)")]
+		public string MobileNo
+		{
+			get
+			{
+				return this._MobileNo;
+			}
+			set
+			{
+				if ((this._MobileNo != value))
+				{
+					this._MobileNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmailId", DbType="NVarChar(100)")]
+		public string EmailId
+		{
+			get
+			{
+				return this._EmailId;
+			}
+			set
+			{
+				if ((this._EmailId != value))
+				{
+					this._EmailId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateId", DbType="Int NOT NULL")]
+		public int CreateId
+		{
+			get
+			{
+				return this._CreateId;
+			}
+			set
+			{
+				if ((this._CreateId != value))
+				{
+					this._CreateId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime NOT NULL")]
+		public System.DateTime CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this._CreateDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateId", DbType="Int NOT NULL")]
+		public int UpdateId
+		{
+			get
+			{
+				return this._UpdateId;
+			}
+			set
+			{
+				if ((this._UpdateId != value))
+				{
+					this._UpdateId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate", DbType="DateTime NOT NULL")]
+		public System.DateTime UpdateDate
+		{
+			get
+			{
+				return this._UpdateDate;
+			}
+			set
+			{
+				if ((this._UpdateDate != value))
+				{
+					this._UpdateDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerMasterId", DbType="Int")]
+		public System.Nullable<int> CustomerMasterId
+		{
+			get
+			{
+				return this._CustomerMasterId;
+			}
+			set
+			{
+				if ((this._CustomerMasterId != value))
+				{
+					this._CustomerMasterId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerDepartmentId", DbType="Int")]
+		public System.Nullable<int> CustomerDepartmentId
+		{
+			get
+			{
+				return this._CustomerDepartmentId;
+			}
+			set
+			{
+				if ((this._CustomerDepartmentId != value))
+				{
+					this._CustomerDepartmentId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhoneNo", DbType="NVarChar(50)")]
+		public string PhoneNo
+		{
+			get
+			{
+				return this._PhoneNo;
+			}
+			set
+			{
+				if ((this._PhoneNo != value))
+				{
+					this._PhoneNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MobileOTP", DbType="NVarChar(50)")]
+		public string MobileOTP
+		{
+			get
+			{
+				return this._MobileOTP;
+			}
+			set
+			{
+				if ((this._MobileOTP != value))
+				{
+					this._MobileOTP = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmailVerify", DbType="Bit")]
+		public System.Nullable<bool> EmailVerify
+		{
+			get
+			{
+				return this._EmailVerify;
+			}
+			set
+			{
+				if ((this._EmailVerify != value))
+				{
+					this._EmailVerify = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZDepartment", DbType="NVarChar(50)")]
+		public string ZZDepartment
+		{
+			get
+			{
+				return this._ZZDepartment;
+			}
+			set
+			{
+				if ((this._ZZDepartment != value))
+				{
+					this._ZZDepartment = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZCompanyName", DbType="NVarChar(50)")]
+		public string ZZCompanyName
+		{
+			get
+			{
+				return this._ZZCompanyName;
+			}
+			set
+			{
+				if ((this._ZZCompanyName != value))
+				{
+					this._ZZCompanyName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZDistrictId", DbType="Int")]
+		public System.Nullable<int> ZZDistrictId
+		{
+			get
+			{
+				return this._ZZDistrictId;
+			}
+			set
+			{
+				if ((this._ZZDistrictId != value))
+				{
+					this._ZZDistrictId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZStateId", DbType="Int")]
+		public System.Nullable<int> ZZStateId
+		{
+			get
+			{
+				return this._ZZStateId;
+			}
+			set
+			{
+				if ((this._ZZStateId != value))
+				{
+					this._ZZStateId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZAccountId", DbType="Int")]
+		public System.Nullable<int> ZZAccountId
+		{
+			get
+			{
+				return this._ZZAccountId;
+			}
+			set
+			{
+				if ((this._ZZAccountId != value))
+				{
+					this._ZZAccountId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZGSTNo", DbType="NVarChar(50)")]
+		public string ZZGSTNo
+		{
+			get
+			{
+				return this._ZZGSTNo;
+			}
+			set
+			{
+				if ((this._ZZGSTNo != value))
+				{
+					this._ZZGSTNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZPanNo", DbType="NVarChar(50)")]
+		public string ZZPanNo
+		{
+			get
+			{
+				return this._ZZPanNo;
+			}
+			set
+			{
+				if ((this._ZZPanNo != value))
+				{
+					this._ZZPanNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZServiceBPId", DbType="Int")]
+		public System.Nullable<int> ZZServiceBPId
+		{
+			get
+			{
+				return this._ZZServiceBPId;
+			}
+			set
+			{
+				if ((this._ZZServiceBPId != value))
+				{
+					this._ZZServiceBPId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZUserType", DbType="NVarChar(100)")]
+		public string ZZUserType
+		{
+			get
+			{
+				return this._ZZUserType;
+			}
+			set
+			{
+				if ((this._ZZUserType != value))
+				{
+					this._ZZUserType = value;
+				}
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="Front.DashBoardWorkFlowViewFront")]
 	public partial class dbmlDashBoardWorkFlowViewFront
 	{
@@ -9184,7 +9314,7 @@ namespace WCFServiceTemplate
 		
 		private System.Nullable<int> _WorkFlowId;
 		
-		private System.Nullable<int> _StatusPropId;
+		private string _StatusPropId;
 		
 		private System.Nullable<int> _Counts;
 		
@@ -9256,8 +9386,8 @@ namespace WCFServiceTemplate
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusPropId", DbType="Int")]
-		public System.Nullable<int> StatusPropId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusPropId", DbType="NVarChar(50)")]
+		public string StatusPropId
 		{
 			get
 			{
