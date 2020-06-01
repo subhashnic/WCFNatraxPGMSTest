@@ -147,6 +147,18 @@ namespace WCFPGMSFront
         public dbmlStatus objdbmlStatus = new dbmlStatus();
     }
 
+    public class returndbmlState
+    {
+        public ObservableCollection<dbmlState> objdbmlState = new ObservableCollection<dbmlState>();
+        public dbmlStatus objdbmlStatus = new dbmlStatus();
+    }
+
+    public class returndbmlDistrict
+    {
+        public ObservableCollection<dbmlDistrict> objdbmlDistrict = new ObservableCollection<dbmlDistrict>();
+        public dbmlStatus objdbmlStatus = new dbmlStatus();
+    }
+
     #endregion
 
 

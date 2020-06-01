@@ -24,6 +24,9 @@ namespace WCFPGMSFront
         [OperationContract]
         returndbmlUser UserViewFrontGetByDepartmentId(int intDepartmentId);
 
+        [OperationContract]
+        returndbmlUser UserViewGetByLoginIdUserId(string strLoginId, int intUserId);
+
         #endregion
 
         #region Properties / OptionList
@@ -32,6 +35,9 @@ namespace WCFPGMSFront
 
         [OperationContract]
         returndbmlOptionList OptionListGetByPropertyId(int intPropertyId);
+
+        [OperationContract]
+        returndbmlProperty PropertiesGetByPropertyTypeId(int intPropertyTypeId);
         #endregion
 
         #region Company/Department      
@@ -61,6 +67,15 @@ namespace WCFPGMSFront
 
         [OperationContract]
         returndbmlCompanyDepartment CompanyDepartmentGetByCustomerMasterId(int intCustomerMasterId);
+
+        [OperationContract]
+        returndbmlState StateGetAll();
+
+        [OperationContract]
+        returndbmlDistrict DistrictGetByStateId(int intStateId);
+
+        [OperationContract]
+        returndbmlDistrict DistrictGetAll();
         #endregion
 
         #region Booking

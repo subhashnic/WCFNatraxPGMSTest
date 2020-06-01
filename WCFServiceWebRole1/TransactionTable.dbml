@@ -501,33 +501,6 @@
       <Column Name="ZZCompanyName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="Front.CustomerMasterViewFront" Member="dbmlCompanyViews">
-    <Type Name="dbmlCompanyView">
-      <Column Name="CustomerMasterId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CreateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="UpdateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="RegistrationCatagory" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="StateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DistrictId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PinCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ContactPerson" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="PhoneNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="GSTNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ServiceBPId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Reference" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="KnowAboutNatraxOL" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AccountId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ApproveId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PANNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ZZState" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ZZDistrict" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="Front.UserViewFront" Member="dbmlUserViews">
     <Type Name="dbmlUserView">
       <Column Name="DbId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -571,6 +544,52 @@
       <Column Name="WorkFlowId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="StatusPropId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Counts" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="Master.State" Member="dbmlStates">
+    <Type Name="dbmlState">
+      <Column Name="StateId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ClubedStateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="State" Storage="_State1" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Master.District" Member="dbmlDistricts">
+    <Type Name="dbmlDistrict">
+      <Column Name="DistrictId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StateId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="District" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Front.CustomerMasterViewFront" Member="dbmlCompanyViews">
+    <Type Name="dbmlCompanyView">
+      <Column Name="CustomerMasterId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="RegistrationCatagory" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="StateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DistrictId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PinCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContactPerson" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PhoneNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GSTNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ServiceBPId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Reference" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="KnowAboutNatraxOL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AccountId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApproveId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PANNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ZZState" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ZZDistrict" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ZZLoginId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

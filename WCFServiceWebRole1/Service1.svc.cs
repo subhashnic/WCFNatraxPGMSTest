@@ -419,6 +419,125 @@ namespace WCFPGMSFront
         }
         #endregion
 
+        #region Send Mail
+        public bool SendMailMessage(string strFrom, string strPSW, string strTo, string strReplyTo, string strBcc, string strCc, string strSubject, string strBody, Stream streamAtt, string strAttFileName)
+        {
+            bool blnMailSentStatus = false;
+
+            try
+            {
+                MailMessage mMailMessage = new MailMessage();
+                mMailMessage.From = new MailAddress(strFrom);
+                mMailMessage.To.Add(new MailAddress(strTo));
+                if (strReplyTo != "")
+                {
+                    mMailMessage.ReplyTo = new MailAddress(strReplyTo);
+                }
+
+                if ((strBcc != null) && (strBcc != string.Empty))
+                {
+                    mMailMessage.Bcc.Add(new MailAddress(strBcc));
+                }
+
+                if ((strCc != null) && (strCc != string.Empty))
+                {
+                    mMailMessage.CC.Add(new MailAddress(strCc));
+                }
+                mMailMessage.Subject = strSubject;
+                mMailMessage.Body = strBody;
+                mMailMessage.IsBodyHtml = true;
+                mMailMessage.Priority = MailPriority.Normal;
+
+                if (streamAtt != null && streamAtt.Length > 0)
+                {
+                    if (String.IsNullOrEmpty(strAttFileName))
+                        strAttFileName = "Attachment1";
+                    mMailMessage.Attachments.Add(new Attachment(streamAtt, strAttFileName));
+                }
+
+                SmtpClient mSmtpClient = new SmtpClient();
+
+                // mSmtpClient.Timeout = 20000;
+                mSmtpClient.EnableSsl = true;
+                // mSmtpClient.UseDefaultCredentials = false;
+                // mSmtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                mSmtpClient.Credentials = new NetworkCredential(strFrom, strPSW);
+
+                mSmtpClient.Host = "smtp.gmail.com";
+                mSmtpClient.Port = 587;
+                mSmtpClient.Send(mMailMessage);
+                blnMailSentStatus = true;
+
+            }
+            catch (Exception ex)
+            {
+                string strEx = ex.Message;
+            }
+            return blnMailSentStatus;
+        }
+        #endregion
+
+        #region Send SMS
+        public string SendSMS(string MobileNo, string SMSText)
+        {
+            string strStatus = "failed";
+            try
+            {
+                string authKey = "86595AqYFjZW7pIN557a8b5e";      //Old Key
+                //string authKey = "234977AhvY26xSfP45b9603fc";
+                //Sender ID,While using route4 sender id should be 6 characters long.
+                string senderId = "iBosch";
+                string message = HttpUtility.UrlEncode(SMSText);
+
+                //Prepare you post parameters
+                StringBuilder sbPostData = new StringBuilder();
+                sbPostData.AppendFormat("authkey={0}", authKey);
+                sbPostData.AppendFormat("&mobiles={0}", MobileNo);
+                sbPostData.AppendFormat("&message={0}", message);
+                sbPostData.AppendFormat("&sender={0}", senderId);
+                // sbPostData.AppendFormat("&route={0}", "default");
+                sbPostData.AppendFormat("&route={0}", 4);
+
+                // For Hindi Message
+                //sbPostData.AppendFormat("&unicode={0}", 1);
+
+                //Call Send SMS API
+                string sendSMSUri = "http://api.msg91.com/sendhttp.php";
+                //Create HTTPWebrequest
+                HttpWebRequest httpWReq = (HttpWebRequest)WebRequest.Create(sendSMSUri);
+                //Prepare and Add URL Encoded data
+                UTF8Encoding encoding = new UTF8Encoding();
+                byte[] data = encoding.GetBytes(sbPostData.ToString());
+                //Specify post method
+                httpWReq.Method = "POST";
+                httpWReq.ContentType = "application/x-www-form-urlencoded";
+                httpWReq.ContentLength = data.Length;
+                using (Stream stream = httpWReq.GetRequestStream())
+                {
+                    stream.Write(data, 0, data.Length);
+                }
+                //Get the response
+                HttpWebResponse response = (HttpWebResponse)httpWReq.GetResponse();
+                StreamReader reader = new StreamReader(response.GetResponseStream());
+                string responseString = reader.ReadToEnd();
+
+                if (response.StatusDescription.ToLower() == "ok")
+                {
+
+                }
+                //Close the response
+                reader.Close();
+                response.Close();
+                strStatus = "success";
+            }
+            catch (SystemException ex)
+            {
+                strStatus = ex.Message.ToString();
+            }
+            return strStatus;
+        }
+        #endregion
+
         #region Transaction
         #region Login 
         public returndbmlUser UserGetByLoginId(string strLoginId, string strPassword)
@@ -439,8 +558,17 @@ namespace WCFPGMSFront
                     objreturndbmlUser.objdbmlUserView = new ObservableCollection<dbmlUserView>
                     (from dRow in ds.Tables["UserView"].AsEnumerable() select (ConvertTableToListNew<dbmlUserView>(dRow)));
 
-
-                    if (Cryptographer.CompareHash("ePGMS", strPassword, objreturndbmlUser.objdbmlUserView.FirstOrDefault().PassWord))
+                    if (objreturndbmlUser.objdbmlUserView.FirstOrDefault().PassWord.Trim().Length < 3)
+                    {
+                        objreturndbmlUser.objdbmlStatus.StatusId = 20;
+                        objreturndbmlUser.objdbmlStatus.Status = "Your emailId is already verified, Please create your 'User Password' login to Natrax";
+                    }
+                    else if(objreturndbmlUser.objdbmlUserView.FirstOrDefault().Active==false)
+                    {
+                        objreturndbmlUser.objdbmlStatus.StatusId = 5; // Password Not Match
+                        objreturndbmlUser.objdbmlStatus.Status = "Your user activation is pending by Natrax";
+                    }
+                    else if (Cryptographer.CompareHash("ePGMS", strPassword, objreturndbmlUser.objdbmlUserView.FirstOrDefault().PassWord))
                     {
                         objreturndbmlUser.objdbmlStatus.StatusId = 1;
                     }
@@ -544,6 +672,34 @@ namespace WCFPGMSFront
             return objreturndbmlUser;
         }
 
+        public returndbmlUser UserViewGetByLoginIdUserId(string strLoginId, int intUserId)
+        {
+            returndbmlUser objreturndbmlUser = new returndbmlUser();
+            try
+            {
+                DataSet ds = new DataSet();
+                Database db = new SqlDatabase(GF.StrSetConnection());
+                System.Data.Common.DbCommand cmdGet = null;
+
+                cmdGet = db.GetStoredProcCommand("Front.UserViewGetByLoginIdUserId", strLoginId, intUserId);
+                db.LoadDataSet(cmdGet, ds, new string[] { "UserView" });
+                if (ds.Tables["UserView"] != null && ds.Tables["UserView"].Rows.Count > 0)
+                {
+                    objreturndbmlUser.objdbmlUserView = new ObservableCollection<dbmlUserView>
+                                                                    (from dRow in ds.Tables["UserView"].AsEnumerable() select (ConvertTableToListNew<dbmlUserView>(dRow)));
+                }
+
+                objreturndbmlUser.objdbmlStatus.StatusId = 1;
+                objreturndbmlUser.objdbmlStatus.Status = "Successful";
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlUser.objdbmlStatus.StatusId = 99;
+                objreturndbmlUser.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+            }
+            return objreturndbmlUser;
+        }
+
         #endregion
 
         #region Properties / OptionList
@@ -557,6 +713,34 @@ namespace WCFPGMSFront
                 System.Data.Common.DbCommand cmdGet = null;
 
                 cmdGet = db.GetStoredProcCommand("[Setting].[PropertiesGetAll]");
+                db.LoadDataSet(cmdGet, ds, new string[] { "Properties" });
+                if (ds.Tables["Properties"].Rows.Count > 0)
+                {
+                    objreturndbmlProperty.objdbmlProperty = new ObservableCollection<dbmlProperty>(from dRow in ds.Tables["Properties"].AsEnumerable()
+                                                                                                   select (ConvertTableToListNew<dbmlProperty>(dRow)));
+                }
+
+                objreturndbmlProperty.objdbmlStatus.StatusId = 1;
+                objreturndbmlProperty.objdbmlStatus.Status = "Successful";
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlProperty.objdbmlStatus.StatusId = 99;
+                objreturndbmlProperty.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+            }
+            return objreturndbmlProperty;
+        }
+
+        public returndbmlProperty PropertiesGetByPropertyTypeId(int intPropertyTypeId)
+        {
+            returndbmlProperty objreturndbmlProperty = new returndbmlProperty();
+            try
+            {
+                DataSet ds = new DataSet();
+                Database db = new SqlDatabase(GF.StrSetConnection());
+                System.Data.Common.DbCommand cmdGet = null;
+
+                cmdGet = db.GetStoredProcCommand("[Setting].[PropertiesGetByPropertyTypeId]", intPropertyTypeId);
                 db.LoadDataSet(cmdGet, ds, new string[] { "Properties" });
                 if (ds.Tables["Properties"].Rows.Count > 0)
                 {
@@ -608,54 +792,101 @@ namespace WCFPGMSFront
         public returndbmlCompanyView CustomerMasterInsertFront(returndbmlCompanyView objreturndbmlCompanyView)
         {
             returndbmlCompanyView objreturndbmlCompanyViewReturn = new returndbmlCompanyView();
-            DbTransaction trans; DbConnection con;
-            Database db = new SqlDatabase(GF.StrSetConnection());
-            con = db.CreateConnection();
-            con.Open();
-            trans = con.BeginTransaction();
-            System.Data.Common.DbCommand cmd = null;
-            try
+            returndbmlUser objreturndbmlUserTemp = UserViewGetByLoginIdUserId(objreturndbmlCompanyView.objdbmlCompanyView.FirstOrDefault().ZZLoginId,0);
+            if (objreturndbmlUserTemp.objdbmlUserView != null && objreturndbmlUserTemp.objdbmlUserView.Count > 0)
             {
-                int intCompanyId = 0;
-                foreach (var Header in objreturndbmlCompanyView.objdbmlCompanyView)
+                objreturndbmlCompanyViewReturn.objdbmlStatus.StatusId = 10;
+                objreturndbmlCompanyViewReturn.objdbmlStatus.Status = "LoginId already exist";
+            }
+            else
+            {
+                DbTransaction trans;
+                DbConnection con;
+                Database db = new SqlDatabase(GF.StrSetConnection());
+                con = db.CreateConnection();
+                con.Open();
+                trans = con.BeginTransaction();
+                System.Data.Common.DbCommand cmd = null;
+                try
                 {
-                    cmd = db.GetStoredProcCommand("[Front].[CustomerMasterInsertFront]");
-                    foreach (PropertyInfo PropInfoCol in Header.GetType().GetProperties())
+                    int intCompanyId = 0;
+                    foreach (var Header in objreturndbmlCompanyView.objdbmlCompanyView)
                     {
-                        string str = PropInfoCol.Name;
-                        if (str.Length <= 2)
-                            str = str + "modified";
-                        if (str.Substring(0, 2).ToUpper() != "ZZ" && str != "DUMMY" && str != "ZZDumSeq")
+                        cmd = db.GetStoredProcCommand("[Front].[CustomerMasterInsertFront]");
+                        foreach (PropertyInfo PropInfoCol in Header.GetType().GetProperties())
                         {
-                            DbType dbt = ConvertNullableIntoDatatype(PropInfoCol);
-                            db.AddInParameter(cmd, PropInfoCol.Name.ToString(), dbt, PropInfoCol.GetValue(Header, null));
+                            string str = PropInfoCol.Name;
+                            if (str.Length <= 2)
+                                str = str + "modified";
+                            if (str.Substring(0, 2).ToUpper() != "ZZ" && str != "DUMMY" && str != "ZZDumSeq")
+                            {
+                                DbType dbt = ConvertNullableIntoDatatype(PropInfoCol);
+                                db.AddInParameter(cmd, PropInfoCol.Name.ToString(), dbt, PropInfoCol.GetValue(Header, null));
+                            }
+                            if (str.ToUpper() == "ZZLOGINID")
+                            {
+                                DbType dbt = ConvertNullableIntoDatatype(PropInfoCol);
+                                db.AddInParameter(cmd, "LoginId", dbt, PropInfoCol.GetValue(Header, null));
+                            }
+
                         }
+
+                        db.AddOutParameter(cmd, "IdOut", DbType.Int32, 0);
+                        db.ExecuteNonQuery(cmd, trans);
+                        intCompanyId = (int)db.GetParameterValue(cmd, "@IdOut");
+
                     }
 
-                    db.AddOutParameter(cmd, "IdOut", DbType.Int32, 0);
-                    db.ExecuteNonQuery(cmd, trans);
-                    intCompanyId = (int)db.GetParameterValue(cmd, "@IdOut");
+                    trans.Commit();
 
+
+                    objreturndbmlCompanyViewReturn = CompanyViewGetByCompanyId(intCompanyId);
+                    returndbmlUser objreturndbmlUser = UserViewFrontGetByCompanyId(intCompanyId);
+                    objreturndbmlCompanyViewReturn.objdbmlUserView = objreturndbmlUser.objdbmlUserView;
+
+                    if (objreturndbmlUser.objdbmlUserView.Count > 0 && intCompanyId > 0)
+                    {
+                        string strHost = System.Configuration.ConfigurationManager.AppSettings["strHostName"]; //"https://localhost:44307/";
+                        string strLink = strHost + "Home/VerifyeMail?xyz=0dfs,ktgbdas,hdffg.khdfrhdduihdgtymdmpxjidgndlxcmhdgmdpldjn,dlkchgj,d,.fddfyre,hjlhhjhjlhjljhjlhdkjdhhdk,dmdhhnd,dkmdndhnndmdkkfbhjyhnhhfssdfgngfgfghgfjfgjgffbgfhfhfhdffdsfdgfdfhfhgfhgfjfwrtwfghkyredcbnmkiufssfgyhvgdrfrthhhjhmjmd&abc="
+                                            + objreturndbmlUser.objdbmlUserView.FirstOrDefault().UserId
+                                            +"&lmn=0dshffn56tgrehbncv6nwyuwgkliurscvjl'ljugbmkl;lkitgn;''lkjhhhjl;llkyhfcfbmkkdfhdfgffhf561g4d5bvgdf1bbdfbdvfgbnvbncvncvbbnxcdgfcbcb";
+                        string strFrom = "testdemo052020@gmail.com", strReplyTo = "",
+                            strTo = objreturndbmlCompanyViewReturn.objdbmlCompanyView.FirstOrDefault().Email,
+                            strBcc = string.Empty,
+                            strCc = string.Empty,
+                            strSubject = string.Empty, strBody = string.Empty;
+
+
+                        strSubject = "Email verification for register to Natrax";
+                        strBody = "Hello, ";
+
+                        strBody += "<br /><b>" + objreturndbmlCompanyViewReturn.objdbmlCompanyView.FirstOrDefault().CompanyName + "</b>";
+
+                        strBody += "<br /><br />You have successfully register to Natrax for Login Id <b>" + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId+"</b>";
+                        strBody += ", please click on link below to verify your emailId";
+                        strBody += "<br />" + strLink;
+
+
+
+                        strBody += "<br /><br /><br />Regards";
+                        strBody += "<br /><br /><span style='font-weight:bold;font-family:Trebuchet MS;font-style:italic'>Natrax Team</span>";
+
+                        bool blnSentMail = SendMailMessage(strFrom, "test@dem0", strTo, strReplyTo, strBcc, strCc, strSubject, strBody, null, "");
+
+                    }
                 }
-
-                trans.Commit();
-
-
-                objreturndbmlCompanyViewReturn = CompanyViewGetByCompanyId(intCompanyId);
-                returndbmlUser objreturndbmlUser = UserViewFrontGetByCompanyId(intCompanyId);
-                objreturndbmlCompanyViewReturn.objdbmlUserView = objreturndbmlUser.objdbmlUserView;
-            }
-            catch (Exception ex)
-            {
-                objreturndbmlCompanyViewReturn.objdbmlStatus.StatusId = 99;
-                objreturndbmlCompanyViewReturn.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
-                trans.Rollback();
-            }
-            finally
-            {
-                if (con != null && con.State == ConnectionState.Open)
+                catch (Exception ex)
                 {
-                    con.Close();
+                    objreturndbmlCompanyViewReturn.objdbmlStatus.StatusId = 99;
+                    objreturndbmlCompanyViewReturn.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+                    trans.Rollback();
+                }
+                finally
+                {
+                    if (con != null && con.State == ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
                 }
             }
             return objreturndbmlCompanyViewReturn;
@@ -681,8 +912,9 @@ namespace WCFPGMSFront
                 if (intIdOut > 0)
                 {
                     trans.Commit();
-                    objreturndbmlUser = UserViewFrontGetByCompanyId(intUserId);
+                    objreturndbmlUser = UserViewGetByLoginIdUserId("",intUserId);
                     objreturndbmlUser.objdbmlStatus.StatusId = 1;
+                    objreturndbmlUser.objdbmlStatus.Status = "Your emailId successfully verified, Please create your 'User Password' login to Natrax";
                 }
                 else if(intIdOut==-1)
                 {
@@ -690,9 +922,33 @@ namespace WCFPGMSFront
                     objreturndbmlUser.objdbmlStatus.Status ="User Details Not Found";
                 }
                 else if (intIdOut == -2)
-                {
-                    objreturndbmlUser.objdbmlStatus.StatusId = -1;
-                    objreturndbmlUser.objdbmlStatus.Status = "Email Already Verified";
+                {                   
+                    objreturndbmlUser = UserViewGetByLoginIdUserId("", intUserId);
+                    objreturndbmlUser.objdbmlStatus.StatusId = -2;
+                    if (objreturndbmlUser.objdbmlUserView.Count > 0)
+                    {
+                        if (objreturndbmlUser.objdbmlUserView.FirstOrDefault().PassWord.Trim().Length <3)
+                        {
+                            objreturndbmlUser.objdbmlStatus.StatusId = 1;
+                            objreturndbmlUser.objdbmlStatus.Status = "Your emailId is already verified, Please create your 'User Password' login to Natrax";
+                        }
+                        else if(objreturndbmlUser.objdbmlUserView.FirstOrDefault().Active == false)
+                        {
+                            objreturndbmlUser.objdbmlStatus.StatusId = -3;
+                            objreturndbmlUser.objdbmlStatus.Status = "Your emailId is already verified. Your user activation is pending by Natrax";
+                        }
+                        else
+                        {
+                            objreturndbmlUser.objdbmlStatus.StatusId = -2;
+                            objreturndbmlUser.objdbmlStatus.Status = "Your emailId is already verified. Go to login page for login to Natrax";
+                        }
+                    }
+                    else
+                    {
+                        objreturndbmlUser.objdbmlStatus.StatusId = -4;
+                        objreturndbmlUser.objdbmlStatus.Status = "User Details Not Found";
+                    }
+                   
                 }
 
             }
@@ -723,15 +979,17 @@ namespace WCFPGMSFront
             System.Data.Common.DbCommand cmd = null;
             try
             {
+                string strUserPassword = Cryptographer.CreateHash("ePGMS", strPassword);
+
                 cmd = db.GetStoredProcCommand("[Front].[UserPaswordReset]");
                 db.AddInParameter(cmd, "UserId", DbType.Int32, intUserId);
-                db.AddInParameter(cmd, "Password", DbType.String, strPassword);
+                db.AddInParameter(cmd, "Password", DbType.String, strUserPassword);
                 db.ExecuteNonQuery(cmd, trans);
 
                 trans.Commit();
 
                 objreturndbmlUser.objdbmlStatus.StatusId = 1;
-                objreturndbmlUser.objdbmlStatus.Status = "Password Updated Successfully";
+                objreturndbmlUser.objdbmlStatus.Status = "Password Created Successfully";
 
             }
             catch (Exception ex)
@@ -861,52 +1119,72 @@ namespace WCFPGMSFront
         public returndbmlUser UserInsert(returndbmlUser objreturndbmlUser)
         {
             returndbmlUser objreturndbmlUserReturn = new returndbmlUser();
-            DbTransaction trans; DbConnection con;
-            Database db = new SqlDatabase(GF.StrSetConnection());
-            con = db.CreateConnection();
-            con.Open();
-            trans = con.BeginTransaction();
-            System.Data.Common.DbCommand cmd = null;
-            try
+            returndbmlCompanyView objreturndbmlCompanyViewReturn = new returndbmlCompanyView();
+            returndbmlUser objreturndbmlUserTemp = UserViewGetByLoginIdUserId(objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId, 0);
+            if (objreturndbmlUserTemp.objdbmlUserView != null && objreturndbmlUserTemp.objdbmlUserView.Count > 0)
             {
-                int intDeptId = 0;
-                foreach (var Header in objreturndbmlUser.objdbmlUserView)
+                objreturndbmlUserReturn.objdbmlStatus.StatusId = 10;
+                objreturndbmlUserReturn.objdbmlStatus.Status = "LoginId already exist";
+            }
+            else
+            {
+                DbTransaction trans; DbConnection con;
+                Database db = new SqlDatabase(GF.StrSetConnection());
+                con = db.CreateConnection();
+                con.Open();
+                trans = con.BeginTransaction();
+                System.Data.Common.DbCommand cmd = null;
+                try
                 {
-                    intDeptId = (int)Header.CustomerDepartmentId;
-                    cmd = db.GetStoredProcCommand("[Security].[UserInsert]");
-                    foreach (PropertyInfo PropInfoCol in Header.GetType().GetProperties())
+                    int intCompanyId = 0;
+                    foreach (var Header in objreturndbmlUser.objdbmlUserView)
                     {
-                        string str = PropInfoCol.Name;
-                        if (str.Length <= 2)
-                            str = str + "modified";
-                        if (str.Substring(0, 2).ToUpper() != "ZZ" && str != "DUMMY" && str != "ZZDumSeq")
+                        intCompanyId = (int)Header.CustomerMasterId;
+                        cmd = db.GetStoredProcCommand("[Security].[UserInsert]");
+                        foreach (PropertyInfo PropInfoCol in Header.GetType().GetProperties())
                         {
-                            DbType dbt = ConvertNullableIntoDatatype(PropInfoCol);
-                            db.AddInParameter(cmd, PropInfoCol.Name.ToString(), dbt, PropInfoCol.GetValue(Header, null));
+                            string str = PropInfoCol.Name;
+                            if (str.Length <= 2)
+                                str = str + "modified";
+                            if (str.Substring(0, 2).ToUpper() != "ZZ" && str != "DUMMY" && str != "ZZDumSeq")
+                            {
+                                DbType dbt = ConvertNullableIntoDatatype(PropInfoCol);
+                                if (str.ToUpper() == "PASSWORD" && Convert.ToString(PropInfoCol.GetValue(Header, null)).Length>2)
+                                {
+                                    string strUserPassword = Cryptographer.CreateHash("ePGMS", Convert.ToString(PropInfoCol.GetValue(Header, null)));
+                                    db.AddInParameter(cmd, PropInfoCol.Name.ToString(), dbt, strUserPassword);
+                                }
+                                else
+                                {                                  
+                                    db.AddInParameter(cmd, PropInfoCol.Name.ToString(), dbt, PropInfoCol.GetValue(Header, null));
+                                }
+                            }
                         }
+
+                        db.AddOutParameter(cmd, "IdOut", DbType.Int32, 0);
+                        db.ExecuteNonQuery(cmd, trans);
+                        int UserId = (int)db.GetParameterValue(cmd, "@IdOut");
+
                     }
 
-                    db.ExecuteNonQuery(cmd, trans);
+                    trans.Commit();
+
+
+                    objreturndbmlUserReturn = UserViewFrontGetByCompanyId(intCompanyId);
 
                 }
-
-                trans.Commit();
-
-
-                objreturndbmlUserReturn = UserViewFrontGetByDepartmentId(intDeptId);
-
-            }
-            catch (Exception ex)
-            {
-                objreturndbmlUserReturn.objdbmlStatus.StatusId = 99;
-                objreturndbmlUserReturn.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
-                trans.Rollback();
-            }
-            finally
-            {
-                if (con != null && con.State == ConnectionState.Open)
+                catch (Exception ex)
                 {
-                    con.Close();
+                    objreturndbmlUserReturn.objdbmlStatus.StatusId = 99;
+                    objreturndbmlUserReturn.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+                    trans.Rollback();
+                }
+                finally
+                {
+                    if (con != null && con.State == ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
                 }
             }
             return objreturndbmlUserReturn;
@@ -923,10 +1201,10 @@ namespace WCFPGMSFront
             System.Data.Common.DbCommand cmd = null;
             try
             {
-                int intDeptId = 0;
+                int intCompanyId = 0;
                 foreach (var Header in objreturndbmlUser.objdbmlUserView)
                 {
-                    intDeptId = (int)Header.CustomerDepartmentId;
+                    intCompanyId = (int)Header.CustomerMasterId;
                     cmd = db.GetStoredProcCommand("[Security].[UserUpdate]");
                     foreach (PropertyInfo PropInfoCol in Header.GetType().GetProperties())
                     {
@@ -947,7 +1225,7 @@ namespace WCFPGMSFront
                 trans.Commit();
 
 
-                objreturndbmlUserReturn = UserViewFrontGetByDepartmentId(intDeptId);
+                objreturndbmlUserReturn = UserViewFrontGetByCompanyId(intCompanyId);
 
             }
             catch (Exception ex)
@@ -1019,6 +1297,90 @@ namespace WCFPGMSFront
                 objreturndbmlCompanyDepartment.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
             }
             return objreturndbmlCompanyDepartment;
+        }
+
+        public returndbmlState StateGetAll()
+        {
+            returndbmlState objreturndbmlState = new returndbmlState();
+            try
+            {
+                DataSet ds = new DataSet();
+                Database db = new SqlDatabase(GF.StrSetConnection());
+                System.Data.Common.DbCommand cmdGet = null;
+
+                cmdGet = db.GetStoredProcCommand("[Master].[StateGetAll]");
+                db.LoadDataSet(cmdGet, ds, new string[] { "State" });
+                if (ds.Tables["State"].Rows.Count > 0)
+                {
+                    objreturndbmlState.objdbmlState = new ObservableCollection<dbmlState>(from dRow in ds.Tables["State"].AsEnumerable()
+                                                                                          select (ConvertTableToListNew<dbmlState>(dRow)));
+                }
+
+                objreturndbmlState.objdbmlStatus.StatusId = 1;
+                objreturndbmlState.objdbmlStatus.Status = "Successful";
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlState.objdbmlStatus.StatusId = 99;
+                objreturndbmlState.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+            }
+            return objreturndbmlState;
+        }
+
+        public returndbmlDistrict DistrictGetByStateId(int intStateId)
+        {
+            returndbmlDistrict objreturndbmlDistrict = new returndbmlDistrict();
+            try
+            {
+                DataSet ds = new DataSet();
+                Database db = new SqlDatabase(GF.StrSetConnection());
+                System.Data.Common.DbCommand cmdGet = null;
+
+                cmdGet = db.GetStoredProcCommand("[Master].[DistrictGetByStateId]", intStateId);
+                db.LoadDataSet(cmdGet, ds, new string[] { "District" });
+                if (ds.Tables["District"].Rows.Count > 0)
+                {
+                    objreturndbmlDistrict.objdbmlDistrict = new ObservableCollection<dbmlDistrict>(from dRow in ds.Tables["District"].AsEnumerable()
+                                                                                                   select (ConvertTableToListNew<dbmlDistrict>(dRow)));
+                }
+
+                objreturndbmlDistrict.objdbmlStatus.StatusId = 1;
+                objreturndbmlDistrict.objdbmlStatus.Status = "Successful";
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlDistrict.objdbmlStatus.StatusId = 99;
+                objreturndbmlDistrict.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+            }
+            return objreturndbmlDistrict;
+        }
+
+        public returndbmlDistrict DistrictGetAll()
+        {
+            returndbmlDistrict objreturndbmlDistrict = new returndbmlDistrict();
+            try
+            {
+                DataSet ds = new DataSet();
+                Database db = new SqlDatabase(GF.StrSetConnection());
+                System.Data.Common.DbCommand cmdGet = null;
+
+                cmdGet = db.GetStoredProcCommand("[Master].[DistrictGetAll]");
+                db.LoadDataSet(cmdGet, ds, new string[] { "District" });
+                if (ds.Tables["District"].Rows.Count > 0)
+                {
+                    objreturndbmlDistrict.objdbmlDistrict = new ObservableCollection<dbmlDistrict>(from dRow in ds.Tables["District"].AsEnumerable()
+                                                                                                   select (ConvertTableToListNew<dbmlDistrict>(dRow)));
+                }
+
+                objreturndbmlDistrict.objdbmlStatus.StatusId = 1;
+                objreturndbmlDistrict.objdbmlStatus.Status = "Successful";
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlDistrict.objdbmlStatus.StatusId = 99;
+                objreturndbmlDistrict.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+            }
+            return objreturndbmlDistrict;
         }
         #endregion
 
