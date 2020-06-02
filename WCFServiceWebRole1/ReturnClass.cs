@@ -159,6 +159,12 @@ namespace WCFPGMSFront
         public dbmlStatus objdbmlStatus = new dbmlStatus();
     }
 
+    public class returndbmlDashBoardDocumentViewFront
+    {
+        public ObservableCollection<dbmlDashBoardDocumentViewFront> objdbmlDashBoardDocumentViewFront = new ObservableCollection<dbmlDashBoardDocumentViewFront>();
+        public dbmlStatus objdbmlStatus = new dbmlStatus();
+    }
+
     #endregion
 
 

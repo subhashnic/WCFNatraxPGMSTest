@@ -268,6 +268,14 @@ namespace WCFServiceTemplate
 				return this.GetTable<dbmlCompanyView>();
 			}
 		}
+		
+		public System.Data.Linq.Table<dbmlDashBoardDocumentViewFront> dbmlDashBoardDocumentViewFronts
+		{
+			get
+			{
+				return this.GetTable<dbmlDashBoardDocumentViewFront>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
@@ -9770,6 +9778,195 @@ namespace WCFServiceTemplate
 				if ((this._ZZLoginId != value))
 				{
 					this._ZZLoginId = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="Front.DashBoardDocumentViewFront")]
+	public partial class dbmlDashBoardDocumentViewFront
+	{
+		
+		private int _DocId;
+		
+		private int _BPId;
+		
+		private int _CompanyId;
+		
+		private string _DocDate;
+		
+		private string _DocNo;
+		
+		private string _CompanyName;
+		
+		private string _Department;
+		
+		private string _ZZStatus;
+		
+		private string _ZZWorkFlowColor;
+		
+		private string _BPName;
+		
+		public dbmlDashBoardDocumentViewFront()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocId", DbType="Int NOT NULL")]
+		public int DocId
+		{
+			get
+			{
+				return this._DocId;
+			}
+			set
+			{
+				if ((this._DocId != value))
+				{
+					this._DocId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BPId", DbType="Int NOT NULL")]
+		public int BPId
+		{
+			get
+			{
+				return this._BPId;
+			}
+			set
+			{
+				if ((this._BPId != value))
+				{
+					this._BPId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyId", DbType="Int NOT NULL")]
+		public int CompanyId
+		{
+			get
+			{
+				return this._CompanyId;
+			}
+			set
+			{
+				if ((this._CompanyId != value))
+				{
+					this._CompanyId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocDate", DbType="VarChar(30)")]
+		public string DocDate
+		{
+			get
+			{
+				return this._DocDate;
+			}
+			set
+			{
+				if ((this._DocDate != value))
+				{
+					this._DocDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocNo", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string DocNo
+		{
+			get
+			{
+				return this._DocNo;
+			}
+			set
+			{
+				if ((this._DocNo != value))
+				{
+					this._DocNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyName", DbType="NVarChar(50)")]
+		public string CompanyName
+		{
+			get
+			{
+				return this._CompanyName;
+			}
+			set
+			{
+				if ((this._CompanyName != value))
+				{
+					this._CompanyName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Department", DbType="NVarChar(50)")]
+		public string Department
+		{
+			get
+			{
+				return this._Department;
+			}
+			set
+			{
+				if ((this._Department != value))
+				{
+					this._Department = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZStatus", DbType="VarChar(100)")]
+		public string ZZStatus
+		{
+			get
+			{
+				return this._ZZStatus;
+			}
+			set
+			{
+				if ((this._ZZStatus != value))
+				{
+					this._ZZStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZWorkFlowColor", DbType="NVarChar(50)")]
+		public string ZZWorkFlowColor
+		{
+			get
+			{
+				return this._ZZWorkFlowColor;
+			}
+			set
+			{
+				if ((this._ZZWorkFlowColor != value))
+				{
+					this._ZZWorkFlowColor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BPName", DbType="NVarChar(100)")]
+		public string BPName
+		{
+			get
+			{
+				return this._BPName;
+			}
+			set
+			{
+				if ((this._BPName != value))
+				{
+					this._BPName = value;
 				}
 			}
 		}

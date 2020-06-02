@@ -558,15 +558,20 @@ namespace WCFPGMSFront
                     objreturndbmlUser.objdbmlUserView = new ObservableCollection<dbmlUserView>
                     (from dRow in ds.Tables["UserView"].AsEnumerable() select (ConvertTableToListNew<dbmlUserView>(dRow)));
 
-                    if (objreturndbmlUser.objdbmlUserView.FirstOrDefault().PassWord.Trim().Length < 3)
+                    if (objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailVerify == null || objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailVerify == false)
                     {
-                        objreturndbmlUser.objdbmlStatus.StatusId = 20;
-                        objreturndbmlUser.objdbmlStatus.Status = "Your emailId is already verified, Please create your 'User Password' login to Natrax";
+                        objreturndbmlUser.objdbmlStatus.StatusId = 20;//Verification Pending
+                        objreturndbmlUser.objdbmlStatus.Status = "Your email verification and password creation is pending, we have sent you mail on "+ objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId+ " for Login ID " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + " with a verification link.\nPlease check you mail and click verification link to create password.";
+                    }
+                    else if(objreturndbmlUser.objdbmlUserView.FirstOrDefault().PassWord.Trim().Length < 3)
+                    {
+                        objreturndbmlUser.objdbmlStatus.StatusId = 30;// Password creation Pending
+                        objreturndbmlUser.objdbmlStatus.Status = "Your email verification and password creation is pending, we have sent you mail on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId + " for Login ID " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + " with a verification link.\nPlease check you mail and click verification link to create password.";
                     }
                     else if(objreturndbmlUser.objdbmlUserView.FirstOrDefault().Active==false)
                     {
-                        objreturndbmlUser.objdbmlStatus.StatusId = 5; // Password Not Match
-                        objreturndbmlUser.objdbmlStatus.Status = "Your user activation is pending by Natrax";
+                        objreturndbmlUser.objdbmlStatus.StatusId = 40; // Activation Pending
+                        objreturndbmlUser.objdbmlStatus.Status = "Your registration process was started on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().CreateDate.ToString("dd/MM/yyyy") + " after eMail verification and password creation.\nLogin ID " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + " activation is pending at Natrax for Company " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().ZZCompanyName + ".\nPlease wait till further intimation by mail on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId + ".\nYou may contact us on XXXXXXXXXX in case";
                     }
                     else if (Cryptographer.CompareHash("ePGMS", strPassword, objreturndbmlUser.objdbmlUserView.FirstOrDefault().PassWord))
                     {
@@ -857,19 +862,20 @@ namespace WCFPGMSFront
                             strSubject = string.Empty, strBody = string.Empty;
 
 
-                        strSubject = "Email verification for register to Natrax";
+                        strSubject = "Natrax - Verify email";
                         strBody = "Hello, ";
 
+                        strBody += "<br /><br /><b>" + objreturndbmlCompanyViewReturn.objdbmlCompanyView.FirstOrDefault().ContactPerson + "</b>";
                         strBody += "<br /><b>" + objreturndbmlCompanyViewReturn.objdbmlCompanyView.FirstOrDefault().CompanyName + "</b>";
 
-                        strBody += "<br /><br />You have successfully register to Natrax for Login Id <b>" + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId+"</b>";
-                        strBody += ", please click on link below to verify your emailId";
+                        strBody += "<br /><br />You have successfully registered on Natrax with Login-ID <b> '" + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId+"</b>'";
+                        strBody += ", please click on the below link to verify your email and create passwords";
                         strBody += "<br />" + strLink;
 
 
 
                         strBody += "<br /><br /><br />Regards";
-                        strBody += "<br /><br /><span style='font-weight:bold;font-family:Trebuchet MS;font-style:italic'>Natrax Team</span>";
+                        strBody += "<br /><br /><span style='font-weight:bold;font-family:Trebuchet MS;font-style:italic'>Natrax Administrator</span>";
 
                         bool blnSentMail = SendMailMessage(strFrom, "test@dem0", strTo, strReplyTo, strBcc, strCc, strSubject, strBody, null, "");
 
@@ -914,7 +920,7 @@ namespace WCFPGMSFront
                     trans.Commit();
                     objreturndbmlUser = UserViewGetByLoginIdUserId("",intUserId);
                     objreturndbmlUser.objdbmlStatus.StatusId = 1;
-                    objreturndbmlUser.objdbmlStatus.Status = "Your emailId successfully verified, Please create your 'User Password' login to Natrax";
+                    objreturndbmlUser.objdbmlStatus.Status = "Your emailId - " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId + " is successfully verified, Please create Password";
                 }
                 else if(intIdOut==-1)
                 {
@@ -930,17 +936,17 @@ namespace WCFPGMSFront
                         if (objreturndbmlUser.objdbmlUserView.FirstOrDefault().PassWord.Trim().Length <3)
                         {
                             objreturndbmlUser.objdbmlStatus.StatusId = 1;
-                            objreturndbmlUser.objdbmlStatus.Status = "Your emailId is already verified, Please create your 'User Password' login to Natrax";
+                            objreturndbmlUser.objdbmlStatus.Status = "Your emailId - " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId + " is already verified, Please create Password";
                         }
                         else if(objreturndbmlUser.objdbmlUserView.FirstOrDefault().Active == false)
                         {
                             objreturndbmlUser.objdbmlStatus.StatusId = -3;
-                            objreturndbmlUser.objdbmlStatus.Status = "Your emailId is already verified. Your user activation is pending by Natrax";
+                            objreturndbmlUser.objdbmlStatus.Status = "Your registration process was started on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().CreateDate.ToString("dd/MM/yyyy") + " after eMail verification and password creation.\nLogin ID " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + " activation is pending at Natrax for Company " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().ZZCompanyName + ".\nPlease wait till further intimation by mail on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId + ".\nYou may contact us on XXXXXXXXXX in case"; ;
                         }
                         else
                         {
                             objreturndbmlUser.objdbmlStatus.StatusId = -2;
-                            objreturndbmlUser.objdbmlStatus.Status = "Your emailId is already verified. Go to login page for login to Natrax";
+                            objreturndbmlUser.objdbmlStatus.Status = "Your Login ID - " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + " for " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().UserName + " / " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().ZZCompanyName + " has been activated by Natrax Administrator.";
                         }
                     }
                     else
@@ -989,7 +995,7 @@ namespace WCFPGMSFront
                 trans.Commit();
 
                 objreturndbmlUser.objdbmlStatus.StatusId = 1;
-                objreturndbmlUser.objdbmlStatus.Status = "Password Created Successfully";
+                objreturndbmlUser.objdbmlStatus.Status = "Password has been created successfully";
 
             }
             catch (Exception ex)
@@ -1579,9 +1585,7 @@ namespace WCFPGMSFront
                 objreturndbmlBooking.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
             }
             return objreturndbmlBooking;
-        }
-
-       
+        }              
 
         public returndbmlBookingSearchView BookingSearchViewGetByCompanyIdFromDateToDateFront(int intCompanyId, DateTime dtFromDate, DateTime dtToDate, int intBPId, int intStatusPropId)
         {
@@ -2093,6 +2097,62 @@ namespace WCFPGMSFront
                 }
             }
             return returndbmlBookingReturn;
+        }
+
+        public returndbmlBookingSearchView ToDoBookingSearchViewGetByCompanyIdFromDateToDateFront(int intCompanyId, int intUserId, DateTime dtFromDate, DateTime dtToDate, int intBPId, int intStatusPropId)
+        {
+            returndbmlBookingSearchView objreturndbmlBookingSearchView = new returndbmlBookingSearchView();
+            try
+            {
+                DataSet ds = new DataSet();
+                Database db = new SqlDatabase(GF.StrSetConnection());
+                System.Data.Common.DbCommand cmdGet = null;
+
+                cmdGet = db.GetStoredProcCommand("[Front].[ToDoBookingSearchViewFrontGetByCompanyIdFromDateToDate]", intCompanyId, intUserId, dtFromDate, dtToDate, intBPId, intStatusPropId);
+                db.LoadDataSet(cmdGet, ds, new string[] { "Booking" });
+                if (ds.Tables["Booking"] != null && ds.Tables["Booking"].Rows.Count > 0)
+                {
+                    objreturndbmlBookingSearchView.objdbmlBookingSearchView = new ObservableCollection<dbmlBookingSearchView>(from dRow in ds.Tables["Booking"].AsEnumerable()
+                                                                                                                              select (ConvertTableToListNew<dbmlBookingSearchView>(dRow)));
+                }
+
+                objreturndbmlBookingSearchView.objdbmlStatus.StatusId = 1;
+                objreturndbmlBookingSearchView.objdbmlStatus.Status = "Successful";
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlBookingSearchView.objdbmlStatus.StatusId = 99;
+                objreturndbmlBookingSearchView.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+            }
+            return objreturndbmlBookingSearchView;
+        }
+
+        public returndbmlDashBoardDocumentViewFront DashBoardDocumentGetByBPIdWorkFlowIdStatusPropertyId(int intBPId, int intWorkflowId, int intStatusPropId)
+        {
+            returndbmlDashBoardDocumentViewFront objreturndbmlDashBoardDocumentViewFront = new returndbmlDashBoardDocumentViewFront();
+            try
+            {
+                DataSet ds = new DataSet();
+                Database db = new SqlDatabase(GF.StrSetConnection());
+                System.Data.Common.DbCommand cmdGet = null;
+
+                cmdGet = db.GetStoredProcCommand("[Transaction].[DashBoardDocumentGetByBPIdWorkFlowIdStatusPropertyId]", intBPId, intWorkflowId,intStatusPropId);
+                db.LoadDataSet(cmdGet, ds, new string[] { "DashBoardDocument" });
+                if (ds.Tables["DashBoardDocument"] != null && ds.Tables["DashBoardDocument"].Rows.Count > 0)
+                {
+                    objreturndbmlDashBoardDocumentViewFront.objdbmlDashBoardDocumentViewFront = new ObservableCollection<dbmlDashBoardDocumentViewFront>(from dRow in ds.Tables["DashBoardDocument"].AsEnumerable()
+                                                                                                                              select (ConvertTableToListNew<dbmlDashBoardDocumentViewFront>(dRow)));
+                }
+
+                objreturndbmlDashBoardDocumentViewFront.objdbmlStatus.StatusId = 1;
+                objreturndbmlDashBoardDocumentViewFront.objdbmlStatus.Status = "Successful";
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlDashBoardDocumentViewFront.objdbmlStatus.StatusId = 99;
+                objreturndbmlDashBoardDocumentViewFront.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+            }
+            return objreturndbmlDashBoardDocumentViewFront;
         }
         #endregion
 

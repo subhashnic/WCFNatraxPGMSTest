@@ -116,6 +116,12 @@ namespace WCFPGMSFront
 
         [OperationContract]
         returndbmlBooking UpdateServiceDateFrontByBookingIdDayDates(returndbmlServiceDateViewFront objreturndbmlServiceDateViewFront);
+
+        [OperationContract]
+        returndbmlBookingSearchView ToDoBookingSearchViewGetByCompanyIdFromDateToDateFront(int intCompanyId, int intUserId, DateTime dtFromDate, DateTime dtToDate, int intBPId, int intStatusPropId);
+
+        [OperationContract]
+        returndbmlDashBoardDocumentViewFront DashBoardDocumentGetByBPIdWorkFlowIdStatusPropertyId(int intBPId, int intWorkflowId, int intStatusPropId);
         #endregion
 
         #region Vehicle Componants

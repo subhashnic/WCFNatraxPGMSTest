@@ -592,4 +592,18 @@
       <Column Name="ZZLoginId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="Front.DashBoardDocumentViewFront" Member="dbmlDashBoardDocumentViewFronts">
+    <Type Name="dbmlDashBoardDocumentViewFront">
+      <Column Name="DocId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BPId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DocDate" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="DocNo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Department" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ZZStatus" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ZZWorkFlowColor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BPName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>
