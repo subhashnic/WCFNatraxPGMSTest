@@ -561,17 +561,17 @@ namespace WCFPGMSFront
                     if (objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailVerify == null || objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailVerify == false)
                     {
                         objreturndbmlUser.objdbmlStatus.StatusId = 20;//Verification Pending
-                        objreturndbmlUser.objdbmlStatus.Status = "Your email verification and password creation is pending, we have sent you mail on "+ objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId+ " for Login ID " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + " with a verification link.\nPlease check you mail and click verification link to create password.";
+                        objreturndbmlUser.objdbmlStatus.Status = "Your email verification and password creation is pending, we have sent you mail on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId + " for Login ID " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + " with a verification link.\nPlease check you mail and click verification link to create password.";
                     }
-                    else if(objreturndbmlUser.objdbmlUserView.FirstOrDefault().PassWord.Trim().Length < 3)
+                    else if (objreturndbmlUser.objdbmlUserView.FirstOrDefault().PassWord.Trim().Length < 3)
                     {
                         objreturndbmlUser.objdbmlStatus.StatusId = 30;// Password creation Pending
                         objreturndbmlUser.objdbmlStatus.Status = "Your email verification and password creation is pending, we have sent you mail on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId + " for Login ID " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + " with a verification link.\nPlease check you mail and click verification link to create password.";
                     }
-                    else if(objreturndbmlUser.objdbmlUserView.FirstOrDefault().Active==false)
+                    else if (objreturndbmlUser.objdbmlUserView.FirstOrDefault().Active == false)
                     {
                         objreturndbmlUser.objdbmlStatus.StatusId = 40; // Activation Pending
-                        objreturndbmlUser.objdbmlStatus.Status = "Your registration process was started on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().CreateDate.ToString("dd/MM/yyyy") + " after eMail verification and password creation.\nLogin ID " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + " activation is pending at Natrax for Company " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().ZZCompanyName + ".\nPlease wait till further intimation by mail on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId + ".\nYou may contact us on XXXXXXXXXX in case";
+                        objreturndbmlUser.objdbmlStatus.Status = "Your registration process was started on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().CreateDate.ToString("dd/MM/yyyy") + " after eMail verification and password creation.Login ID " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + " activation is pending at Natrax for Company " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().ZZCompanyName + ".Please wait till further intimation by mail on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId + ".You may contact us on XXXXXXXXXX in case";
                     }
                     else if (Cryptographer.CompareHash("ePGMS", strPassword, objreturndbmlUser.objdbmlUserView.FirstOrDefault().PassWord))
                     {
@@ -583,6 +583,12 @@ namespace WCFPGMSFront
                         objreturndbmlUser.objdbmlStatus.StatusId = 10; // Password Not Match
                         objreturndbmlUser.objdbmlStatus.Status = "Incorrect Password";
                     }
+                }
+                else
+                {
+                    objreturndbmlUser = new returndbmlUser();
+                    objreturndbmlUser.objdbmlStatus.StatusId = 5; // Password Not Match
+                    objreturndbmlUser.objdbmlStatus.Status = "Incorrect User Name";
                 }
             }
             catch (Exception ex)
@@ -701,6 +707,93 @@ namespace WCFPGMSFront
             {
                 objreturndbmlUser.objdbmlStatus.StatusId = 99;
                 objreturndbmlUser.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+            }
+            return objreturndbmlUser;
+        }
+
+        public returndbmlUser UserPaswordForgot(string strLoginId, string strEMail)
+        {
+            returndbmlUser objreturndbmlUser = new returndbmlUser();
+            objreturndbmlUser = UserViewGetByLoginIdUserId(strLoginId,0);
+            if (objreturndbmlUser.objdbmlUserView == null || objreturndbmlUser.objdbmlUserView.Count == 0)
+            {
+                objreturndbmlUser.objdbmlStatus.StatusId = 5;
+                objreturndbmlUser.objdbmlStatus.Status = "User Details Not Found for LoginId : '" + strLoginId + "' and EMail : '" + strEMail + "'";
+            }
+            else if (objreturndbmlUser.objdbmlUserView.Count > 0 && objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId != null &&
+                    objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId.Trim().ToLower() != strEMail.Trim().ToLower())
+            {
+                objreturndbmlUser.objdbmlStatus.StatusId = 10;
+                objreturndbmlUser.objdbmlStatus.Status = "User Details Not Found for LoginId : '" + strLoginId + "' and EMail : '" + strEMail + "'";
+            }
+            else if (objreturndbmlUser.objdbmlUserView.Count > 0 && objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId != null &&
+                    objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId.Trim().ToLower() == strEMail.Trim().ToLower())
+            {
+                DbTransaction trans; DbConnection con;
+                Database db = new SqlDatabase(GF.StrSetConnection());
+                con = db.CreateConnection();
+                con.Open();
+                trans = con.BeginTransaction();
+                System.Data.Common.DbCommand cmd = null;
+                int intUserId = objreturndbmlUser.objdbmlUserView.FirstOrDefault().UserId;
+                try
+                {
+                    cmd = db.GetStoredProcCommand("[Front].[UserPaswordForgot]");
+                    db.AddInParameter(cmd, "UserId", DbType.Int32, intUserId);
+                    db.ExecuteNonQuery(cmd, trans);
+
+                    trans.Commit();
+
+                    string strHost = System.Configuration.ConfigurationManager.AppSettings["strHostName"]; //"https://localhost:44307/";
+                    string strLink = strHost + "Home/VerifyeMail?xyz=0dfs,ktgbdas,hdffg.khdfrhdduihdgtymdmpxjidgndlxcmhdgmdpldjn,dlkchgj,d,.fddfyre,hjlhhjhjlhjljhjlhdkjdhhdk,dmdhhnd,dkmdndhnndmdkkfbhjyhnhhfssdfgngfgfghgfjfgjgffbgfhfhfhdffdsfdgfdfhfhgfhgfjfwrtwfghkyredcbnmkiufssfgyhvgdrfrthhhjhmjmd&abc="
+                                        + objreturndbmlUser.objdbmlUserView.FirstOrDefault().UserId
+                                        + "&lmn=0dshffn56tgrehbncv6nwyuwgkliurscvjl'ljugbmkl;lkitgn;''lkjhhhjl;llkyhfcfbmkkdfhdfgffhf561g4d5bvgdf1bbdfbdvfgbnvbncvncvbbnxcdgfcbcb";
+                    string strFrom = "testdemo052020@gmail.com", strReplyTo = "",
+                        strTo = objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId,
+                        strBcc = string.Empty,
+                        strCc = string.Empty,
+                        strSubject = string.Empty, strBody = string.Empty;
+
+
+                    strSubject = "Natrax - Forgot Password";
+                    strBody = "Hello, ";
+
+                    strBody += "<br /><br /><b>" + objreturndbmlUser.objdbmlUserView.FirstOrDefault().UserName + "</b>";
+                    strBody += "<br /><b>" + objreturndbmlUser.objdbmlUserView.FirstOrDefault().ZZCompanyName + "</b>";
+
+                    strBody += "<br /><br />Forgot password reset link for Login-ID <b> '" + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + "</b>'";
+                    strBody += ", please click on the below link to create password";
+                    strBody += "<br />" + strLink;
+
+
+
+                    strBody += "<br /><br /><br />Regards";
+                    strBody += "<br /><br /><span style='font-weight:bold;font-family:Trebuchet MS;font-style:italic'>Natrax Administrator</span>";
+
+                    bool blnSentMail = SendMailMessage(strFrom, "test@dem0", strTo, strReplyTo, strBcc, strCc, strSubject, strBody, null, "");
+
+                    objreturndbmlUser.objdbmlStatus.StatusId = 1;
+                    objreturndbmlUser.objdbmlStatus.Status = "Password reset process for " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().UserName + " shall be initiated.\nForgot password reset link has been sent to '" + objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId + "'.\nPlease click on link to create password for Login ID - " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + "."; 
+
+                }
+                catch (Exception ex)
+                {
+                    objreturndbmlUser.objdbmlStatus.StatusId = 99;
+                    objreturndbmlUser.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+                    trans.Rollback();
+                }
+                finally
+                {
+                    if (con != null && con.State == ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                }
+            }
+            else
+            {
+                objreturndbmlUser.objdbmlStatus.StatusId = 10;
+                objreturndbmlUser.objdbmlStatus.Status = "User Details Not Found for LoginId : '" + strLoginId + "' and EMail : '" + strEMail + "'";
             }
             return objreturndbmlUser;
         }
@@ -869,7 +962,7 @@ namespace WCFPGMSFront
                         strBody += "<br /><b>" + objreturndbmlCompanyViewReturn.objdbmlCompanyView.FirstOrDefault().CompanyName + "</b>";
 
                         strBody += "<br /><br />You have successfully registered on Natrax with Login-ID <b> '" + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId+"</b>'";
-                        strBody += ", please click on the below link to verify your email and create passwords";
+                        strBody += ", please click on the below link to verify your email and create password";
                         strBody += "<br />" + strLink;
 
 
@@ -941,7 +1034,7 @@ namespace WCFPGMSFront
                         else if(objreturndbmlUser.objdbmlUserView.FirstOrDefault().Active == false)
                         {
                             objreturndbmlUser.objdbmlStatus.StatusId = -3;
-                            objreturndbmlUser.objdbmlStatus.Status = "Your registration process was started on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().CreateDate.ToString("dd/MM/yyyy") + " after eMail verification and password creation.\nLogin ID " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + " activation is pending at Natrax for Company " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().ZZCompanyName + ".\nPlease wait till further intimation by mail on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId + ".\nYou may contact us on XXXXXXXXXX in case"; ;
+                            objreturndbmlUser.objdbmlStatus.Status = "Your registration process was started on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().CreateDate.ToString("dd/MM/yyyy") + " after eMail verification and password creation.\nLogin ID " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + " activation is pending at Natrax for Company " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().ZZCompanyName + ".\nPlease wait till further intimation by mail on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId + ".\nYou may contact us on XXXXXXXXXX in case";
                         }
                         else
                         {
@@ -2127,7 +2220,7 @@ namespace WCFPGMSFront
             return objreturndbmlBookingSearchView;
         }
 
-        public returndbmlDashBoardDocumentViewFront DashBoardDocumentGetByBPIdWorkFlowIdStatusPropertyId(int intBPId, int intWorkflowId, int intStatusPropId)
+        public returndbmlDashBoardDocumentViewFront DashBoardDocumentGetByBPIdWorkFlowIdStatusPropertyId(int intBPId, int intWorkflowId, string strStatusPropId)
         {
             returndbmlDashBoardDocumentViewFront objreturndbmlDashBoardDocumentViewFront = new returndbmlDashBoardDocumentViewFront();
             try
@@ -2136,7 +2229,7 @@ namespace WCFPGMSFront
                 Database db = new SqlDatabase(GF.StrSetConnection());
                 System.Data.Common.DbCommand cmdGet = null;
 
-                cmdGet = db.GetStoredProcCommand("[Transaction].[DashBoardDocumentGetByBPIdWorkFlowIdStatusPropertyId]", intBPId, intWorkflowId,intStatusPropId);
+                cmdGet = db.GetStoredProcCommand("[Transaction].[DashBoardDocumentGetByBPIdWorkFlowIdStatusPropertyId]", intBPId, intWorkflowId, strStatusPropId);
                 db.LoadDataSet(cmdGet, ds, new string[] { "DashBoardDocument" });
                 if (ds.Tables["DashBoardDocument"] != null && ds.Tables["DashBoardDocument"].Rows.Count > 0)
                 {

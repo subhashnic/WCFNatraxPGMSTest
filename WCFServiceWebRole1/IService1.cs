@@ -27,6 +27,9 @@ namespace WCFPGMSFront
         [OperationContract]
         returndbmlUser UserViewGetByLoginIdUserId(string strLoginId, int intUserId);
 
+        [OperationContract]
+        returndbmlUser UserPaswordForgot(string strLoginId, string strEMail);
+
         #endregion
 
         #region Properties / OptionList
@@ -121,7 +124,7 @@ namespace WCFPGMSFront
         returndbmlBookingSearchView ToDoBookingSearchViewGetByCompanyIdFromDateToDateFront(int intCompanyId, int intUserId, DateTime dtFromDate, DateTime dtToDate, int intBPId, int intStatusPropId);
 
         [OperationContract]
-        returndbmlDashBoardDocumentViewFront DashBoardDocumentGetByBPIdWorkFlowIdStatusPropertyId(int intBPId, int intWorkflowId, int intStatusPropId);
+        returndbmlDashBoardDocumentViewFront DashBoardDocumentGetByBPIdWorkFlowIdStatusPropertyId(int intBPId, int intWorkflowId, string strStatusPropId);
         #endregion
 
         #region Vehicle Componants
