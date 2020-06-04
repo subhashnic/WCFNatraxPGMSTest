@@ -566,7 +566,7 @@ namespace WCFPGMSFront
                     else if (objreturndbmlUser.objdbmlUserView.FirstOrDefault().PassWord.Trim().Length < 3)
                     {
                         objreturndbmlUser.objdbmlStatus.StatusId = 30;// Password creation Pending
-                        objreturndbmlUser.objdbmlStatus.Status = "Your email verification and password creation is pending, we have sent you mail on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId + " for Login ID " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + " with a verification link.\nPlease check you mail and click verification link to create password.";
+                        objreturndbmlUser.objdbmlStatus.Status = "Your password creation is pending, we have sent you mail on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId + " for Login ID " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + " with a verification link.\nPlease check you mail and click verification link to create password.";
                     }
                     else if (objreturndbmlUser.objdbmlUserView.FirstOrDefault().Active == false)
                     {
@@ -1086,10 +1086,17 @@ namespace WCFPGMSFront
                 db.ExecuteNonQuery(cmd, trans);
 
                 trans.Commit();
-
+                objreturndbmlUser = UserViewGetByLoginIdUserId("", intUserId);
                 objreturndbmlUser.objdbmlStatus.StatusId = 1;
-                objreturndbmlUser.objdbmlStatus.Status = "Password has been created successfully";
-
+                if (objreturndbmlUser.objdbmlUserView.Count > 0 && objreturndbmlUser.objdbmlUserView.FirstOrDefault().Active == true)
+                {
+                    objreturndbmlUser.objdbmlStatus.Status = "New Password successfully created. Go to Login Page for Login to Natrax";
+                }
+                else if(objreturndbmlUser.objdbmlUserView.Count > 0)
+                {
+                    dbmlUserView objUserView = objreturndbmlUser.objdbmlUserView.FirstOrDefault();
+                    objreturndbmlUser.objdbmlStatus.Status = "Your registration process was started on "+ objUserView.CreateDate.ToString("dd/MM/yyyy")+ " after eMail verification and password creation.\nLogin ID "+ objUserView.LoginId+ " activation is pending at Natrax for Company " + objUserView.ZZCompanyName + ".\nPlease wait till further intimation by mail on " + objUserView.EmailId + ".\nYou may contact us on XXXXXXXXXX in case";
+                }
             }
             catch (Exception ex)
             {
