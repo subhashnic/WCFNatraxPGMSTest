@@ -2227,7 +2227,7 @@ namespace WCFPGMSFront
             return objreturndbmlBookingSearchView;
         }
 
-        public returndbmlDashBoardDocumentViewFront DashBoardDocumentGetByBPIdWorkFlowIdStatusPropertyId(int intBPId, int intWorkflowId, string strStatusPropId)
+        public returndbmlDashBoardDocumentViewFront DashBoardDocumentGetByBPIdWorkFlowIdStatusPropertyId(int intBPId, int intWorkflowId, string strStatusPropId,int intUserId)
         {
             returndbmlDashBoardDocumentViewFront objreturndbmlDashBoardDocumentViewFront = new returndbmlDashBoardDocumentViewFront();
             try
@@ -2236,7 +2236,7 @@ namespace WCFPGMSFront
                 Database db = new SqlDatabase(GF.StrSetConnection());
                 System.Data.Common.DbCommand cmdGet = null;
 
-                cmdGet = db.GetStoredProcCommand("[Transaction].[DashBoardDocumentGetByBPIdWorkFlowIdStatusPropertyId]", intBPId, intWorkflowId, strStatusPropId);
+                cmdGet = db.GetStoredProcCommand("[Transaction].[DashBoardDocumentGetByBPIdWorkFlowIdStatusPropertyId]", intBPId, intWorkflowId, strStatusPropId, intUserId);
                 db.LoadDataSet(cmdGet, ds, new string[] { "DashBoardDocument" });
                 if (ds.Tables["DashBoardDocument"] != null && ds.Tables["DashBoardDocument"].Rows.Count > 0)
                 {
