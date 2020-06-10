@@ -385,28 +385,6 @@
       <Column Name="ComOptionListId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="Front.BookingSearchViewFront" Member="dbmlBookingSearchViews">
-    <Type Name="dbmlBookingSearchView">
-      <Column Name="CompanyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="BookingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="BookingDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="BookingNo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="BPId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="DocNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Project" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ProjectManager" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Department" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="StatusPropId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ZZWorkFlowName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ZZActivity" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="ZZStatus" Type="System.String" DbType="NVarChar(101) NOT NULL" CanBeNull="false" />
-      <Column Name="ZZWorkFlowColor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ZZBookingDate" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="DepartmentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="WorkFlowId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="Front.ServiceDateViewFront" Member="dbmlServiceDateViewFronts">
     <Type Name="dbmlServiceDateViewFront">
       <Column Name="BookingId" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -604,6 +582,29 @@
       <Column Name="ZZStatus" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="ZZWorkFlowColor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="BPName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="Front.BookingSearchViewFront" Member="dbmlBookingSearchViews">
+    <Type Name="dbmlBookingSearchView">
+      <Column Name="CompanyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BookingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BookingDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="BookingNo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BPId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DocNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Project" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ProjectManager" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Department" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="StatusPropId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZZWorkFlowName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ZZActivity" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ZZStatus" Type="System.String" DbType="NVarChar(101) NOT NULL" CanBeNull="false" />
+      <Column Name="ZZWorkFlowColor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ZZBookingDate" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="DepartmentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WorkFlowId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BookingType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
