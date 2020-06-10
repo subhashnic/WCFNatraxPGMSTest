@@ -561,12 +561,12 @@ namespace WCFPGMSFront
                     if (objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailVerify == null || objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailVerify == false)
                     {
                         objreturndbmlUser.objdbmlStatus.StatusId = 20;//Verification Pending
-                        objreturndbmlUser.objdbmlStatus.Status = "Your email verification and password creation is pending, we have sent you mail on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId + " for Login ID " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + " with a verification link.\nPlease check you mail and click verification link to create password.";
+                        objreturndbmlUser.objdbmlStatus.Status = "Your email verification and password creation is pending, we have sent you mail on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId + " for Login ID " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + " with a verification link.Please check you mail and click verification link to create password.";
                     }
                     else if (objreturndbmlUser.objdbmlUserView.FirstOrDefault().PassWord.Trim().Length < 3)
                     {
                         objreturndbmlUser.objdbmlStatus.StatusId = 30;// Password creation Pending
-                        objreturndbmlUser.objdbmlStatus.Status = "Your password creation is pending, we have sent you mail on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId + " for Login ID " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + " with a verification link.\nPlease check you mail and click verification link to create password.";
+                        objreturndbmlUser.objdbmlStatus.Status = "Your password creation is pending, we have sent you mail on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId + " for Login ID " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + " with a verification link.Please check you mail and click verification link to create password.";
                     }
                     else if (objreturndbmlUser.objdbmlUserView.FirstOrDefault().Active == false)
                     {
@@ -773,7 +773,7 @@ namespace WCFPGMSFront
                     bool blnSentMail = SendMailMessage(strFrom, "test@dem0", strTo, strReplyTo, strBcc, strCc, strSubject, strBody, null, "");
 
                     objreturndbmlUser.objdbmlStatus.StatusId = 1;
-                    objreturndbmlUser.objdbmlStatus.Status = "Password reset process for " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().UserName + " shall be initiated.\nForgot password reset link has been sent to '" + objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId + "'.\nPlease click on link to create password for Login ID - " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + "."; 
+                    objreturndbmlUser.objdbmlStatus.Status = "Password reset process for " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().UserName + " shall be initiated.<br>Forgot password reset link has been sent to '" + objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId + "'.<br>Please click on link to create password for Login ID - " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + "."; 
 
                 }
                 catch (Exception ex)
@@ -1034,7 +1034,7 @@ namespace WCFPGMSFront
                         else if(objreturndbmlUser.objdbmlUserView.FirstOrDefault().Active == false)
                         {
                             objreturndbmlUser.objdbmlStatus.StatusId = -3;
-                            objreturndbmlUser.objdbmlStatus.Status = "Your registration process was started on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().CreateDate.ToString("dd/MM/yyyy") + " after eMail verification and password creation.\nLogin ID " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + " activation is pending at Natrax for Company " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().ZZCompanyName + ".\nPlease wait till further intimation by mail on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId + ".\nYou may contact us on XXXXXXXXXX in case";
+                            objreturndbmlUser.objdbmlStatus.Status = "Your registration process was started on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().CreateDate.ToString("dd/MM/yyyy") + " after eMail verification and password creation.<br>Login ID " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + " activation is pending at Natrax for Company " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().ZZCompanyName + ".<br>Please wait till further intimation by mail on " + objreturndbmlUser.objdbmlUserView.FirstOrDefault().EmailId + ".<br>You may contact us on XXXXXXXXXX in case";
                         }
                         else
                         {
@@ -1095,7 +1095,7 @@ namespace WCFPGMSFront
                 else if(objreturndbmlUser.objdbmlUserView.Count > 0)
                 {
                     dbmlUserView objUserView = objreturndbmlUser.objdbmlUserView.FirstOrDefault();
-                    objreturndbmlUser.objdbmlStatus.Status = "Your registration process was started on "+ objUserView.CreateDate.ToString("dd/MM/yyyy")+ " after eMail verification and password creation.\nLogin ID "+ objUserView.LoginId+ " activation is pending at Natrax for Company " + objUserView.ZZCompanyName + ".\nPlease wait till further intimation by mail on " + objUserView.EmailId + ".\nYou may contact us on XXXXXXXXXX in case";
+                    objreturndbmlUser.objdbmlStatus.Status = "Your registration process was started on "+ objUserView.CreateDate.ToString("dd/MM/yyyy")+ " after eMail verification and password creation.<br>Login ID "+ objUserView.LoginId+ " activation is pending at Natrax for Company " + objUserView.ZZCompanyName + ".<br>Please wait till further intimation by mail on " + objUserView.EmailId + ".<br>You may contact us on XXXXXXXXXX in case";
                 }
             }
             catch (Exception ex)
