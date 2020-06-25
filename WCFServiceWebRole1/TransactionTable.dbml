@@ -514,16 +514,6 @@
       <Column Name="ZZUserType" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="Front.DashBoardWorkFlowViewFront" Member="dbmlDashBoardWorkFlowViewFronts">
-    <Type Name="dbmlDashBoardWorkFlowViewFront">
-      <Column Name="DashBoardId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Caption" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="BPId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="WorkFlowId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="StatusPropId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Counts" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="Master.State" Member="dbmlStates">
     <Type Name="dbmlState">
       <Column Name="StateId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -570,20 +560,6 @@
       <Column Name="ZZLoginId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="Front.DashBoardDocumentViewFront" Member="dbmlDashBoardDocumentViewFronts">
-    <Type Name="dbmlDashBoardDocumentViewFront">
-      <Column Name="DocId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="BPId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CompanyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="DocDate" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="DocNo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Department" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ZZStatus" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="ZZWorkFlowColor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="BPName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="Front.BookingSearchViewFront" Member="dbmlBookingSearchViews">
     <Type Name="dbmlBookingSearchView">
       <Column Name="CompanyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -605,6 +581,39 @@
       <Column Name="DepartmentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="WorkFlowId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="BookingType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="Front.DashBoardWorkFlowViewFront" Member="dbmlDashBoardWorkFlowViewFronts">
+    <Type Name="dbmlDashBoardWorkFlowViewFront">
+      <Column Name="DashBoardId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Caption" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="BPId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WorkFlowId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StatusPropId" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Counts" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Front.DashBoardDocumentViewFront" Member="dbmlDashBoardDocumentViewFronts">
+    <Type Name="dbmlDashBoardDocumentViewFront">
+      <Column Name="DocId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BPId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DocDate" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="DocNo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Department" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ZZStatus" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="BPName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="Front.CustomerMasterPhoto" Member="dbmlCustomerMasterPhotos">
+    <Type Name="dbmlCustomerMasterPhoto">
+      <Column Name="CustomerMasterId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ImageSerialNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ImageName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CreateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

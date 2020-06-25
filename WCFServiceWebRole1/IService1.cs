@@ -79,6 +79,15 @@ namespace WCFPGMSFront
 
         [OperationContract]
         returndbmlDistrict DistrictGetAll();
+
+        [OperationContract]
+        returndbmlCustomerMasterPhoto CustomerMasterPhotoGetByCustomerMasterId(int intCustomerMasterId);
+
+        [OperationContract]
+        returndbmlCustomerMasterPhoto CustomerMasterPhotoInsert(returndbmlCustomerMasterPhoto objreturndbmlCustomerMasterPhoto);
+
+        [OperationContract]
+        returndbmlCustomerMasterPhoto CustomerMasterPhotoDelete(int intCustomerMasterId, int intIamgeSerialNo);
         #endregion
 
         #region Booking
@@ -124,7 +133,7 @@ namespace WCFPGMSFront
         returndbmlBookingSearchView ToDoBookingSearchViewGetByCompanyIdFromDateToDateFront(int intCompanyId, int intUserId, DateTime dtFromDate, DateTime dtToDate, int intBPId, int intStatusPropId);
 
         [OperationContract]
-        returndbmlDashBoardDocumentViewFront DashBoardDocumentGetByBPIdWorkFlowIdStatusPropertyId(int intBPId, int intWorkflowId, string strStatusPropId,int intUserId);
+        returndbmlDashBoardDocumentViewFront DashBoardDocumentGetByBPIdWorkFlowIdStatusPropertyId(int intBPId, string strWorkflowId, string strStatusPropId, int intUserId);
         #endregion
 
         #region Vehicle Componants

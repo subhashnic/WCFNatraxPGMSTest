@@ -763,7 +763,7 @@ namespace WCFPGMSFront
 
                     strBody += "<br /><br />Forgot password reset link for Login-ID <b> '" + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId + "</b>'";
                     strBody += ", please click on the below link to create password";
-                    strBody += "<br />" + strLink;
+                    strBody += "<br /><b><a href='"+strLink+"'>Click Here</a></b>";
 
 
 
@@ -963,7 +963,7 @@ namespace WCFPGMSFront
 
                         strBody += "<br /><br />You have successfully registered on Natrax with Login-ID <b> '" + objreturndbmlUser.objdbmlUserView.FirstOrDefault().LoginId+"</b>'";
                         strBody += ", please click on the below link to verify your email and create password";
-                        strBody += "<br />" + strLink;
+                        strBody += "<br /><b><a href='" + strLink + "'>Click Here</a></b>";
 
 
 
@@ -1488,6 +1488,122 @@ namespace WCFPGMSFront
             }
             return objreturndbmlDistrict;
         }
+
+        public returndbmlCustomerMasterPhoto CustomerMasterPhotoGetByCustomerMasterId(int intCustomerMasterId)
+        {
+            returndbmlCustomerMasterPhoto objreturndbmlCustomerMasterPhoto = new returndbmlCustomerMasterPhoto();
+            try
+            {
+                DataSet ds = new DataSet();
+                Database db = new SqlDatabase(GF.StrSetConnection());
+                System.Data.Common.DbCommand cmdGet = null;
+
+                cmdGet = db.GetStoredProcCommand("[Front].[CustomerMasterPhotoGetByCustomerMasterId]", intCustomerMasterId);
+                db.LoadDataSet(cmdGet, ds, new string[] { "CustomerMasterPhoto" });
+                if (ds.Tables["CustomerMasterPhoto"].Rows.Count > 0)
+                {
+                    objreturndbmlCustomerMasterPhoto.objdbmlCustomerMasterPhoto = new ObservableCollection<dbmlCustomerMasterPhoto>(from dRow in ds.Tables["CustomerMasterPhoto"].AsEnumerable()
+                                                                                                   select (ConvertTableToListNew<dbmlCustomerMasterPhoto>(dRow)));
+                }
+
+                objreturndbmlCustomerMasterPhoto.objdbmlStatus.StatusId = 1;
+                objreturndbmlCustomerMasterPhoto.objdbmlStatus.Status = "Successful";
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlCustomerMasterPhoto.objdbmlStatus.StatusId = 99;
+                objreturndbmlCustomerMasterPhoto.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+            }
+            return objreturndbmlCustomerMasterPhoto;
+        }
+
+        public returndbmlCustomerMasterPhoto CustomerMasterPhotoInsert(returndbmlCustomerMasterPhoto objreturndbmlCustomerMasterPhoto)
+        {
+            returndbmlCustomerMasterPhoto objreturndbmlCustomerMasterPhotoReturn = new returndbmlCustomerMasterPhoto();
+            DbTransaction trans; DbConnection con;
+            Database db = new SqlDatabase(GF.StrSetConnection());
+            con = db.CreateConnection();
+            con.Open();
+            trans = con.BeginTransaction();
+            System.Data.Common.DbCommand cmd = null;
+            try
+            {
+                int intCustomerMasterId = 0;
+                foreach (var Header in objreturndbmlCustomerMasterPhoto.objdbmlCustomerMasterPhoto)
+                {
+                    intCustomerMasterId = (int)Header.CustomerMasterId;
+                    cmd = db.GetStoredProcCommand("[Front].[CustomerMasterPhotoInsert]");
+                    foreach (PropertyInfo PropInfoCol in Header.GetType().GetProperties())
+                    {
+                        string str = PropInfoCol.Name;
+                        if (str.Length <= 2)
+                            str = str + "modified";
+                        if (str.Substring(0, 2).ToUpper() != "ZZ" && str != "DUMMY" && str != "ZZDumSeq")
+                        {
+                            DbType dbt = ConvertNullableIntoDatatype(PropInfoCol);
+                            db.AddInParameter(cmd, PropInfoCol.Name.ToString(), dbt, PropInfoCol.GetValue(Header, null));
+                        }
+                    }
+
+                    db.ExecuteNonQuery(cmd, trans);
+                }
+
+                trans.Commit();
+
+                objreturndbmlCustomerMasterPhotoReturn = CustomerMasterPhotoGetByCustomerMasterId(intCustomerMasterId);
+
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlCustomerMasterPhotoReturn.objdbmlStatus.StatusId = 99;
+                objreturndbmlCustomerMasterPhotoReturn.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+                trans.Rollback();
+            }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return objreturndbmlCustomerMasterPhotoReturn;
+        }
+
+        public returndbmlCustomerMasterPhoto CustomerMasterPhotoDelete(int intCustomerMasterId,int intIamgeSerialNo)
+        {
+            returndbmlCustomerMasterPhoto objreturndbmlCustomerMasterPhotoReturn = new returndbmlCustomerMasterPhoto();
+            DbTransaction trans; DbConnection con;
+            Database db = new SqlDatabase(GF.StrSetConnection());
+            con = db.CreateConnection();
+            con.Open();
+            trans = con.BeginTransaction();
+            System.Data.Common.DbCommand cmd = null;
+            try
+            {
+                cmd = db.GetStoredProcCommand("[Front].[CustomerMasterPhotoDelete]", intCustomerMasterId, intIamgeSerialNo);
+                db.ExecuteNonQuery(cmd, trans);
+
+                trans.Commit();
+
+                objreturndbmlCustomerMasterPhotoReturn = CustomerMasterPhotoGetByCustomerMasterId(intCustomerMasterId);
+
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlCustomerMasterPhotoReturn.objdbmlStatus.StatusId = 99;
+                objreturndbmlCustomerMasterPhotoReturn.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+                trans.Rollback();
+            }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return objreturndbmlCustomerMasterPhotoReturn;
+        }
+
         #endregion
 
         #region Booking
@@ -2227,7 +2343,7 @@ namespace WCFPGMSFront
             return objreturndbmlBookingSearchView;
         }
 
-        public returndbmlDashBoardDocumentViewFront DashBoardDocumentGetByBPIdWorkFlowIdStatusPropertyId(int intBPId, int intWorkflowId, string strStatusPropId,int intUserId)
+        public returndbmlDashBoardDocumentViewFront DashBoardDocumentGetByBPIdWorkFlowIdStatusPropertyId(int intBPId, string strWorkflowId, string strStatusPropId,int intUserId)
         {
             returndbmlDashBoardDocumentViewFront objreturndbmlDashBoardDocumentViewFront = new returndbmlDashBoardDocumentViewFront();
             try
@@ -2236,7 +2352,7 @@ namespace WCFPGMSFront
                 Database db = new SqlDatabase(GF.StrSetConnection());
                 System.Data.Common.DbCommand cmdGet = null;
 
-                cmdGet = db.GetStoredProcCommand("[Transaction].[DashBoardDocumentGetByBPIdWorkFlowIdStatusPropertyId]", intBPId, intWorkflowId, strStatusPropId, intUserId);
+                cmdGet = db.GetStoredProcCommand("[Transaction].[DashBoardDocumentGetByBPIdWorkFlowIdStatusPropertyId]", intBPId, strWorkflowId, strStatusPropId, intUserId);
                 db.LoadDataSet(cmdGet, ds, new string[] { "DashBoardDocument" });
                 if (ds.Tables["DashBoardDocument"] != null && ds.Tables["DashBoardDocument"].Rows.Count > 0)
                 {

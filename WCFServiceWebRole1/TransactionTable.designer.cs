@@ -45,6 +45,9 @@ namespace WCFServiceTemplate
     partial void InsertdbmlDistrict(dbmlDistrict instance);
     partial void UpdatedbmlDistrict(dbmlDistrict instance);
     partial void DeletedbmlDistrict(dbmlDistrict instance);
+    partial void InsertdbmlCustomerMasterPhoto(dbmlCustomerMasterPhoto instance);
+    partial void UpdatedbmlCustomerMasterPhoto(dbmlCustomerMasterPhoto instance);
+    partial void DeletedbmlCustomerMasterPhoto(dbmlCustomerMasterPhoto instance);
     #endregion
 		
 		public TransactionTableDataContext() : 
@@ -229,14 +232,6 @@ namespace WCFServiceTemplate
 			}
 		}
 		
-		public System.Data.Linq.Table<dbmlDashBoardWorkFlowViewFront> dbmlDashBoardWorkFlowViewFronts
-		{
-			get
-			{
-				return this.GetTable<dbmlDashBoardWorkFlowViewFront>();
-			}
-		}
-		
 		public System.Data.Linq.Table<dbmlState> dbmlStates
 		{
 			get
@@ -261,6 +256,22 @@ namespace WCFServiceTemplate
 			}
 		}
 		
+		public System.Data.Linq.Table<dbmlBookingSearchView> dbmlBookingSearchViews
+		{
+			get
+			{
+				return this.GetTable<dbmlBookingSearchView>();
+			}
+		}
+		
+		public System.Data.Linq.Table<dbmlDashBoardWorkFlowViewFront> dbmlDashBoardWorkFlowViewFronts
+		{
+			get
+			{
+				return this.GetTable<dbmlDashBoardWorkFlowViewFront>();
+			}
+		}
+		
 		public System.Data.Linq.Table<dbmlDashBoardDocumentViewFront> dbmlDashBoardDocumentViewFronts
 		{
 			get
@@ -269,11 +280,11 @@ namespace WCFServiceTemplate
 			}
 		}
 		
-		public System.Data.Linq.Table<dbmlBookingSearchView> dbmlBookingSearchViews
+		public System.Data.Linq.Table<dbmlCustomerMasterPhoto> dbmlCustomerMasterPhotos
 		{
 			get
 			{
-				return this.GetTable<dbmlBookingSearchView>();
+				return this.GetTable<dbmlCustomerMasterPhoto>();
 			}
 		}
 	}
@@ -8576,123 +8587,6 @@ namespace WCFServiceTemplate
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="Front.DashBoardWorkFlowViewFront")]
-	public partial class dbmlDashBoardWorkFlowViewFront
-	{
-		
-		private System.Nullable<int> _DashBoardId;
-		
-		private string _Caption;
-		
-		private System.Nullable<int> _BPId;
-		
-		private System.Nullable<int> _WorkFlowId;
-		
-		private string _StatusPropId;
-		
-		private System.Nullable<int> _Counts;
-		
-		public dbmlDashBoardWorkFlowViewFront()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DashBoardId", DbType="Int")]
-		public System.Nullable<int> DashBoardId
-		{
-			get
-			{
-				return this._DashBoardId;
-			}
-			set
-			{
-				if ((this._DashBoardId != value))
-				{
-					this._DashBoardId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Caption", DbType="VarChar(100)")]
-		public string Caption
-		{
-			get
-			{
-				return this._Caption;
-			}
-			set
-			{
-				if ((this._Caption != value))
-				{
-					this._Caption = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BPId", DbType="Int")]
-		public System.Nullable<int> BPId
-		{
-			get
-			{
-				return this._BPId;
-			}
-			set
-			{
-				if ((this._BPId != value))
-				{
-					this._BPId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WorkFlowId", DbType="Int")]
-		public System.Nullable<int> WorkFlowId
-		{
-			get
-			{
-				return this._WorkFlowId;
-			}
-			set
-			{
-				if ((this._WorkFlowId != value))
-				{
-					this._WorkFlowId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusPropId", DbType="NVarChar(50)")]
-		public string StatusPropId
-		{
-			get
-			{
-				return this._StatusPropId;
-			}
-			set
-			{
-				if ((this._StatusPropId != value))
-				{
-					this._StatusPropId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Counts", DbType="Int")]
-		public System.Nullable<int> Counts
-		{
-			get
-			{
-				return this._Counts;
-			}
-			set
-			{
-				if ((this._Counts != value))
-				{
-					this._Counts = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="Master.State")]
 	public partial class dbmlState : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -9450,195 +9344,6 @@ namespace WCFServiceTemplate
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="Front.DashBoardDocumentViewFront")]
-	public partial class dbmlDashBoardDocumentViewFront
-	{
-		
-		private int _DocId;
-		
-		private int _BPId;
-		
-		private int _CompanyId;
-		
-		private string _DocDate;
-		
-		private string _DocNo;
-		
-		private string _CompanyName;
-		
-		private string _Department;
-		
-		private string _ZZStatus;
-		
-		private string _ZZWorkFlowColor;
-		
-		private string _BPName;
-		
-		public dbmlDashBoardDocumentViewFront()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocId", DbType="Int NOT NULL")]
-		public int DocId
-		{
-			get
-			{
-				return this._DocId;
-			}
-			set
-			{
-				if ((this._DocId != value))
-				{
-					this._DocId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BPId", DbType="Int NOT NULL")]
-		public int BPId
-		{
-			get
-			{
-				return this._BPId;
-			}
-			set
-			{
-				if ((this._BPId != value))
-				{
-					this._BPId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyId", DbType="Int NOT NULL")]
-		public int CompanyId
-		{
-			get
-			{
-				return this._CompanyId;
-			}
-			set
-			{
-				if ((this._CompanyId != value))
-				{
-					this._CompanyId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocDate", DbType="VarChar(30)")]
-		public string DocDate
-		{
-			get
-			{
-				return this._DocDate;
-			}
-			set
-			{
-				if ((this._DocDate != value))
-				{
-					this._DocDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocNo", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string DocNo
-		{
-			get
-			{
-				return this._DocNo;
-			}
-			set
-			{
-				if ((this._DocNo != value))
-				{
-					this._DocNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyName", DbType="NVarChar(50)")]
-		public string CompanyName
-		{
-			get
-			{
-				return this._CompanyName;
-			}
-			set
-			{
-				if ((this._CompanyName != value))
-				{
-					this._CompanyName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Department", DbType="NVarChar(50)")]
-		public string Department
-		{
-			get
-			{
-				return this._Department;
-			}
-			set
-			{
-				if ((this._Department != value))
-				{
-					this._Department = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZStatus", DbType="VarChar(100)")]
-		public string ZZStatus
-		{
-			get
-			{
-				return this._ZZStatus;
-			}
-			set
-			{
-				if ((this._ZZStatus != value))
-				{
-					this._ZZStatus = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZWorkFlowColor", DbType="NVarChar(50)")]
-		public string ZZWorkFlowColor
-		{
-			get
-			{
-				return this._ZZWorkFlowColor;
-			}
-			set
-			{
-				if ((this._ZZWorkFlowColor != value))
-				{
-					this._ZZWorkFlowColor = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BPName", DbType="NVarChar(100)")]
-		public string BPName
-		{
-			get
-			{
-				return this._BPName;
-			}
-			set
-			{
-				if ((this._BPName != value))
-				{
-					this._BPName = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="Front.BookingSearchViewFront")]
 	public partial class dbmlBookingSearchView
 	{
@@ -9986,6 +9691,476 @@ namespace WCFServiceTemplate
 				{
 					this._BookingType = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="Front.DashBoardWorkFlowViewFront")]
+	public partial class dbmlDashBoardWorkFlowViewFront
+	{
+		
+		private int _DashBoardId;
+		
+		private string _Caption;
+		
+		private int _BPId;
+		
+		private string _WorkFlowId;
+		
+		private string _StatusPropId;
+		
+		private int _Counts;
+		
+		public dbmlDashBoardWorkFlowViewFront()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DashBoardId", DbType="Int NOT NULL")]
+		public int DashBoardId
+		{
+			get
+			{
+				return this._DashBoardId;
+			}
+			set
+			{
+				if ((this._DashBoardId != value))
+				{
+					this._DashBoardId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Caption", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string Caption
+		{
+			get
+			{
+				return this._Caption;
+			}
+			set
+			{
+				if ((this._Caption != value))
+				{
+					this._Caption = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BPId", DbType="Int NOT NULL")]
+		public int BPId
+		{
+			get
+			{
+				return this._BPId;
+			}
+			set
+			{
+				if ((this._BPId != value))
+				{
+					this._BPId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WorkFlowId", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string WorkFlowId
+		{
+			get
+			{
+				return this._WorkFlowId;
+			}
+			set
+			{
+				if ((this._WorkFlowId != value))
+				{
+					this._WorkFlowId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusPropId", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string StatusPropId
+		{
+			get
+			{
+				return this._StatusPropId;
+			}
+			set
+			{
+				if ((this._StatusPropId != value))
+				{
+					this._StatusPropId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Counts", DbType="Int NOT NULL")]
+		public int Counts
+		{
+			get
+			{
+				return this._Counts;
+			}
+			set
+			{
+				if ((this._Counts != value))
+				{
+					this._Counts = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="Front.DashBoardDocumentViewFront")]
+	public partial class dbmlDashBoardDocumentViewFront
+	{
+		
+		private int _DocId;
+		
+		private int _BPId;
+		
+		private int _CompanyId;
+		
+		private string _DocDate;
+		
+		private string _DocNo;
+		
+		private string _CompanyName;
+		
+		private string _Department;
+		
+		private string _ZZStatus;
+		
+		private string _BPName;
+		
+		public dbmlDashBoardDocumentViewFront()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocId", DbType="Int NOT NULL")]
+		public int DocId
+		{
+			get
+			{
+				return this._DocId;
+			}
+			set
+			{
+				if ((this._DocId != value))
+				{
+					this._DocId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BPId", DbType="Int NOT NULL")]
+		public int BPId
+		{
+			get
+			{
+				return this._BPId;
+			}
+			set
+			{
+				if ((this._BPId != value))
+				{
+					this._BPId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyId", DbType="Int NOT NULL")]
+		public int CompanyId
+		{
+			get
+			{
+				return this._CompanyId;
+			}
+			set
+			{
+				if ((this._CompanyId != value))
+				{
+					this._CompanyId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocDate", DbType="VarChar(30)")]
+		public string DocDate
+		{
+			get
+			{
+				return this._DocDate;
+			}
+			set
+			{
+				if ((this._DocDate != value))
+				{
+					this._DocDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocNo", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string DocNo
+		{
+			get
+			{
+				return this._DocNo;
+			}
+			set
+			{
+				if ((this._DocNo != value))
+				{
+					this._DocNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyName", DbType="NVarChar(50)")]
+		public string CompanyName
+		{
+			get
+			{
+				return this._CompanyName;
+			}
+			set
+			{
+				if ((this._CompanyName != value))
+				{
+					this._CompanyName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Department", DbType="NVarChar(50)")]
+		public string Department
+		{
+			get
+			{
+				return this._Department;
+			}
+			set
+			{
+				if ((this._Department != value))
+				{
+					this._Department = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZStatus", DbType="VarChar(100)")]
+		public string ZZStatus
+		{
+			get
+			{
+				return this._ZZStatus;
+			}
+			set
+			{
+				if ((this._ZZStatus != value))
+				{
+					this._ZZStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BPName", DbType="NVarChar(100)")]
+		public string BPName
+		{
+			get
+			{
+				return this._BPName;
+			}
+			set
+			{
+				if ((this._BPName != value))
+				{
+					this._BPName = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="Front.CustomerMasterPhoto")]
+	public partial class dbmlCustomerMasterPhoto : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _CustomerMasterId;
+		
+		private int _ImageSerialNo;
+		
+		private string _ImageName;
+		
+		private string _Remark;
+		
+		private System.Nullable<int> _CreateId;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCustomerMasterIdChanging(int value);
+    partial void OnCustomerMasterIdChanged();
+    partial void OnImageSerialNoChanging(int value);
+    partial void OnImageSerialNoChanged();
+    partial void OnImageNameChanging(string value);
+    partial void OnImageNameChanged();
+    partial void OnRemarkChanging(string value);
+    partial void OnRemarkChanged();
+    partial void OnCreateIdChanging(System.Nullable<int> value);
+    partial void OnCreateIdChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    #endregion
+		
+		public dbmlCustomerMasterPhoto()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerMasterId", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int CustomerMasterId
+		{
+			get
+			{
+				return this._CustomerMasterId;
+			}
+			set
+			{
+				if ((this._CustomerMasterId != value))
+				{
+					this.OnCustomerMasterIdChanging(value);
+					this.SendPropertyChanging();
+					this._CustomerMasterId = value;
+					this.SendPropertyChanged("CustomerMasterId");
+					this.OnCustomerMasterIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImageSerialNo", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ImageSerialNo
+		{
+			get
+			{
+				return this._ImageSerialNo;
+			}
+			set
+			{
+				if ((this._ImageSerialNo != value))
+				{
+					this.OnImageSerialNoChanging(value);
+					this.SendPropertyChanging();
+					this._ImageSerialNo = value;
+					this.SendPropertyChanged("ImageSerialNo");
+					this.OnImageSerialNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImageName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string ImageName
+		{
+			get
+			{
+				return this._ImageName;
+			}
+			set
+			{
+				if ((this._ImageName != value))
+				{
+					this.OnImageNameChanging(value);
+					this.SendPropertyChanging();
+					this._ImageName = value;
+					this.SendPropertyChanged("ImageName");
+					this.OnImageNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remark", DbType="NVarChar(200)")]
+		public string Remark
+		{
+			get
+			{
+				return this._Remark;
+			}
+			set
+			{
+				if ((this._Remark != value))
+				{
+					this.OnRemarkChanging(value);
+					this.SendPropertyChanging();
+					this._Remark = value;
+					this.SendPropertyChanged("Remark");
+					this.OnRemarkChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateId", DbType="Int")]
+		public System.Nullable<int> CreateId
+		{
+			get
+			{
+				return this._CreateId;
+			}
+			set
+			{
+				if ((this._CreateId != value))
+				{
+					this.OnCreateIdChanging(value);
+					this.SendPropertyChanging();
+					this._CreateId = value;
+					this.SendPropertyChanged("CreateId");
+					this.OnCreateIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

@@ -165,6 +165,12 @@ namespace WCFPGMSFront
         public dbmlStatus objdbmlStatus = new dbmlStatus();
     }
 
+    public class returndbmlCustomerMasterPhoto
+    {
+        public ObservableCollection<dbmlCustomerMasterPhoto> objdbmlCustomerMasterPhoto = new ObservableCollection<dbmlCustomerMasterPhoto>();
+        public dbmlStatus objdbmlStatus = new dbmlStatus();
+    }
+
     #endregion
 
 
