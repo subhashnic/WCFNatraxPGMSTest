@@ -10001,6 +10001,8 @@ namespace WCFServiceTemplate
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
+		private System.Nullable<int> _VerifiedBy;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -10017,6 +10019,8 @@ namespace WCFServiceTemplate
     partial void OnCreateIdChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
+    partial void OnVerifiedByChanging(System.Nullable<int> value);
+    partial void OnVerifiedByChanged();
     #endregion
 		
 		public dbmlCustomerMasterPhoto()
@@ -10140,6 +10144,26 @@ namespace WCFServiceTemplate
 					this._CreateDate = value;
 					this.SendPropertyChanged("CreateDate");
 					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VerifiedBy")]
+		public System.Nullable<int> VerifiedBy
+		{
+			get
+			{
+				return this._VerifiedBy;
+			}
+			set
+			{
+				if ((this._VerifiedBy != value))
+				{
+					this.OnVerifiedByChanging(value);
+					this.SendPropertyChanging();
+					this._VerifiedBy = value;
+					this.SendPropertyChanged("VerifiedBy");
+					this.OnVerifiedByChanged();
 				}
 			}
 		}

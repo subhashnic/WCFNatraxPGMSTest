@@ -155,7 +155,7 @@
     <classShape Id="116c1158-91e6-420e-a678-9421e8b5d250" isExpanded="false" absoluteBounds="3.25, 4.25, 2, 0.45">
       <DataClassMoniker Name="/TransactionTableDataContext/dbmlCustomerMasterPhoto" />
       <nestedChildShapes>
-        <elementListCompartment Id="dad16c06-cb04-41df-8d95-a73d0e37137e" absoluteBounds="3.2649999999999997, 4.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="dad16c06-cb04-41df-8d95-a73d0e37137e" absoluteBounds="3.2649999999999997, 4.71, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
