@@ -218,6 +218,9 @@
     </Content>
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\PGMSsvcFront - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\PGMSSVCFrontQA - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\PGMSSVCFrontQA - ReadOnly - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\PGMSSVCFrontQA - Web Deploy.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -226,6 +229,15 @@
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>TransactionTable.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web_QA.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web_QA.Debug.config">
+      <DependentUpon>Web_QA.config</DependentUpon>
+    </Content>
+    <Content Include="Web_QA.Release.config">
+      <DependentUpon>Web_QA.config</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
