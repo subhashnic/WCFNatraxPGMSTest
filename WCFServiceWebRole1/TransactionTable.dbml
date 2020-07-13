@@ -614,7 +614,22 @@
       <Column Name="Remark" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="CreateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Member="VerifiedBy" Type="System.Int32" CanBeNull="true" />
+      <Column Name="VerifiedBy" Type="System.Int32" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="Front.TrackGroupMasterWithImageView" Member="dbmlTrackGroupMasterWithImageViews">
+    <Type Name="dbmlTrackGroupMasterWithImageView">
+      <Column Name="TrackGroupMasterId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TrackGroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TrackGroup" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="SrNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TrackCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TrackGroupName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ZZImageName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

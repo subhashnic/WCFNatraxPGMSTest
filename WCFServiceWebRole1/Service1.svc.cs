@@ -3279,6 +3279,35 @@ namespace WCFPGMSFront
 
         #endregion
 
+        #region Track Group Master with Image
+        public returndbmlTrackGroupMasterWithImageView TrackGroupMasterGetAllWithImage()
+        {
+            returndbmlTrackGroupMasterWithImageView objreturndbmlTrackGroupMasterWithImageView = new returndbmlTrackGroupMasterWithImageView();
+            try
+            {
+                DataSet ds = new DataSet();
+                Database db = new SqlDatabase(GF.StrSetConnection());
+                System.Data.Common.DbCommand cmdGet = null;
+
+                cmdGet = db.GetStoredProcCommand("[Front].[TrackGroupMasterGetAllWithImage]");
+                db.LoadDataSet(cmdGet, ds, new string[] { "TrackGroupMaster" });
+                if (ds.Tables["TrackGroupMaster"].Rows.Count > 0)
+                {
+                    objreturndbmlTrackGroupMasterWithImageView.objdbmlTrackGroupMasterWithImageView = new ObservableCollection<dbmlTrackGroupMasterWithImageView>(from dRow in ds.Tables["TrackGroupMaster"].AsEnumerable()
+                                                                                                   select (ConvertTableToListNew<dbmlTrackGroupMasterWithImageView>(dRow)));
+                }
+
+                objreturndbmlTrackGroupMasterWithImageView.objdbmlStatus.StatusId = 1;
+                objreturndbmlTrackGroupMasterWithImageView.objdbmlStatus.Status = "Successful";
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlTrackGroupMasterWithImageView.objdbmlStatus.StatusId = 99;
+                objreturndbmlTrackGroupMasterWithImageView.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+            }
+            return objreturndbmlTrackGroupMasterWithImageView;
+        } 
+        #endregion
 
         #endregion
 

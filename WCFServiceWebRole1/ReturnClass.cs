@@ -170,6 +170,11 @@ namespace WCFPGMSFront
         public ObservableCollection<dbmlCustomerMasterPhoto> objdbmlCustomerMasterPhoto = new ObservableCollection<dbmlCustomerMasterPhoto>();
         public dbmlStatus objdbmlStatus = new dbmlStatus();
     }
+    public class returndbmlTrackGroupMasterWithImageView
+    {
+        public ObservableCollection<dbmlTrackGroupMasterWithImageView> objdbmlTrackGroupMasterWithImageView = new ObservableCollection<dbmlTrackGroupMasterWithImageView>();
+        public dbmlStatus objdbmlStatus = new dbmlStatus();
+    }
 
     #endregion
 

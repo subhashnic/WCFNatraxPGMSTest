@@ -287,6 +287,14 @@ namespace WCFServiceTemplate
 				return this.GetTable<dbmlCustomerMasterPhoto>();
 			}
 		}
+		
+		public System.Data.Linq.Table<dbmlTrackGroupMasterWithImageView> dbmlTrackGroupMasterWithImageViews
+		{
+			get
+			{
+				return this.GetTable<dbmlTrackGroupMasterWithImageView>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
@@ -10185,6 +10193,213 @@ namespace WCFServiceTemplate
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="Front.TrackGroupMasterWithImageView")]
+	public partial class dbmlTrackGroupMasterWithImageView
+	{
+		
+		private int _TrackGroupMasterId;
+		
+		private System.Nullable<int> _TrackGroupId;
+		
+		private string _TrackGroup;
+		
+		private System.Nullable<int> _SrNo;
+		
+		private System.Nullable<int> _CreateId;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<int> _UpdateId;
+		
+		private System.Nullable<System.DateTime> _UpdateDate;
+		
+		private string _TrackCode;
+		
+		private string _TrackGroupName;
+		
+		private string _ZZImageName;
+		
+		public dbmlTrackGroupMasterWithImageView()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrackGroupMasterId", DbType="Int NOT NULL")]
+		public int TrackGroupMasterId
+		{
+			get
+			{
+				return this._TrackGroupMasterId;
+			}
+			set
+			{
+				if ((this._TrackGroupMasterId != value))
+				{
+					this._TrackGroupMasterId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrackGroupId", DbType="Int")]
+		public System.Nullable<int> TrackGroupId
+		{
+			get
+			{
+				return this._TrackGroupId;
+			}
+			set
+			{
+				if ((this._TrackGroupId != value))
+				{
+					this._TrackGroupId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrackGroup", DbType="NVarChar(500)")]
+		public string TrackGroup
+		{
+			get
+			{
+				return this._TrackGroup;
+			}
+			set
+			{
+				if ((this._TrackGroup != value))
+				{
+					this._TrackGroup = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SrNo", DbType="Int")]
+		public System.Nullable<int> SrNo
+		{
+			get
+			{
+				return this._SrNo;
+			}
+			set
+			{
+				if ((this._SrNo != value))
+				{
+					this._SrNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateId", DbType="Int")]
+		public System.Nullable<int> CreateId
+		{
+			get
+			{
+				return this._CreateId;
+			}
+			set
+			{
+				if ((this._CreateId != value))
+				{
+					this._CreateId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this._CreateDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateId", DbType="Int")]
+		public System.Nullable<int> UpdateId
+		{
+			get
+			{
+				return this._UpdateId;
+			}
+			set
+			{
+				if ((this._UpdateId != value))
+				{
+					this._UpdateId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> UpdateDate
+		{
+			get
+			{
+				return this._UpdateDate;
+			}
+			set
+			{
+				if ((this._UpdateDate != value))
+				{
+					this._UpdateDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrackCode", DbType="NVarChar(50)")]
+		public string TrackCode
+		{
+			get
+			{
+				return this._TrackCode;
+			}
+			set
+			{
+				if ((this._TrackCode != value))
+				{
+					this._TrackCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrackGroupName", DbType="NVarChar(500)")]
+		public string TrackGroupName
+		{
+			get
+			{
+				return this._TrackGroupName;
+			}
+			set
+			{
+				if ((this._TrackGroupName != value))
+				{
+					this._TrackGroupName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZImageName", DbType="NVarChar(100)")]
+		public string ZZImageName
+		{
+			get
+			{
+				return this._ZZImageName;
+			}
+			set
+			{
+				if ((this._ZZImageName != value))
+				{
+					this._ZZImageName = value;
+				}
 			}
 		}
 	}

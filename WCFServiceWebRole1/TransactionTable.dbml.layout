@@ -158,5 +158,11 @@
         <elementListCompartment Id="dad16c06-cb04-41df-8d95-a73d0e37137e" absoluteBounds="3.2649999999999997, 4.71, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="66879232-a0e2-4fac-a9d3-1c949420f165" isExpanded="false" absoluteBounds="5.75, 4.25, 2, 0.45">
+      <DataClassMoniker Name="/TransactionTableDataContext/dbmlTrackGroupMasterWithImageView" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d4d12fa5-2dfb-43b7-ad22-2387358b3fcd" absoluteBounds="5.765, 4.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
