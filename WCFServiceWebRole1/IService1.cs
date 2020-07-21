@@ -219,6 +219,9 @@ namespace WCFPGMSFront
         #region Track Group Master with Image
         [OperationContract]
         returndbmlTrackGroupMasterWithImageView TrackGroupMasterGetAllWithImage();
+
+        [OperationContract]
+        returndbmlServiceDetailView ServiceDetailViewGetByTrackGroupId(int intTrackGroupId);
         #endregion
 
         #endregion

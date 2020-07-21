@@ -176,6 +176,14 @@ namespace WCFPGMSFront
         public dbmlStatus objdbmlStatus = new dbmlStatus();
     }
 
+    public class returndbmlServiceDetailView
+    {
+        public ObservableCollection<dbmlServiceDocumentView> objdbmlServiceDocumentView = new ObservableCollection<dbmlServiceDocumentView>();
+        public ObservableCollection<dbmlServiceImageView> objdbmlServiceImageView = new ObservableCollection<dbmlServiceImageView>();
+        public ObservableCollection<dbmlServicesViewForFront> objdbmlServicesViewForFront = new ObservableCollection<dbmlServicesViewForFront>();
+        public dbmlStatus objdbmlStatus = new dbmlStatus();
+    }
+
     #endregion
 
 

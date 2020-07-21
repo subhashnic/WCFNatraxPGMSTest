@@ -295,6 +295,30 @@ namespace WCFServiceTemplate
 				return this.GetTable<dbmlTrackGroupMasterWithImageView>();
 			}
 		}
+		
+		public System.Data.Linq.Table<dbmlServiceDocumentView> dbmlServiceDocumentViews
+		{
+			get
+			{
+				return this.GetTable<dbmlServiceDocumentView>();
+			}
+		}
+		
+		public System.Data.Linq.Table<dbmlServiceImageView> dbmlServiceImageViews
+		{
+			get
+			{
+				return this.GetTable<dbmlServiceImageView>();
+			}
+		}
+		
+		public System.Data.Linq.Table<dbmlServicesViewForFront> dbmlServicesViewForFronts
+		{
+			get
+			{
+				return this.GetTable<dbmlServicesViewForFront>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
@@ -10399,6 +10423,429 @@ namespace WCFServiceTemplate
 				if ((this._ZZImageName != value))
 				{
 					this._ZZImageName = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="Front.ServiceDocumentView")]
+	public partial class dbmlServiceDocumentView
+	{
+		
+		private int _ServiceDocumentId;
+		
+		private System.Nullable<int> _ServiceId;
+		
+		private string _DocumentName;
+		
+		private string _DocumentDescription;
+		
+		private System.Nullable<int> _TrackGroupId;
+		
+		public dbmlServiceDocumentView()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceDocumentId", DbType="Int NOT NULL")]
+		public int ServiceDocumentId
+		{
+			get
+			{
+				return this._ServiceDocumentId;
+			}
+			set
+			{
+				if ((this._ServiceDocumentId != value))
+				{
+					this._ServiceDocumentId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceId", DbType="Int")]
+		public System.Nullable<int> ServiceId
+		{
+			get
+			{
+				return this._ServiceId;
+			}
+			set
+			{
+				if ((this._ServiceId != value))
+				{
+					this._ServiceId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocumentName", DbType="NVarChar(100)")]
+		public string DocumentName
+		{
+			get
+			{
+				return this._DocumentName;
+			}
+			set
+			{
+				if ((this._DocumentName != value))
+				{
+					this._DocumentName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocumentDescription", DbType="NVarChar(500)")]
+		public string DocumentDescription
+		{
+			get
+			{
+				return this._DocumentDescription;
+			}
+			set
+			{
+				if ((this._DocumentDescription != value))
+				{
+					this._DocumentDescription = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrackGroupId", DbType="Int")]
+		public System.Nullable<int> TrackGroupId
+		{
+			get
+			{
+				return this._TrackGroupId;
+			}
+			set
+			{
+				if ((this._TrackGroupId != value))
+				{
+					this._TrackGroupId = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="Front.ServiceImageView")]
+	public partial class dbmlServiceImageView
+	{
+		
+		private int _ServiceImageId;
+		
+		private string _ImageName;
+		
+		private string _ImageDescription;
+		
+		private System.Nullable<int> _ServiceId;
+		
+		private System.Nullable<int> _TrackGroupId;
+		
+		public dbmlServiceImageView()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceImageId", DbType="Int NOT NULL")]
+		public int ServiceImageId
+		{
+			get
+			{
+				return this._ServiceImageId;
+			}
+			set
+			{
+				if ((this._ServiceImageId != value))
+				{
+					this._ServiceImageId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImageName", DbType="NVarChar(100)")]
+		public string ImageName
+		{
+			get
+			{
+				return this._ImageName;
+			}
+			set
+			{
+				if ((this._ImageName != value))
+				{
+					this._ImageName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImageDescription", DbType="NVarChar(500)")]
+		public string ImageDescription
+		{
+			get
+			{
+				return this._ImageDescription;
+			}
+			set
+			{
+				if ((this._ImageDescription != value))
+				{
+					this._ImageDescription = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceId", DbType="Int")]
+		public System.Nullable<int> ServiceId
+		{
+			get
+			{
+				return this._ServiceId;
+			}
+			set
+			{
+				if ((this._ServiceId != value))
+				{
+					this._ServiceId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrackGroupId", DbType="Int")]
+		public System.Nullable<int> TrackGroupId
+		{
+			get
+			{
+				return this._TrackGroupId;
+			}
+			set
+			{
+				if ((this._TrackGroupId != value))
+				{
+					this._TrackGroupId = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="Front.ServicesViewForFront")]
+	public partial class dbmlServicesViewForFront
+	{
+		
+		private int _ServiceId;
+		
+		private System.Nullable<int> _BPId;
+		
+		private string _ServiceName;
+		
+		private string _ServiceDescription;
+		
+		private string _ServiceSpecification;
+		
+		private System.Nullable<int> _ServiceGroupMCId;
+		
+		private string _TrackGroup;
+		
+		private System.Nullable<int> _TrackGroupId;
+		
+		private string _ZZServiceName;
+		
+		private string _ZZServiceGroupName;
+		
+		private string _ZZTrackGroup;
+		
+		private string _ZZTrackGroupName;
+		
+		public dbmlServicesViewForFront()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceId", DbType="Int NOT NULL")]
+		public int ServiceId
+		{
+			get
+			{
+				return this._ServiceId;
+			}
+			set
+			{
+				if ((this._ServiceId != value))
+				{
+					this._ServiceId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BPId", DbType="Int")]
+		public System.Nullable<int> BPId
+		{
+			get
+			{
+				return this._BPId;
+			}
+			set
+			{
+				if ((this._BPId != value))
+				{
+					this._BPId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceName", DbType="NVarChar(50)")]
+		public string ServiceName
+		{
+			get
+			{
+				return this._ServiceName;
+			}
+			set
+			{
+				if ((this._ServiceName != value))
+				{
+					this._ServiceName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceDescription", DbType="NVarChar(1000)")]
+		public string ServiceDescription
+		{
+			get
+			{
+				return this._ServiceDescription;
+			}
+			set
+			{
+				if ((this._ServiceDescription != value))
+				{
+					this._ServiceDescription = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceSpecification", DbType="NVarChar(1000)")]
+		public string ServiceSpecification
+		{
+			get
+			{
+				return this._ServiceSpecification;
+			}
+			set
+			{
+				if ((this._ServiceSpecification != value))
+				{
+					this._ServiceSpecification = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ServiceGroupMCId", DbType="Int")]
+		public System.Nullable<int> ServiceGroupMCId
+		{
+			get
+			{
+				return this._ServiceGroupMCId;
+			}
+			set
+			{
+				if ((this._ServiceGroupMCId != value))
+				{
+					this._ServiceGroupMCId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrackGroup", DbType="NVarChar(50)")]
+		public string TrackGroup
+		{
+			get
+			{
+				return this._TrackGroup;
+			}
+			set
+			{
+				if ((this._TrackGroup != value))
+				{
+					this._TrackGroup = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrackGroupId", DbType="Int")]
+		public System.Nullable<int> TrackGroupId
+		{
+			get
+			{
+				return this._TrackGroupId;
+			}
+			set
+			{
+				if ((this._TrackGroupId != value))
+				{
+					this._TrackGroupId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZServiceName", DbType="NVarChar(1051)")]
+		public string ZZServiceName
+		{
+			get
+			{
+				return this._ZZServiceName;
+			}
+			set
+			{
+				if ((this._ZZServiceName != value))
+				{
+					this._ZZServiceName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZServiceGroupName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string ZZServiceGroupName
+		{
+			get
+			{
+				return this._ZZServiceGroupName;
+			}
+			set
+			{
+				if ((this._ZZServiceGroupName != value))
+				{
+					this._ZZServiceGroupName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZTrackGroup", DbType="NVarChar(101)")]
+		public string ZZTrackGroup
+		{
+			get
+			{
+				return this._ZZTrackGroup;
+			}
+			set
+			{
+				if ((this._ZZTrackGroup != value))
+				{
+					this._ZZTrackGroup = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZZTrackGroupName", DbType="NVarChar(500)")]
+		public string ZZTrackGroupName
+		{
+			get
+			{
+				return this._ZZTrackGroupName;
+			}
+			set
+			{
+				if ((this._ZZTrackGroupName != value))
+				{
+					this._ZZTrackGroupName = value;
 				}
 			}
 		}

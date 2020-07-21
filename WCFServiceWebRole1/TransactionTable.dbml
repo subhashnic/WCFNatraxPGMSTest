@@ -632,4 +632,38 @@
       <Column Name="ZZImageName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="Front.ServiceDocumentView" Member="dbmlServiceDocumentViews">
+    <Type Name="dbmlServiceDocumentView">
+      <Column Name="ServiceDocumentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ServiceId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DocumentName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DocumentDescription" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="TrackGroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="Front.ServiceImageView" Member="dbmlServiceImageViews">
+    <Type Name="dbmlServiceImageView">
+      <Column Name="ServiceImageId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ImageName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ImageDescription" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ServiceId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TrackGroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="Front.ServicesViewForFront" Member="dbmlServicesViewForFronts">
+    <Type Name="dbmlServicesViewForFront">
+      <Column Name="ServiceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BPId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ServiceName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ServiceDescription" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ServiceSpecification" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ServiceGroupMCId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TrackGroup" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TrackGroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZZServiceName" Type="System.String" DbType="NVarChar(1051)" CanBeNull="true" />
+      <Column Name="ZZServiceGroupName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ZZTrackGroup" Type="System.String" DbType="NVarChar(101)" CanBeNull="true" />
+      <Column Name="ZZTrackGroupName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

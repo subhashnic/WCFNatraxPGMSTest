@@ -164,5 +164,23 @@
         <elementListCompartment Id="d4d12fa5-2dfb-43b7-ad22-2387358b3fcd" absoluteBounds="5.765, 4.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="43680978-d937-40de-a5ba-fdd82b9ba7c7" isExpanded="false" absoluteBounds="8.375, 4.375, 2, 0.45">
+      <DataClassMoniker Name="/TransactionTableDataContext/dbmlServiceDocumentView" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2aafd046-6441-42aa-80e8-d1f598fdd234" absoluteBounds="8.39, 4.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8b9b23ea-0e05-48df-8068-d5e166a67049" isExpanded="false" absoluteBounds="0.625, 4.875, 2, 0.45">
+      <DataClassMoniker Name="/TransactionTableDataContext/dbmlServiceImageView" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d1d16386-b62c-4a5e-b387-d28cfd1744c1" absoluteBounds="0.63999999999999968, 5.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ae9d1a7a-391c-4d7b-918d-3a158e1efd7a" isExpanded="false" absoluteBounds="3.25, 4.875, 2, 0.45">
+      <DataClassMoniker Name="/TransactionTableDataContext/dbmlServicesViewForFront" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c914da05-1824-4f32-9120-5f4caac58968" absoluteBounds="3.2649999999999997, 5.335, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

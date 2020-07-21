@@ -3306,7 +3306,51 @@ namespace WCFPGMSFront
                 objreturndbmlTrackGroupMasterWithImageView.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
             }
             return objreturndbmlTrackGroupMasterWithImageView;
-        } 
+        }
+
+        public returndbmlServiceDetailView ServiceDetailViewGetByTrackGroupId(int intTrackGroupId)
+        {
+            returndbmlServiceDetailView objreturndbmlServiceDetailView = new returndbmlServiceDetailView();
+            try
+            {
+                DataSet ds = new DataSet();
+                Database db = new SqlDatabase(GF.StrSetConnection());
+                System.Data.Common.DbCommand cmdGet = null;
+
+                cmdGet = db.GetStoredProcCommand("[Front].[ServiceDocumentViewGetByTrackGroupId]", intTrackGroupId);
+                db.LoadDataSet(cmdGet, ds, new string[] { "ServiceDocument" });
+                if (ds.Tables["ServiceDocument"].Rows.Count > 0)
+                {
+                    objreturndbmlServiceDetailView.objdbmlServiceDocumentView = new ObservableCollection<dbmlServiceDocumentView>(from dRow in ds.Tables["ServiceDocument"].AsEnumerable()
+                                                                                                                                                                  select (ConvertTableToListNew<dbmlServiceDocumentView>(dRow)));
+                }
+
+                cmdGet = db.GetStoredProcCommand("[Front].[ServiceImageViewGetByTrackGroupId]", intTrackGroupId);
+                db.LoadDataSet(cmdGet, ds, new string[] { "ServiceImage" });
+                if (ds.Tables["ServiceImage"].Rows.Count > 0)
+                {
+                    objreturndbmlServiceDetailView.objdbmlServiceImageView = new ObservableCollection<dbmlServiceImageView>(from dRow in ds.Tables["ServiceImage"].AsEnumerable()
+                                                                                                                                  select (ConvertTableToListNew<dbmlServiceImageView>(dRow)));
+                }
+
+                cmdGet = db.GetStoredProcCommand("[Front].[ServicesViewForFrontGetByTrackGroupId]", intTrackGroupId);
+                db.LoadDataSet(cmdGet, ds, new string[] { "ServicesView" });
+                if (ds.Tables["ServicesView"].Rows.Count > 0)
+                {
+                    objreturndbmlServiceDetailView.objdbmlServicesViewForFront = new ObservableCollection<dbmlServicesViewForFront>(from dRow in ds.Tables["ServicesView"].AsEnumerable()
+                                                                                                                                  select (ConvertTableToListNew<dbmlServicesViewForFront>(dRow)));
+                }
+
+                objreturndbmlServiceDetailView.objdbmlStatus.StatusId = 1;
+                objreturndbmlServiceDetailView.objdbmlStatus.Status = "Successful";
+            }
+            catch (Exception ex)
+            {
+                objreturndbmlServiceDetailView.objdbmlStatus.StatusId = 99;
+                objreturndbmlServiceDetailView.objdbmlStatus.Status = ex.Message.ToString() + ex.StackTrace.ToString();
+            }
+            return objreturndbmlServiceDetailView;
+        }
         #endregion
 
         #endregion
